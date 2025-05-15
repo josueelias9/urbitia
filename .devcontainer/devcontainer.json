@@ -10,7 +10,8 @@
 
 			"extensions": [
 				"esbenp.prettier-vscode",
-				"bierner.markdown-mermaid"
+				"bierner.markdown-mermaid",
+				"stateful.runme"
 			]
 		}
 	}

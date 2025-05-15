@@ -23,4 +23,5 @@ TestResults.xml
 
 
 .env
-__pycache__/main.cpython-311.pyc
+*.pyc
+*.sqlite
