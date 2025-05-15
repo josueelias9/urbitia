@@ -14,3 +14,8 @@ flask --app flaskr init-db
 cd flask-tutorial
 pip install -e .
 ```
+
+```sh
+printenv | grep PORT
+python3 server.py
+```

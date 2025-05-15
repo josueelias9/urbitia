@@ -48,4 +48,8 @@ def create_app(test_config=None):
 
     ###
 
+    from . import oauth
+    oauth.init_all(app)
+    app.register_blueprint(oauth.bp)
+
     return app
