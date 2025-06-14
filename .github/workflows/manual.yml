@@ -1,3 +1,5 @@
+name: Manual Workflow
+
 on:
   workflow_dispatch:
     inputs:
@@ -27,6 +29,7 @@ jobs:
           echo "Log level: $LEVEL"
           echo "Tags: $TAGS"
           echo "Environment: $ENVIRONMENT"
+          printenv
         env:
           LEVEL: ${{ inputs.logLevel }}
           TAGS: ${{ inputs.tags }}
