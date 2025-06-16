@@ -1,12 +1,17 @@
-name: ci
+# https://github.com/actions/starter-workflows/blob/main/deployments/azure-kubernetes-service-helm.yml
+# https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/triggering-a-workflow#using-environments-to-manually-trigger-workflow-jobs
+# https://docs.docker.com/guides/dotnet/configure-ci-cd/#step-two-set-up-the-workflow
+
+name: Build and deploy an app to AKS with Helm
 
 on:
   push:
-    branches:
-      - main
+    branches: [$default-branch]
+  workflow_dispatch:
+
 
 jobs:
-  build:
+  buildImage:
     runs-on: ubuntu-latest
     steps:
       - name: Login to Docker Hub
@@ -31,3 +36,15 @@ jobs:
           push: true
           target: dev
           tags: ${{ vars.DOCKER_USERNAME }}/${{ github.event.repository.name }}:latest
+
+
+  deploy:
+    permissions:
+      actions: read
+      contents: read
+      id-token: write
+    runs-on: ubuntu-latest
+    needs: [buildImage]
+    steps:
+      # Checks out the repository this file is in
+      - uses: actions/checkout@v4
