@@ -1,3 +1,5 @@
+# https://flask.palletsprojects.com/en/stable/tutorial/install/
+
 FROM python:3 as base
 WORKDIR /usr/src/app
 COPY . .
