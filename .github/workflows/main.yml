@@ -1,6 +1,12 @@
 # https://github.com/actions/starter-workflows/blob/main/deployments/azure-kubernetes-service-helm.yml
-# https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/triggering-a-workflow#using-environments-to-manually-trigger-workflow-jobs
+
 # https://docs.docker.com/guides/dotnet/configure-ci-cd/#step-two-set-up-the-workflow
+# https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/triggering-a-workflow#using-environments-to-manually-trigger-workflow-jobs
+# https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#workflow_dispatch
+# https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/using-environments-for-deployment
+# https://docs.github.com/en/actions/writing-workflows/quickstart
+# https://docs.github.com/en/actions/writing-workflows/about-workflows
+# https://docs.aws.amazon.com/prescriptive-guidance/latest/choosing-git-branch-approach/visual-overview-of-the-git-hub-flow-strategy.html
 
 name: Build and deploy an app to AKS with Helm
 
