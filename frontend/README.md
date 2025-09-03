@@ -10,6 +10,5 @@ pnpm dev
 
 ```sh
 cd nextjs-dashboard
-
 npx prettier . --write
 ```
