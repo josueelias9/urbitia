@@ -7,3 +7,9 @@ pnpm i
 cd nextjs-dashboard
 pnpm dev
 ```
+
+```sh
+cd nextjs-dashboard
+
+npx prettier . --write
+```
