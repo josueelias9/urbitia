@@ -1,0 +1,21 @@
+{
+  "name": "Frontend Container",
+  "dockerComposeFile": ["../../docker-compose.yml","../../docker-compose.frontend.yml"],
+  "service": "frontend",
+  "shutdownAction": "none",
+  "workspaceFolder": "/workspace/frontend",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers-extra/features/pnpm:2": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "stateful.runme"
+      ],
+      "settings": {
+        "workbench.colorTheme": "Monokai"
+      }
+    }
+  }
+}

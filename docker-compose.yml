@@ -24,6 +24,9 @@ services:
     volumes:
       - db:/var/lib/mysql
 
+  frontend:
+    build: ./frontend
+
 volumes:
   wordpress:
   db:

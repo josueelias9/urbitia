@@ -1,0 +1,15 @@
+services:
+
+  wordpress:
+    profiles:
+      - avoid
+
+  db:
+    profiles:
+      - avoid
+
+
+  frontend:
+    volumes:
+      - .:/workspace
+    command: sleep infinity
