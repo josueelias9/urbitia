@@ -1,12 +1,12 @@
+- install dependancies
+
 ```sh
 cd nextjs-dashboard
 pnpm i
 ```
 
-```sh
-cd nextjs-dashboard
-pnpm dev
-```
+- go to `http://localhost:3000/seed` (for some reason, you need to do it twice so it works)
+- run prettier periodically
 
 ```sh
 cd nextjs-dashboard

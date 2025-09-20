@@ -26,6 +26,7 @@ services:
 
   frontend:
     build: ./frontend
+    env_file: .env
 
   postgres:
     image: postgres
