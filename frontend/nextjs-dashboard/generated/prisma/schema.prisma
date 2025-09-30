@@ -8,29 +8,66 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model customers {
-  id        String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  name      String @db.VarChar(255)
-  email     String @db.VarChar(255)
-  image_url String @db.VarChar(255)
+model marketplace_user {
+  id            String         @id @default(uuid())
+  name          String         @db.VarChar(255)
+  email         String         @unique
+  role          String // 'buyer' | 'owner'
+  avatar        String?        @db.VarChar(255)
+  phone         String?        @db.VarChar(32)
+  createdAt     DateTime       @default(now())
+  properties    property[]     @relation("OwnerProperties")
+  chats_buyer   chat[]         @relation("BuyerChats")
+  chats_owner   chat[]         @relation("OwnerChats")
+  sent_messages chat_message[] @relation("SenderMessages")
 }
 
-model invoices {
-  id          String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  customer_id String   @db.Uuid
-  amount      Int
-  status      String   @db.VarChar(255)
-  date        DateTime @db.Date
+model property {
+  id          String           @id @default(uuid())
+  title       String           @db.VarChar(255)
+  description String
+  price       Int
+  currency    String // 'USD' | 'EUR' | 'GBP'
+  type        String // 'apartment' | 'house' | 'condo' | 'commercial'
+  status      String // 'available' | 'sold' | 'rented'
+  bedrooms    Int
+  bathrooms   Int
+  area        Int
+  street      String           @db.VarChar(255)
+  city        String           @db.VarChar(255)
+  country     String           @db.VarChar(255)
+  zipCode     String           @db.VarChar(32)
+  lat         Float?
+  lng         Float?
+  images      String[]         @db.VarChar(255)
+  amenities   String[]
+  ownerId     String
+  owner       marketplace_user @relation("OwnerProperties", fields: [ownerId], references: [id])
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  chats       chat[]
 }
 
-model revenue {
-  month   String @unique @db.VarChar(4)
-  revenue Int
+model chat {
+  id         String           @id @default(uuid())
+  propertyId String
+  property   property         @relation(fields: [propertyId], references: [id])
+  buyerId    String
+  buyer      marketplace_user @relation("BuyerChats", fields: [buyerId], references: [id])
+  ownerId    String
+  owner      marketplace_user @relation("OwnerChats", fields: [ownerId], references: [id])
+  messages   chat_message[]
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
 }
 
-model users {
-  id       String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  name     String @db.VarChar(255)
-  email    String @unique
-  password String
+model chat_message {
+  id        String           @id @default(uuid())
+  chatId    String
+  chat      chat             @relation(fields: [chatId], references: [id])
+  senderId  String
+  sender    marketplace_user @relation("SenderMessages", fields: [senderId], references: [id])
+  content   String
+  timestamp DateTime         @default(now())
+  read      Boolean          @default(false)
 }

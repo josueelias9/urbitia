@@ -120,31 +120,56 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.CustomersScalarFieldEnum = {
+exports.Prisma.Marketplace_userScalarFieldEnum = {
   id: 'id',
   name: 'name',
   email: 'email',
-  image_url: 'image_url'
+  role: 'role',
+  avatar: 'avatar',
+  phone: 'phone',
+  createdAt: 'createdAt'
 };
 
-exports.Prisma.InvoicesScalarFieldEnum = {
+exports.Prisma.PropertyScalarFieldEnum = {
   id: 'id',
-  customer_id: 'customer_id',
-  amount: 'amount',
+  title: 'title',
+  description: 'description',
+  price: 'price',
+  currency: 'currency',
+  type: 'type',
   status: 'status',
-  date: 'date'
+  bedrooms: 'bedrooms',
+  bathrooms: 'bathrooms',
+  area: 'area',
+  street: 'street',
+  city: 'city',
+  country: 'country',
+  zipCode: 'zipCode',
+  lat: 'lat',
+  lng: 'lng',
+  images: 'images',
+  amenities: 'amenities',
+  ownerId: 'ownerId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
-exports.Prisma.RevenueScalarFieldEnum = {
-  month: 'month',
-  revenue: 'revenue'
-};
-
-exports.Prisma.UsersScalarFieldEnum = {
+exports.Prisma.ChatScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  email: 'email',
-  password: 'password'
+  propertyId: 'propertyId',
+  buyerId: 'buyerId',
+  ownerId: 'ownerId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.Chat_messageScalarFieldEnum = {
+  id: 'id',
+  chatId: 'chatId',
+  senderId: 'senderId',
+  content: 'content',
+  timestamp: 'timestamp',
+  read: 'read'
 };
 
 exports.Prisma.SortOrder = {
@@ -157,12 +182,17 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
-  customers: 'customers',
-  invoices: 'invoices',
-  revenue: 'revenue',
-  users: 'users'
+  marketplace_user: 'marketplace_user',
+  property: 'property',
+  chat: 'chat',
+  chat_message: 'chat_message'
 };
 
 /**
