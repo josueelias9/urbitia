@@ -2,6 +2,18 @@ import { PrismaClient } from '../generated/prisma/index.js'
 const prisma = new PrismaClient()
 
 async function main() {
+    await prisma.users.createMany({
+      data: [
+        {
+          id: '410544b2-4001-4271-9855-fec4b6a6442a',
+          name: 'User',
+          email: 'user@nextmail.com',
+          password: '123456'
+        }
+      ],
+      skipDuplicates: true
+    })
+
   await prisma.marketplace_user.createMany({
     data: [
       {
