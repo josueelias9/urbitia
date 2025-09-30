@@ -40,7 +40,9 @@ async function main() {
         avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Emma',
         phone: '+1234567892',
       }
-    ]
+    ],
+      skipDuplicates: true
+
   })
 
   await prisma.property.createMany({
@@ -144,7 +146,9 @@ async function main() {
         amenities: ['Modern Kitchen', 'In-unit Laundry', 'Fitness Center', 'Pet Friendly'],
         ownerId: 'owner-2'
       }
-    ]
+    ],
+      skipDuplicates: true
+
   })
 }
 
