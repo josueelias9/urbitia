@@ -5,8 +5,8 @@ import { useAuth } from '@/app/marketplace/lib/auth-context'
 import { useSearchParams } from 'next/navigation'
 import { mockChats, mockProperties, mockUsers, getUserById, getPropertyById } from '@/app/marketplace/lib/mock-data'
 import { Chat, ChatMessage, Property, User } from '@/app/marketplace/lib/types'
-import { ChatBubble } from '@/app/marketplace/components/chat-bubble'
-import { UserAvatar } from '@/app/marketplace/components/user-avatar'
+import { ChatBubble } from '@/app/marketplace/ui/components/chat-bubble'
+import { UserAvatar } from '@/app/marketplace/ui/components/user-avatar'
 import Link from 'next/link'
 import { 
     ArrowLeftIcon, 

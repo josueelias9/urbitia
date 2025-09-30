@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { useAuth } from '../lib/auth-context'
+import { useAuth } from '@/app/marketplace/lib/auth-context'
 
 export function HeroSection() {
     const { user } = useAuth()

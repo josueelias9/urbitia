@@ -2,7 +2,7 @@
 
 import { getPropertiesByOwner, getChatsByUser } from '@/app/marketplace/lib/data'
 import { Property } from '@/app/marketplace/lib/types'
-import { PropertyCard } from '@/app/marketplace/components/property-card'
+import { PropertyCard } from '@/app/marketplace/ui/components/property-card'
 import Link from 'next/link'
 import { PlusIcon, HomeIcon, ChatBubbleLeftRightIcon, EyeIcon, BanknotesIcon, ArrowLeftIcon } from '@heroicons/react/24/outline'
 

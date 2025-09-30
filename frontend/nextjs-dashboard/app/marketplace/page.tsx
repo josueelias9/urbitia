@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { PropertyPreviewCard } from '@/app/marketplace/ui/PropertyPreviewCard'
 import { NavigationBar } from '@/app/marketplace/ui/NavigationBar'
 import {HeroSection} from "@/app/marketplace/ui/HeroSection"
-import { getFeaturedProperties } from './lib/data'
+import { getFeaturedProperties } from '@/app/marketplace/lib/data'
 import { useEffect, useState } from 'react'
 import { Property } from '@/app/marketplace/lib/types'
 

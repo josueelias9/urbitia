@@ -5,7 +5,7 @@ import { useParams, useRouter } from 'next/navigation'
 import { useAuth } from '@/app/marketplace/lib/auth-context'
 import { getAllProperties } from '@/app/marketplace/lib/data'
 import { Property, User } from '@/app/marketplace/lib/types'
-import { UserAvatar } from '@/app/marketplace/components/user-avatar'
+import { UserAvatar } from '@/app/marketplace/ui/components/user-avatar'
 import Image from 'next/image'
 import Link from 'next/link'
 import { 

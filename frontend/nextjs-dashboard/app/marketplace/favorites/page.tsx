@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useAuth } from '@/app/marketplace/lib/auth-context'
 import { PrismaClient, property as Property } from '@/generated/prisma/client'
-import { PropertyCard } from '@/app/marketplace/components/property-card'
+import { PropertyCard } from '@/app/marketplace/ui/components/property-card'
 import Link from 'next/link'
 import { ArrowLeftIcon, HeartIcon } from '@heroicons/react/24/outline'
 

@@ -1,5 +1,14 @@
 FROM node:bullseye
 
-# workdir /workspace/nextjs-dashboard
+RUN apt update
 
-# RUN pnpm install --save-dev --save-exact prettier
+RUN apt upgrade -y
+
+# install pnpm
+RUN wget -qO- https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -
+
+WORKDIR /app
+
+COPY nextjs-dashboard nextjs-dashboard/
+
+# RUN pnpm install i
