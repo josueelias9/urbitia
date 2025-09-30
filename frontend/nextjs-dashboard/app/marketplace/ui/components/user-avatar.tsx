@@ -12,12 +12,12 @@ interface UserAvatarProps {
     className?: string
 }
 
-export function UserAvatar({ 
-    user, 
-    size = 'md', 
-    showName = false, 
+export function UserAvatar({
+    user,
+    size = 'md',
+    showName = false,
     showEmail = false,
-    className = '' 
+    className = ''
 }: UserAvatarProps) {
     const sizeClasses = {
         sm: 'h-8 w-8',
@@ -33,14 +33,16 @@ export function UserAvatar({
 
     return (
         <div className={`flex items-center ${className}`}>
-            <div className={`${sizeClasses[size]} rounded-full overflow-hidden bg-gray-300 flex items-center justify-center`}>
+            <div
+                className={`${sizeClasses[size]} rounded-full overflow-hidden bg-gray-300 flex items-center justify-center`}
+            >
                 {user.avatar ? (
                     <Image
                         src={user.avatar}
                         alt={user.name}
                         width={size === 'sm' ? 32 : size === 'md' ? 40 : 64}
                         height={size === 'sm' ? 32 : size === 'md' ? 40 : 64}
-                        className="object-cover"
+                        className='object-cover'
                     />
                 ) : (
                     <span className={`font-semibold text-gray-600 ${textSizes[size]}`}>
@@ -49,16 +51,14 @@ export function UserAvatar({
                 )}
             </div>
             {(showName || showEmail) && (
-                <div className="ml-3">
+                <div className='ml-3'>
                     {showName && (
                         <div className={`font-medium text-gray-900 ${textSizes[size]}`}>
                             {user.name}
                         </div>
                     )}
                     {showEmail && user.email && (
-                        <div className="text-sm text-gray-500">
-                            {user.email}
-                        </div>
+                        <div className='text-sm text-gray-500'>{user.email}</div>
                     )}
                 </div>
             )}

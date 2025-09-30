@@ -25,9 +25,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setIsLoading(false)
     }, [])
 
-    const login = async (email: string, password: string, role: 'buyer' | 'owner'): Promise<boolean> => {
+    const login = async (
+        email: string,
+        password: string,
+        role: 'buyer' | 'owner'
+    ): Promise<boolean> => {
         setIsLoading(true)
-        
+
         // Mock authentication - in a real app, this would be an API call
         if (email && password) {
             const mockUser: User = {
@@ -39,13 +43,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                 phone: '+1234567890',
                 createdAt: new Date()
             }
-            
+
             setUser(mockUser)
             localStorage.setItem('marketplace-user', JSON.stringify(mockUser))
             setIsLoading(false)
             return true
         }
-        
+
         setIsLoading(false)
         return false
     }

@@ -6,19 +6,13 @@ export const metadata: Metadata = {
         template: '%s | Real Estate Marketplace',
         default: 'Real Estate Marketplace'
     },
-    description: 'Find your perfect property or list your real estate with our marketplace.',
+    description: 'Find your perfect property or list your real estate with our marketplace.'
 }
 
-export default function MarketplaceLayout({
-    children,
-}: {
-    children: React.ReactNode
-}) {
+export default function MarketplaceLayout({ children }: { children: React.ReactNode }) {
     return (
         <AuthProvider>
-            <div className="min-h-screen bg-gray-50">
-                {children}
-            </div>
+            <div className='min-h-screen bg-gray-50'>{children}</div>
         </AuthProvider>
     )
 }

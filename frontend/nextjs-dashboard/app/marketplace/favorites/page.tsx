@@ -43,14 +43,16 @@ export default function FavoritesPage() {
 
     if (!user) {
         return (
-            <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-                <div className="text-center">
-                    <div className="text-gray-400 text-6xl mb-4">💖</div>
-                    <h1 className="text-2xl font-bold text-gray-900 mb-2">Sign In Required</h1>
-                    <p className="text-gray-600 mb-6">Please sign in to view your favorite properties.</p>
+            <div className='min-h-screen bg-gray-50 flex items-center justify-center'>
+                <div className='text-center'>
+                    <div className='text-gray-400 text-6xl mb-4'>💖</div>
+                    <h1 className='text-2xl font-bold text-gray-900 mb-2'>Sign In Required</h1>
+                    <p className='text-gray-600 mb-6'>
+                        Please sign in to view your favorite properties.
+                    </p>
                     <Link
-                        href="/marketplace/login"
-                        className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors"
+                        href='/marketplace/login'
+                        className='bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors'
                     >
                         Sign In
                     </Link>
@@ -60,51 +62,58 @@ export default function FavoritesPage() {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className='min-h-screen bg-gray-50'>
             {/* Navigation */}
-            <nav className="bg-white shadow-sm border-b">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between items-center h-16">
-                        <div className="flex items-center">
-                            <Link href="/marketplace/properties" className="flex items-center space-x-2">
-                                <ArrowLeftIcon className="h-5 w-5 text-gray-400" />
-                                <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                                    <span className="text-white font-bold text-lg">R</span>
+            <nav className='bg-white shadow-sm border-b'>
+                <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+                    <div className='flex justify-between items-center h-16'>
+                        <div className='flex items-center'>
+                            <Link
+                                href='/marketplace/properties'
+                                className='flex items-center space-x-2'
+                            >
+                                <ArrowLeftIcon className='h-5 w-5 text-gray-400' />
+                                <div className='w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center'>
+                                    <span className='text-white font-bold text-lg'>R</span>
                                 </div>
-                                <span className="font-bold text-xl text-gray-800">RealEstate</span>
+                                <span className='font-bold text-xl text-gray-800'>RealEstate</span>
                             </Link>
                         </div>
-                        <div className="flex items-center space-x-4">
-                            <Link href="/marketplace/properties" className="text-gray-600 hover:text-gray-800">
+                        <div className='flex items-center space-x-4'>
+                            <Link
+                                href='/marketplace/properties'
+                                className='text-gray-600 hover:text-gray-800'
+                            >
                                 All Properties
                             </Link>
-                            <Link href="/marketplace/chat" className="text-gray-600 hover:text-gray-800">
+                            <Link
+                                href='/marketplace/chat'
+                                className='text-gray-600 hover:text-gray-800'
+                            >
                                 Messages
                             </Link>
-                            <span className="text-sm text-gray-600">
-                                Hello, {user.name}
-                            </span>
+                            <span className='text-sm text-gray-600'>Hello, {user.name}</span>
                         </div>
                     </div>
                 </div>
             </nav>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
                 {/* Page Header */}
-                <div className="mb-8">
-                    <div className="flex items-center mb-2">
-                        <HeartIcon className="h-8 w-8 text-red-500 mr-3" />
-                        <h1 className="text-3xl font-bold text-gray-900">
-                            My Favorites
-                        </h1>
+                <div className='mb-8'>
+                    <div className='flex items-center mb-2'>
+                        <HeartIcon className='h-8 w-8 text-red-500 mr-3' />
+                        <h1 className='text-3xl font-bold text-gray-900'>My Favorites</h1>
                     </div>
-                    <p className="text-gray-600">
-                        {favoriteProperties.length} {favoriteProperties.length === 1 ? 'property' : 'properties'} saved for later
+                    <p className='text-gray-600'>
+                        {favoriteProperties.length}{' '}
+                        {favoriteProperties.length === 1 ? 'property' : 'properties'} saved for
+                        later
                     </p>
                 </div>
                 {/* Favorites Grid */}
                 {favoriteProperties.length > 0 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                        {favoriteProperties.map((property) => (
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
+                        {favoriteProperties.map(property => (
                             <PropertyCard
                                 key={property.id}
                                 property={{
@@ -114,7 +123,10 @@ export default function FavoritesPage() {
                                         city: property.city,
                                         country: property.country,
                                         zipCode: property.zipCode,
-                                        coordinates: property.lat && property.lng ? { lat: property.lat, lng: property.lng } : undefined
+                                        coordinates:
+                                            property.lat && property.lng
+                                                ? { lat: property.lat, lng: property.lng }
+                                                : undefined
                                     }
                                 }}
                                 isFavorite={favorites.has(property.id)}
@@ -123,17 +135,16 @@ export default function FavoritesPage() {
                         ))}
                     </div>
                 ) : (
-                    <div className="text-center py-12">
-                        <div className="text-gray-400 text-6xl mb-4">💝</div>
-                        <h3 className="text-lg font-medium text-gray-900 mb-2">
-                            No favorites yet
-                        </h3>
-                        <p className="text-gray-600 mb-6">
-                            Start browsing properties and save your favorites by clicking the heart icon
+                    <div className='text-center py-12'>
+                        <div className='text-gray-400 text-6xl mb-4'>💝</div>
+                        <h3 className='text-lg font-medium text-gray-900 mb-2'>No favorites yet</h3>
+                        <p className='text-gray-600 mb-6'>
+                            Start browsing properties and save your favorites by clicking the heart
+                            icon
                         </p>
                         <Link
-                            href="/marketplace/properties"
-                            className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors"
+                            href='/marketplace/properties'
+                            className='bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors'
                         >
                             Browse Properties
                         </Link>
@@ -141,14 +152,16 @@ export default function FavoritesPage() {
                 )}
                 {/* Quick Stats */}
                 {favoriteProperties.length > 0 && (
-                    <div className="mt-12 bg-white rounded-lg shadow-sm p-6">
-                        <h2 className="text-lg font-semibold text-gray-900 mb-4">Your Favorites Summary</h2>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <div className="text-center">
-                                <div className="text-2xl font-bold text-blue-600 mb-1">
+                    <div className='mt-12 bg-white rounded-lg shadow-sm p-6'>
+                        <h2 className='text-lg font-semibold text-gray-900 mb-4'>
+                            Your Favorites Summary
+                        </h2>
+                        <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
+                            <div className='text-center'>
+                                <div className='text-2xl font-bold text-blue-600 mb-1'>
                                     {favoriteProperties.length}
                                 </div>
-                                <div className="text-sm text-gray-600">Total Favorites</div>
+                                <div className='text-sm text-gray-600'>Total Favorites</div>
                             </div>
                             {/* Puedes agregar más estadísticas aquí si lo deseas */}
                         </div>
