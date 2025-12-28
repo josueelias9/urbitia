@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useMemo, useEffect } from 'react'
-import { useAuth } from '@/app/marketplace/lib/auth-context'
+import { useSession } from 'next-auth/react'
 import { getAllProperties } from '@/app/marketplace/lib/data'
 import { Property } from '@/app/marketplace/lib/types'
 import { PropertyCard } from '@/app/marketplace/ui/components/property-card'
@@ -13,7 +13,8 @@ import Link from 'next/link'
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 
 export default function PropertiesPage() {
-    const { user } = useAuth()
+    const { data: session } = useSession()
+    const user = session?.user
     const [favorites, setFavorites] = useState<Set<string>>(new Set())
     const [filters, setFilters] = useState<SearchFiltersType>({
         searchQuery: '',

@@ -5,8 +5,8 @@
       "name": "Next.js: debug server-side",
       "type": "node-terminal",
       "request": "launch",
-      "command": "pnpm dev",
-      "cwd": "${workspaceFolder}/nextjs-dashboard"
+      "command": "cd nextjs-dashboard && pnpm run dev -- --inspect",
+      "cwd": "${workspaceFolder}"
     },
     {
       "name": "Next.js: debug client-side",
@@ -23,7 +23,7 @@
       "pathMappings": [
         {
           "url": "webpack://_N_E",
-          "path": "${workspaceFolder}"
+          "path": "${workspaceFolder}/nextjs-dashboard"
         }
       ]
     },
@@ -31,15 +31,16 @@
       "name": "Next.js: debug full stack",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/node_modules/next/dist/bin/next",
+      "program": "${workspaceFolder}/nextjs-dashboard/node_modules/next/dist/bin/next",
       "runtimeArgs": ["--inspect"],
       "skipFiles": ["<node_internals>/**"],
+      "cwd": "${workspaceFolder}/nextjs-dashboard",
       "serverReadyAction": {
         "action": "debugWithEdge",
         "killOnServerStop": true,
         "pattern": "- Local:.+(https?://.+)",
         "uriFormat": "%s",
-        "webRoot": "${workspaceFolder}"
+        "webRoot": "${workspaceFolder}/nextjs-dashboard"
       }
     }
   ]

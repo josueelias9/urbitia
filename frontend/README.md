@@ -20,13 +20,13 @@ npx prisma migrate deploy
 
 ```sh
 # https://www.prisma.io/docs/orm/prisma-migrate/workflows/seeding
+cd nextjs-dashboard
 npx prisma db seed
 ```
 
 - start debugging
 
 ![alt text](image.png)
-
 
 - before commiting, run prettier
 

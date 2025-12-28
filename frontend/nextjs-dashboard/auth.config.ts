@@ -12,12 +12,22 @@ export const authConfig = {
         authorized({ auth, request: { nextUrl } }) {
             const isLoggedIn = !!auth?.user
             const isOnDashboard = nextUrl.pathname.startsWith('/dashboard')
+            const isOnMarketplace = nextUrl.pathname.startsWith('/marketplace')
+            const isOnMarketplaceHome = nextUrl.pathname === '/marketplace'
+            const isOnMarketplaceLogin = nextUrl.pathname === '/marketplace/login'
+            
+            // Protect dashboard routes
             if (isOnDashboard) {
                 if (isLoggedIn) return true
                 return false // Redirect unauthenticated users to login page
-            } else if (isLoggedIn) {
-                return Response.redirect(new URL('/dashboard', nextUrl))
             }
+            
+            // Protect marketplace routes (except home and login)
+            if (isOnMarketplace && !isOnMarketplaceHome && !isOnMarketplaceLogin) {
+                if (isLoggedIn) return true
+                return false // Redirect unauthenticated users to login page
+            }
+            
             return true
         }
     }

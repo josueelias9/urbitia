@@ -1,5 +1,6 @@
-import { AuthProvider } from '@/app/marketplace/lib/auth-context'
 import { Metadata } from 'next'
+import { SessionProvider } from 'next-auth/react'
+import { AuthProvider } from './lib/auth-context'
 
 export const metadata: Metadata = {
     title: {
@@ -11,8 +12,10 @@ export const metadata: Metadata = {
 
 export default function MarketplaceLayout({ children }: { children: React.ReactNode }) {
     return (
-        <AuthProvider>
-            <div className='min-h-screen bg-gray-50'>{children}</div>
-        </AuthProvider>
+        <SessionProvider>
+            <AuthProvider>
+                <div className='min-h-screen bg-gray-50'>{children}</div>
+            </AuthProvider>
+        </SessionProvider>
     )
 }
