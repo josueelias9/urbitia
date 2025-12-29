@@ -6,6 +6,27 @@ const globalForPrisma = global as unknown as { prisma: PrismaClient }
 const prisma = globalForPrisma.prisma || new PrismaClient()
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
 
+// Validate login credentials
+export async function validateLogin(email: string, role: 'buyer' | 'owner') {
+    try {
+        const user = await prisma.marketplace_user.findFirst({
+            where: {
+                email,
+                role
+            }
+        })
+
+        if (!user) {
+            return { success: false, error: 'Invalid email or role' }
+        }
+
+        return { success: true, user }
+    } catch (error) {
+        console.error('Error validating login:', error)
+        return { success: false, error: 'Failed to validate credentials' }
+    }
+}
+
 // Create or update a marketplace user
 export async function upsertMarketplaceUser(userData: {
     id: string

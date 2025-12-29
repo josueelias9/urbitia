@@ -226,8 +226,6 @@ export default function OwnerInboxPage({ params }: { params: Promise<{ lang: Loc
                         })}
                     </div>
                 )}
-                    </div>
-                )}
             </div>
         </div>
     )

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { ArrowRightIcon } from '@heroicons/react/20/solid'
-import { upsertMarketplaceUser } from '@/app/[lang]/marketplace/lib/actions'
+import { validateLogin } from '@/app/[lang]/marketplace/lib/actions'
 
 interface LoginClientProps {
     dict: {
@@ -34,35 +34,38 @@ export function LoginClient({ dict, lang }: LoginClientProps) {
         setError('')
         setIsLoading(true)
 
-        if (email && password) {
-            const mockUser = {
-                id: `${role}-${Date.now()}`,
-                name: email.split('@')[0],
-                email,
-                role: role!,
-                avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${email}`,
-                phone: '+1234567890'
-            }
-
-            // Create user in database
-            const result = await upsertMarketplaceUser(mockUser)
-            
-            if (!result.success) {
-                setError(lang === 'es' ? 'Error al crear usuario' : 'Error creating user')
-                setIsLoading(false)
-                return
-            }
-
-            localStorage.setItem('marketplace-user', JSON.stringify(mockUser))
-
-            if (role === 'buyer') {
-                router.push(`/${lang}/buyer/properties`)
-            } else {
-                router.push(`/${lang}/owner/dashboard`)
-            }
-        } else {
-            setError('Please enter email and password')
+        if (!email || !password) {
+            setError(lang === 'es' ? 'Por favor ingresa tu correo y contraseña' : 'Please enter email and password')
             setIsLoading(false)
+            return
+        }
+
+        if (!role) {
+            setError(lang === 'es' ? 'Rol no especificado' : 'Role not specified')
+            setIsLoading(false)
+            return
+        }
+
+        // Validate user exists with correct role
+        const result = await validateLogin(email, role)
+        
+        if (!result.success) {
+            setError(lang === 'es' 
+                ? 'Correo inválido o rol incorrecto. Solo usuarios registrados pueden acceder.' 
+                : 'Invalid email or role. Only registered users can access.'
+            )
+            setIsLoading(false)
+            return
+        }
+
+        // Save user to localStorage
+        localStorage.setItem('marketplace-user', JSON.stringify(result.user))
+
+        // Redirect based on role
+        if (role === 'buyer') {
+            router.push(`/${lang}/buyer/properties`)
+        } else {
+            router.push(`/${lang}/owner/dashboard`)
         }
     }
 
@@ -136,12 +139,6 @@ export function LoginClient({ dict, lang }: LoginClientProps) {
                         </span>
                         {isLoading ? (lang === 'es' ? 'Cargando...' : 'Loading...') : dict.auth.signIn}
                     </button>
-                </div>
-
-                <div className='text-center'>
-                    <p className='text-sm text-gray-600'>
-                        {lang === 'es' ? 'Demo: usa cualquier email y contraseña' : 'Demo: use any email and password'}
-                    </p>
                 </div>
             </form>
         </div>
