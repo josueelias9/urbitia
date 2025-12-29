@@ -24,7 +24,7 @@ function i18nMiddleware(request: NextRequest) {
 // Combine i18n middleware with auth middleware
 const authMiddleware = NextAuth(authConfig).auth
 
-export default async function middleware(request: NextRequest) {
+export default async function proxy(request: NextRequest) {
     // First check i18n routing
     const i18nResponse = i18nMiddleware(request)
     if (i18nResponse) return i18nResponse
@@ -35,6 +35,5 @@ export default async function middleware(request: NextRequest) {
 
 export const config = {
     // https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher
-    matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
-    runtime: 'nodejs'
+    matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)']
 }
