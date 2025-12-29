@@ -1,0 +1,85 @@
+{
+  "navigation": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "marketplace": "Marketplace",
+    "properties": "Properties",
+    "favorites": "Favorites",
+    "chat": "Chat",
+    "inbox": "Inbox",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "common": {
+    "welcome": "Welcome",
+    "search": "Search",
+    "filter": "Filter",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "loading": "Loading...",
+    "noResults": "No results found"
+  },
+  "hero": {
+    "title": "Find Your Perfect Property",
+    "subtitle": "Discover amazing real estate opportunities or list your property with our trusted marketplace",
+    "cta": "Explore properties",
+    "buyerButton": "I'm Looking to Buy",
+    "ownerButton": "I'm a Property Owner"
+  },
+  "features": {
+    "wideSelection": {
+      "title": "Wide Selection",
+      "description": "Browse through hundreds of verified properties in prime locations"
+    },
+    "directCommunication": {
+      "title": "Direct Communication",
+      "description": "Connect directly with property owners through our messaging system"
+    },
+    "trustedPlatform": {
+      "title": "Trusted Platform",
+      "description": "Secure transactions and verified listings for peace of mind"
+    }
+  },
+  "cta": {
+    "title": "Ready to Get Started?",
+    "subtitle": "Join thousands of satisfied users finding their dream properties"
+  },
+  "properties": {
+    "title": "Properties",
+    "create": "Create property",
+    "edit": "Edit property",
+    "delete": "Delete property",
+    "details": "Property details",
+    "price": "Price",
+    "bedrooms": "Bedrooms",
+    "bathrooms": "Bathrooms",
+    "sqft": "Square feet",
+    "location": "Location",
+    "description": "Description",
+    "available": "Available",
+    "notAvailable": "Not available"
+  },
+  "owner": {
+    "dashboard": "Owner dashboard",
+    "myProperties": "My properties",
+    "addProperty": "Add property"
+  },
+  "buyer": {
+    "dashboard": "Buyer dashboard",
+    "savedProperties": "Saved properties"
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "signOut": "Sign out",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot password?"
+  }
+}

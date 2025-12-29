@@ -28,7 +28,7 @@
       ]
     },
     {
-      "name": "Next.js: debug full stack",
+      "name": "🌱 Next.js: debug full stack",
       "type": "node",
       "request": "launch",
       "program": "${workspaceFolder}/nextjs-dashboard/node_modules/next/dist/bin/next",

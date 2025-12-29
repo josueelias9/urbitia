@@ -1,0 +1,85 @@
+{
+  "navigation": {
+    "home": "Inicio",
+    "dashboard": "Panel",
+    "marketplace": "Mercado",
+    "properties": "Propiedades",
+    "favorites": "Favoritos",
+    "chat": "Chat",
+    "inbox": "Bandeja de entrada",
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión"
+  },
+  "common": {
+    "welcome": "Bienvenido",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "create": "Crear",
+    "back": "Volver",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "loading": "Cargando...",
+    "noResults": "No se encontraron resultados"
+  },
+  "hero": {
+    "title": "Encuentra tu hogar perfecto",
+    "subtitle": "Descubre increíbles oportunidades inmobiliarias o lista tu propiedad con nuestro mercado confiable",
+    "cta": "Explorar propiedades",
+    "buyerButton": "Busco comprar",
+    "ownerButton": "Soy propietario"
+  },
+  "features": {
+    "wideSelection": {
+      "title": "Amplia selección",
+      "description": "Navega a través de cientos de propiedades verificadas en ubicaciones privilegiadas"
+    },
+    "directCommunication": {
+      "title": "Comunicación directa",
+      "description": "Conéctate directamente con los propietarios a través de nuestro sistema de mensajería"
+    },
+    "trustedPlatform": {
+      "title": "Plataforma confiable",
+      "description": "Transacciones seguras y listados verificados para tu tranquilidad"
+    }
+  },
+  "cta": {
+    "title": "¿Listo para comenzar?",
+    "subtitle": "Únete a miles de usuarios satisfechos encontrando las propiedades de sus sueños"
+  },
+  "properties": {
+    "title": "Propiedades",
+    "create": "Crear propiedad",
+    "edit": "Editar propiedad",
+    "delete": "Eliminar propiedad",
+    "details": "Detalles de la propiedad",
+    "price": "Precio",
+    "bedrooms": "Habitaciones",
+    "bathrooms": "Baños",
+    "sqft": "Pies cuadrados",
+    "location": "Ubicación",
+    "description": "Descripción",
+    "available": "Disponible",
+    "notAvailable": "No disponible"
+  },
+  "owner": {
+    "dashboard": "Panel del propietario",
+    "myProperties": "Mis propiedades",
+    "addProperty": "Agregar propiedad"
+  },
+  "buyer": {
+    "dashboard": "Panel del comprador",
+    "savedProperties": "Propiedades guardadas"
+  },
+  "auth": {
+    "signIn": "Iniciar sesión",
+    "signUp": "Registrarse",
+    "signOut": "Cerrar sesión",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "forgotPassword": "¿Olvidaste tu contraseña?"
+  }
+}
