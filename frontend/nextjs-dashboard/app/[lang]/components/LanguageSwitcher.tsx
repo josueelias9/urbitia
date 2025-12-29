@@ -1,7 +1,7 @@
 'use client'
 
 import { usePathname, useRouter } from 'next/navigation'
-import { i18n, type Locale } from '@/app/i18n/config'
+import { locales, type Locale } from '@/proxy'
 
 export default function LanguageSwitcher() {
     const pathname = usePathname()
@@ -21,7 +21,7 @@ export default function LanguageSwitcher() {
 
     return (
         <div className='flex items-center gap-2 p-2 bg-white rounded-lg shadow-sm'>
-            {i18n.locales.map((locale) => (
+            {locales.map((locale) => (
                 <button
                     key={locale}
                     onClick={() => switchLanguage(locale)}

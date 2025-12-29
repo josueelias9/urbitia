@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getDictionary } from '@/app/i18n/dictionaries'
-import { i18n } from '@/app/i18n/config'
+import { getDictionary } from './dictionaries'
+import { locales } from '@/proxy'
 import LanguageSwitcher from './components/LanguageSwitcher'
 
 export default async function HomePage({
@@ -12,7 +12,7 @@ export default async function HomePage({
     const { lang } = await params
 
     // Validate locale
-    if (!i18n.locales.includes(lang as any)) {
+    if (!locales.includes(lang as any)) {
         notFound()
     }
 

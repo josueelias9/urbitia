@@ -23,7 +23,9 @@
     "next": "Siguiente",
     "previous": "Anterior",
     "loading": "Cargando...",
-    "noResults": "No se encontraron resultados"
+    "noResults": "No se encontraron resultados",
+    "viewAll": "Ver todo",
+    "learnMore": "Más información"
   },
   "hero": {
     "title": "Encuentra tu hogar perfecto",
@@ -50,6 +52,18 @@
     "title": "¿Listo para comenzar?",
     "subtitle": "Únete a miles de usuarios satisfechos encontrando las propiedades de sus sueños"
   },
+  "marketplace": {
+    "title": "Mercado Inmobiliario",
+    "featured": "Propiedades Destacadas",
+    "featuredSubtitle": "Descubre nuestra selección de propiedades premium disponibles ahora",
+    "viewAllProperties": "Ver Todas las Propiedades",
+    "stats": {
+      "propertiesListed": "Propiedades Listadas",
+      "happyCustomers": "Clientes Satisfechos",
+      "satisfactionRate": "Tasa de Satisfacción",
+      "citiesCovered": "Ciudades Cubiertas"
+    }
+  },
   "properties": {
     "title": "Propiedades",
     "create": "Crear propiedad",
@@ -60,26 +74,38 @@
     "bedrooms": "Habitaciones",
     "bathrooms": "Baños",
     "sqft": "Pies cuadrados",
+    "area": "Área",
     "location": "Ubicación",
     "description": "Descripción",
     "available": "Disponible",
-    "notAvailable": "No disponible"
+    "notAvailable": "No disponible",
+    "perMonth": "por mes",
+    "bed": "hab",
+    "bath": "baño"
   },
   "owner": {
-    "dashboard": "Panel del propietario",
-    "myProperties": "Mis propiedades",
-    "addProperty": "Agregar propiedad"
+    "dashboard": "Panel del Propietario",
+    "myProperties": "Mis Propiedades",
+    "addProperty": "Agregar Propiedad",
+    "totalProperties": "Propiedades Totales",
+    "activeListings": "Listados Activos",
+    "totalViews": "Vistas Totales",
+    "messages": "Mensajes"
   },
   "buyer": {
-    "dashboard": "Panel del comprador",
-    "savedProperties": "Propiedades guardadas"
+    "dashboard": "Panel del Comprador",
+    "savedProperties": "Propiedades Guardadas"
   },
   "auth": {
-    "signIn": "Iniciar sesión",
+    "signIn": "Iniciar Sesión",
     "signUp": "Registrarse",
-    "signOut": "Cerrar sesión",
-    "email": "Correo electrónico",
+    "signOut": "Cerrar Sesión",
+    "email": "Correo Electrónico",
     "password": "Contraseña",
-    "forgotPassword": "¿Olvidaste tu contraseña?"
+    "forgotPassword": "¿Olvidaste tu Contraseña?",
+    "selectRole": "Selecciona tu Rol",
+    "buyerRole": "Comprador",
+    "ownerRole": "Propietario",
+    "continueAs": "Continuar como"
   }
 }

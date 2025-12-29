@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
-import { i18n } from '@/app/i18n/config'
+import { defaultLocale } from '@/proxy'
 
 export default function RootPage() {
-    redirect(`/${i18n.defaultLocale}`)
+    redirect(`/${defaultLocale}`)
 }

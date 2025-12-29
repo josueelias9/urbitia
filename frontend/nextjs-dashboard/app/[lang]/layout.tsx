@@ -1,7 +1,7 @@
 import '@/app/ui/global.css'
 import { inter } from '@/app/ui/fonts'
 import type { Metadata } from 'next'
-import { i18n } from '@/app/i18n/config'
+import { locales } from '@/proxy'
 
 export const metadata: Metadata = {
     title: {
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 }
 
 export async function generateStaticParams() {
-    return [{ lang: 'es' }, { lang: 'en' }]
+    return locales.map((locale) => ({ lang: locale }))
 }
 
 export default async function RootLayout({

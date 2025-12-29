@@ -23,10 +23,12 @@
     "next": "Next",
     "previous": "Previous",
     "loading": "Loading...",
-    "noResults": "No results found"
+    "noResults": "No results found",
+    "viewAll": "View All",
+    "learnMore": "Learn More"
   },
   "hero": {
-    "title": "Find Your Perfect Property",
+    "title": "Find Your Perfect Home",
     "subtitle": "Discover amazing real estate opportunities or list your property with our trusted marketplace",
     "cta": "Explore properties",
     "buyerButton": "I'm Looking to Buy",
@@ -50,6 +52,18 @@
     "title": "Ready to Get Started?",
     "subtitle": "Join thousands of satisfied users finding their dream properties"
   },
+  "marketplace": {
+    "title": "Real Estate Marketplace",
+    "featured": "Featured Properties",
+    "featuredSubtitle": "Discover our handpicked selection of premium properties available now",
+    "viewAllProperties": "View All Properties",
+    "stats": {
+      "propertiesListed": "Properties Listed",
+      "happyCustomers": "Happy Customers",
+      "satisfactionRate": "Satisfaction Rate",
+      "citiesCovered": "Cities Covered"
+    }
+  },
   "properties": {
     "title": "Properties",
     "create": "Create property",
@@ -60,26 +74,38 @@
     "bedrooms": "Bedrooms",
     "bathrooms": "Bathrooms",
     "sqft": "Square feet",
+    "area": "Area",
     "location": "Location",
     "description": "Description",
     "available": "Available",
-    "notAvailable": "Not available"
+    "notAvailable": "Not available",
+    "perMonth": "per month",
+    "bed": "bed",
+    "bath": "bath"
   },
   "owner": {
-    "dashboard": "Owner dashboard",
-    "myProperties": "My properties",
-    "addProperty": "Add property"
+    "dashboard": "Owner Dashboard",
+    "myProperties": "My Properties",
+    "addProperty": "Add Property",
+    "totalProperties": "Total Properties",
+    "activeListings": "Active Listings",
+    "totalViews": "Total Views",
+    "messages": "Messages"
   },
   "buyer": {
-    "dashboard": "Buyer dashboard",
-    "savedProperties": "Saved properties"
+    "dashboard": "Buyer Dashboard",
+    "savedProperties": "Saved Properties"
   },
   "auth": {
-    "signIn": "Sign in",
-    "signUp": "Sign up",
-    "signOut": "Sign out",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out",
     "email": "Email",
     "password": "Password",
-    "forgotPassword": "Forgot password?"
+    "forgotPassword": "Forgot Password?",
+    "selectRole": "Select Your Role",
+    "buyerRole": "Buyer",
+    "ownerRole": "Owner",
+    "continueAs": "Continue as"
   }
 }

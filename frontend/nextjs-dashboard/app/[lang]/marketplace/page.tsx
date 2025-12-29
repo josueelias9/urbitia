@@ -1,23 +1,26 @@
-'use client'
-
 import Link from 'next/link'
 import { PropertyPreviewCard } from '@/app/[lang]/marketplace/ui/PropertyPreviewCard'
 import { NavigationBar } from '@/app/[lang]/marketplace/ui/NavigationBar'
 import { HeroSection } from '@/app/[lang]/marketplace/ui/HeroSection'
 import { getFeaturedProperties } from '@/app/[lang]/marketplace/lib/data'
-import { useEffect, useState } from 'react'
-import { Property } from '@/app/[lang]/marketplace/lib/types'
+import { getDictionary } from '../dictionaries'
+import { notFound } from 'next/navigation'
+import { locales, type Locale } from '@/proxy'
 
-export default function MarketplacePage() {
-    const [properties, setProperties] = useState<Property[]>([])
+export default async function MarketplacePage({
+    params
+}: {
+    params: Promise<{ lang: string }>
+}) {
+    const { lang } = await params
 
-    useEffect(() => {
-        async function fetchProperties() {
-            const featured = await getFeaturedProperties()
-            setProperties(featured)
-        }
-        fetchProperties()
-    }, [])
+    // Validate locale
+    if (!locales.includes(lang as any)) {
+        notFound()
+    }
+
+    const dict = await getDictionary(lang as any)
+    const properties = await getFeaturedProperties()
 
     return (
         <div className='min-h-screen'>
@@ -27,9 +30,9 @@ export default function MarketplacePage() {
             {/* Featured Properties Section */}
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16'>
                 <div className='text-center mb-12'>
-                    <h2 className='text-3xl font-bold text-gray-900 mb-4'>Featured Properties</h2>
+                    <h2 className='text-3xl font-bold text-gray-900 mb-4'>{dict.marketplace.featured}</h2>
                     <p className='text-lg text-gray-600 max-w-2xl mx-auto'>
-                        Discover our handpicked selection of premium properties available now
+                        {dict.marketplace.featuredSubtitle}
                     </p>
                 </div>
 
@@ -41,10 +44,10 @@ export default function MarketplacePage() {
 
                 <div className='text-center'>
                     <Link
-                        href='/marketplace/properties'
+                        href={`/${lang}/marketplace/properties`}
                         className='bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors'
                     >
-                        View All Properties
+                        {dict.marketplace.viewAllProperties}
                     </Link>
                 </div>
             </div>
@@ -55,19 +58,19 @@ export default function MarketplacePage() {
                     <div className='grid grid-cols-2 md:grid-cols-4 gap-8 text-center'>
                         <div>
                             <div className='text-3xl font-bold text-blue-600 mb-2'>500+</div>
-                            <div className='text-gray-600'>Properties Listed</div>
+                            <div className='text-gray-600'>{dict.marketplace.stats.propertiesListed}</div>
                         </div>
                         <div>
                             <div className='text-3xl font-bold text-blue-600 mb-2'>1,200+</div>
-                            <div className='text-gray-600'>Happy Customers</div>
+                            <div className='text-gray-600'>{dict.marketplace.stats.happyCustomers}</div>
                         </div>
                         <div>
                             <div className='text-3xl font-bold text-blue-600 mb-2'>95%</div>
-                            <div className='text-gray-600'>Satisfaction Rate</div>
+                            <div className='text-gray-600'>{dict.marketplace.stats.satisfactionRate}</div>
                         </div>
                         <div>
                             <div className='text-3xl font-bold text-blue-600 mb-2'>50+</div>
-                            <div className='text-gray-600'>Cities Covered</div>
+                            <div className='text-gray-600'>{dict.marketplace.stats.citiesCovered}</div>
                         </div>
                     </div>
                 </div>
