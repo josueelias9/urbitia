@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { ArrowRightIcon } from '@heroicons/react/20/solid'
+import { upsertMarketplaceUser } from '@/app/[lang]/marketplace/lib/actions'
 
 interface LoginClientProps {
     dict: {
@@ -40,8 +41,16 @@ export function LoginClient({ dict, lang }: LoginClientProps) {
                 email,
                 role: role!,
                 avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${email}`,
-                phone: '+1234567890',
-                createdAt: new Date()
+                phone: '+1234567890'
+            }
+
+            // Create user in database
+            const result = await upsertMarketplaceUser(mockUser)
+            
+            if (!result.success) {
+                setError(lang === 'es' ? 'Error al crear usuario' : 'Error creating user')
+                setIsLoading(false)
+                return
             }
 
             localStorage.setItem('marketplace-user', JSON.stringify(mockUser))

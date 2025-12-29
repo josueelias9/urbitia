@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, use } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { PropertyPreviewCard } from '@/app/[lang]/marketplace/ui/PropertyPreviewCard'
@@ -10,13 +10,14 @@ import type { Locale } from '@/proxy'
 import enDict from '@/app/dictionaries/en.json'
 import esDict from '@/app/dictionaries/es.json'
 
-export default function BuyerPropertiesPage({ params }: { params: { lang: Locale } }) {
+export default function BuyerPropertiesPage({ params }: { params: Promise<{ lang: Locale }> }) {
+    const resolvedParams = use(params)
     const [user, setUser] = useState<any>(null)
     const [properties, setProperties] = useState<Property[]>([])
     const [isLoading, setIsLoading] = useState(true)
     const [dict, setDict] = useState<any>(null)
     const router = useRouter()
-    const lang = params.lang
+    const lang = resolvedParams.lang
 
     useEffect(() => {
         // Load dictionary
@@ -106,7 +107,7 @@ export default function BuyerPropertiesPage({ params }: { params: { lang: Locale
                 ) : (
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
                         {properties.map(property => (
-                            <PropertyPreviewCard key={property.id} property={property} />
+                            <PropertyPreviewCard key={property.id} property={property} lang={lang} />
                         ))}
                     </div>
                 )}

@@ -25,7 +25,11 @@
     "loading": "Cargando...",
     "noResults": "No se encontraron resultados",
     "viewAll": "Ver todo",
-    "learnMore": "Más información"
+    "learnMore": "Más información",
+    "justNow": "Ahora mismo",
+    "hoursAgo": "horas atrás",
+    "daysAgo": "días atrás",
+    "new": "Nuevo"
   },
   "hero": {
     "title": "Encuentra tu hogar perfecto",
@@ -95,7 +99,12 @@
     "quickActions": "Acciones Rápidas",
     "addNewProperty": "Agregar Nueva Propiedad",
     "checkMessages": "Ver Mensajes",
-    "manageDescription": "Gestiona tus propiedades y mensajes"
+    "manageDescription": "Gestiona tus propiedades y mensajes",
+    "noMessagesYet": "No hay mensajes todavía",
+    "noMessagesDescription": "Los mensajes de compradores interesados aparecerán aquí",
+    "unreadMessagesSingular": "Tienes {count} mensaje sin leer",
+    "unreadMessagesPlural": "Tienes {count} mensajes sin leer",
+    "allMessagesRead": "Todos los mensajes leídos"
   },
   "buyer": {
     "dashboard": "Panel del Comprador",

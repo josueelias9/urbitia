@@ -25,7 +25,11 @@
     "loading": "Loading...",
     "noResults": "No results found",
     "viewAll": "View All",
-    "learnMore": "Learn More"
+    "learnMore": "Learn More",
+    "justNow": "Just now",
+    "hoursAgo": "hours ago",
+    "daysAgo": "days ago",
+    "new": "New"
   },
   "hero": {
     "title": "Find Your Perfect Home",
@@ -95,7 +99,12 @@
     "quickActions": "Quick Actions",
     "addNewProperty": "Add New Property",
     "checkMessages": "Check Messages",
-    "manageDescription": "Manage your properties and messages"
+    "manageDescription": "Manage your properties and messages",
+    "noMessagesYet": "No messages yet",
+    "noMessagesDescription": "Messages from interested buyers will appear here",
+    "unreadMessagesSingular": "You have {count} unread message",
+    "unreadMessagesPlural": "You have {count} unread messages",
+    "allMessagesRead": "All messages read"
   },
   "buyer": {
     "dashboard": "Buyer Dashboard",

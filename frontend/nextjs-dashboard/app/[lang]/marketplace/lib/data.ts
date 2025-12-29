@@ -9,8 +9,7 @@ if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
 
 export async function getPropertiesByOwner(ownerId: string) {
     const data = await prisma.property.findMany({
-        where: { ownerId },
-        orderBy: { createdAt: 'desc' }
+        where: { ownerId }
     })
     return data.map((p: any) => ({
         ...p,
@@ -27,15 +26,12 @@ export async function getPropertiesByOwner(ownerId: string) {
 export async function getChatsByUser(userId: string, role: 'owner' | 'buyer') {
     const where = role === 'owner' ? { ownerId: userId } : { buyerId: userId }
     return await prisma.chat.findMany({
-        where,
-        orderBy: { createdAt: 'desc' }
+        where
     })
 }
 
 export async function getAllProperties(): Promise<Property[]> {
-    const data = await prisma.property.findMany({
-        orderBy: { createdAt: 'desc' }
-    })
+    const data = await prisma.property.findMany()
     return data.map((p: any) => ({
         ...p,
         address: {
@@ -50,8 +46,7 @@ export async function getAllProperties(): Promise<Property[]> {
 
 export async function getFeaturedProperties(): Promise<Property[]> {
     const data = await prisma.property.findMany({
-        take: 4,
-        orderBy: { createdAt: 'desc' }
+        take: 4
     })
     return data.map((p: any) => ({
         ...p,

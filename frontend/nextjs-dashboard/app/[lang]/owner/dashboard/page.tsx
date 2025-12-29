@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, use } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { HomeIcon, ChatBubbleLeftRightIcon, PlusIcon } from '@heroicons/react/24/outline'
@@ -8,7 +8,8 @@ import type { Locale } from '@/proxy'
 import enDict from '@/app/dictionaries/en.json'
 import esDict from '@/app/dictionaries/es.json'
 
-export default function OwnerDashboardPage({ params }: { params: { lang: Locale } }) {
+export default function OwnerDashboardPage({ params }: { params: Promise<{ lang: Locale }> }) {
+    const resolvedParams = use(params)
     const [user, setUser] = useState<any>(null)
     const [stats, setStats] = useState({
         totalProperties: 0,
@@ -17,7 +18,7 @@ export default function OwnerDashboardPage({ params }: { params: { lang: Locale 
     })
     const [dict, setDict] = useState<any>(null)
     const router = useRouter()
-    const lang = params.lang
+    const lang = resolvedParams.lang
 
     useEffect(() => {
         // Load dictionary
