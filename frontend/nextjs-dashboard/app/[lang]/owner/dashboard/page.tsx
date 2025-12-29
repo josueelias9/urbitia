@@ -4,26 +4,35 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { HomeIcon, ChatBubbleLeftRightIcon, PlusIcon } from '@heroicons/react/24/outline'
+import type { Locale } from '@/proxy'
+import enDict from '@/app/dictionaries/en.json'
+import esDict from '@/app/dictionaries/es.json'
 
-export default function OwnerDashboardPage() {
+export default function OwnerDashboardPage({ params }: { params: { lang: Locale } }) {
     const [user, setUser] = useState<any>(null)
     const [stats, setStats] = useState({
         totalProperties: 0,
         messages: 0,
         views: 0
     })
+    const [dict, setDict] = useState<any>(null)
     const router = useRouter()
+    const lang = params.lang
 
     useEffect(() => {
+        // Load dictionary
+        const dictionary = lang === 'es' ? esDict : enDict
+        setDict(dictionary)
+
         const savedUser = localStorage.getItem('marketplace-user')
         if (!savedUser) {
-            router.push('/login?role=owner')
+            router.push(`/${lang}/login?role=owner`)
             return
         }
 
         const parsedUser = JSON.parse(savedUser)
         if (parsedUser.role !== 'owner') {
-            router.push('/login?role=owner')
+            router.push(`/${lang}/login?role=owner`)
             return
         }
 
@@ -35,14 +44,14 @@ export default function OwnerDashboardPage() {
             messages: 5,
             views: 127
         })
-    }, [router])
+    }, [router, lang])
 
     const handleLogout = () => {
         localStorage.removeItem('marketplace-user')
-        router.push('/')
+        router.push(`/${lang}`)
     }
 
-    if (!user) {
+    if (!user || !dict) {
         return null
     }
 
@@ -53,37 +62,37 @@ export default function OwnerDashboardPage() {
                 <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
                     <div className='flex justify-between h-16'>
                         <div className='flex items-center space-x-8'>
-                            <Link href='/' className='text-xl font-bold text-blue-600'>
+                            <Link href={`/${lang}`} className='text-xl font-bold text-blue-600'>
                                 RealEstate
                             </Link>
                             <div className='flex space-x-4'>
                                 <Link
-                                    href='/owner/dashboard'
+                                    href={`/${lang}/owner/dashboard`}
                                     className='text-blue-600 font-medium'
                                 >
-                                    Dashboard
+                                    {dict.navigation.dashboard}
                                 </Link>
                                 <Link
-                                    href='/owner/properties'
+                                    href={`/${lang}/owner/properties`}
                                     className='text-gray-600 hover:text-gray-900'
                                 >
-                                    My Properties
+                                    {dict.owner.myProperties}
                                 </Link>
                                 <Link
-                                    href='/owner/inbox'
+                                    href={`/${lang}/owner/inbox`}
                                     className='text-gray-600 hover:text-gray-900'
                                 >
-                                    Inbox
+                                    {dict.navigation.inbox}
                                 </Link>
                             </div>
                         </div>
                         <div className='flex items-center space-x-4'>
-                            <span className='text-gray-700'>Welcome, {user.name}</span>
+                            <span className='text-gray-700'>{dict.common.welcome}, {user.name}</span>
                             <button
                                 onClick={handleLogout}
                                 className='text-sm text-gray-600 hover:text-gray-900'
                             >
-                                Logout
+                                {dict.navigation.logout}
                             </button>
                         </div>
                     </div>
@@ -93,8 +102,8 @@ export default function OwnerDashboardPage() {
             {/* Main Content */}
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
                 <div className='mb-8'>
-                    <h1 className='text-3xl font-bold text-gray-900'>Dashboard</h1>
-                    <p className='mt-2 text-gray-600'>Manage your properties and messages</p>
+                    <h1 className='text-3xl font-bold text-gray-900'>{dict.navigation.dashboard}</h1>
+                    <p className='mt-2 text-gray-600'>{dict.owner.manageDescription}</p>
                 </div>
 
                 {/* Stats Cards */}
@@ -102,7 +111,7 @@ export default function OwnerDashboardPage() {
                     <div className='bg-white rounded-lg shadow p-6'>
                         <div className='flex items-center justify-between'>
                             <div>
-                                <p className='text-gray-600 text-sm'>Total Properties</p>
+                                <p className='text-gray-600 text-sm'>{dict.owner.totalProperties}</p>
                                 <p className='text-3xl font-bold text-gray-900 mt-1'>
                                     {stats.totalProperties}
                                 </p>
@@ -114,7 +123,7 @@ export default function OwnerDashboardPage() {
                     <div className='bg-white rounded-lg shadow p-6'>
                         <div className='flex items-center justify-between'>
                             <div>
-                                <p className='text-gray-600 text-sm'>Unread Messages</p>
+                                <p className='text-gray-600 text-sm'>{dict.owner.unreadMessages}</p>
                                 <p className='text-3xl font-bold text-gray-900 mt-1'>
                                     {stats.messages}
                                 </p>
@@ -126,7 +135,7 @@ export default function OwnerDashboardPage() {
                     <div className='bg-white rounded-lg shadow p-6'>
                         <div className='flex items-center justify-between'>
                             <div>
-                                <p className='text-gray-600 text-sm'>Total Views</p>
+                                <p className='text-gray-600 text-sm'>{dict.owner.totalViews}</p>
                                 <p className='text-3xl font-bold text-gray-900 mt-1'>
                                     {stats.views}
                                 </p>
@@ -140,25 +149,25 @@ export default function OwnerDashboardPage() {
 
                 {/* Quick Actions */}
                 <div className='bg-white rounded-lg shadow p-6'>
-                    <h2 className='text-xl font-bold text-gray-900 mb-4'>Quick Actions</h2>
+                    <h2 className='text-xl font-bold text-gray-900 mb-4'>{dict.owner.quickActions}</h2>
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                         <Link
-                            href='/owner/properties/create'
+                            href={`/${lang}/owner/properties/create`}
                             className='flex items-center justify-center p-6 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition-colors group'
                         >
                             <PlusIcon className='h-8 w-8 text-gray-400 group-hover:text-blue-600 mr-3' />
                             <span className='text-lg font-semibold text-gray-600 group-hover:text-blue-600'>
-                                Add New Property
+                                {dict.owner.addNewProperty}
                             </span>
                         </Link>
 
                         <Link
-                            href='/owner/inbox'
+                            href={`/${lang}/owner/inbox`}
                             className='flex items-center justify-center p-6 border-2 border-dashed border-gray-300 rounded-lg hover:border-green-500 hover:bg-green-50 transition-colors group'
                         >
                             <ChatBubbleLeftRightIcon className='h-8 w-8 text-gray-400 group-hover:text-green-600 mr-3' />
                             <span className='text-lg font-semibold text-gray-600 group-hover:text-green-600'>
-                                Check Messages
+                                {dict.owner.checkMessages}
                             </span>
                         </Link>
                     </div>

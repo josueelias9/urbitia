@@ -90,11 +90,20 @@
     "totalProperties": "Total Properties",
     "activeListings": "Active Listings",
     "totalViews": "Total Views",
-    "messages": "Messages"
+    "messages": "Messages",
+    "unreadMessages": "Unread Messages",
+    "quickActions": "Quick Actions",
+    "addNewProperty": "Add New Property",
+    "checkMessages": "Check Messages",
+    "manageDescription": "Manage your properties and messages"
   },
   "buyer": {
     "dashboard": "Buyer Dashboard",
-    "savedProperties": "Saved Properties"
+    "savedProperties": "Saved Properties",
+    "availableProperties": "Available Properties",
+    "browseDescription": "Browse through our selection of properties and find your perfect match",
+    "loadingProperties": "Loading properties...",
+    "noPropertiesAvailable": "No properties available at the moment"
   },
   "auth": {
     "signIn": "Sign In",
