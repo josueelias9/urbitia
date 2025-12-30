@@ -4,6 +4,8 @@
 // However, these types are generated automatically if you're using an ORM such as Prisma.
 
 // TODO: replace with generated types from Prisma
+// https://www.prisma.io/docs/orm/prisma-schema/overview/generators#importing-generated-model-types
+
 export type User = {
     id: string
     name: string

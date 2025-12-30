@@ -8,20 +8,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model users {
-  id       String @id @default(uuid())
-  name     String @db.VarChar(255)
-  email    String @unique
-  password String
-}
-
 model marketplace_user {
-  id     String  @id @default(uuid())
-  name   String  @db.VarChar(255)
-  email  String  @unique
-  role   String // 'buyer' | 'owner'
-  avatar String? @db.VarChar(255)
-  phone  String? @db.VarChar(32)
+  id       String  @id @default(uuid())
+  name     String  @db.VarChar(255)
+  email    String  @unique
+  role     String // 'buyer' | 'owner'
+  avatar   String? @db.VarChar(255)
+  phone    String? @db.VarChar(32)
+  password String?
 
   properties    property[]     @relation("OwnerProperties")
   chats_buyer   chat[]         @relation("BuyerChats")

@@ -2,24 +2,13 @@ import { PrismaClient } from '../generated/prisma/index.js'
 const prisma = new PrismaClient()
 import bcrypt from 'bcrypt'
 async function main() {
-    await prisma.users.createMany({
-        data: [
-            {
-                id: '410544b2-4001-4271-9855-fec4b6a6442a',
-                name: 'User',
-                email: 'user@nextmail.com',
-                password: await bcrypt.hash('123456', 10)
-            }
-        ],
-        skipDuplicates: true
-    })
-
     await prisma.marketplace_user.createMany({
         data: [
             {
                 id: 'owner-1',
                 name: 'Sarah Johnson',
                 email: 'sarah@example.com',
+                password: await bcrypt.hash('123456', 10),
                 role: 'owner',
                 avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah',
                 phone: '+1234567890'
@@ -28,6 +17,7 @@ async function main() {
                 id: 'owner-2',
                 name: 'Michael Chen',
                 email: 'michael@example.com',
+                password: await bcrypt.hash('123456', 10),
                 role: 'owner',
                 avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Michael',
                 phone: '+1234567891'
@@ -36,6 +26,7 @@ async function main() {
                 id: 'buyer-1',
                 name: 'Emma Davis',
                 email: 'emma@example.com',
+                password: await bcrypt.hash('123456', 10),
                 role: 'buyer',
                 avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Emma',
                 phone: '+1234567892'

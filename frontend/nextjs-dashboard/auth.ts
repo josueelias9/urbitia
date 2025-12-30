@@ -2,18 +2,17 @@ import NextAuth from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
 import bcrypt from 'bcrypt'
 import { z } from 'zod'
-import type { User } from '@/app/lib/definitions'
 import { authConfig } from './auth.config'
 import { PrismaClient } from '@/generated/prisma/client'
 
 const prisma = new PrismaClient()
 
-async function getUser(email: string): Promise<User | undefined> {
+async function getUser(email: string) {
     try {
-        const user = await prisma.users.findUnique({
+        const user = await prisma.marketplace_user.findUnique({
             where: { email }
         })
-        return user as User | undefined
+        return user
     } catch (error) {
         console.error('Failed to fetch user:', error)
         throw new Error('Failed to fetch user.')

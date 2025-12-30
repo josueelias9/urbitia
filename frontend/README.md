@@ -55,5 +55,5 @@ steps:
 
 ```sh
 cd nextjs-dashboard
-npx prisma migrate dev --name customers-invoices-relationship
+npx prisma migrate dev --name <EXPLAIN-THE-CHANGES>
 ```
