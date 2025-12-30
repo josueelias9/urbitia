@@ -38,7 +38,7 @@ export const mockProperties: Property[] = [
         country: 'United States',
         zipCode: '10001',
         lat: 40.7128,
-        lng: -74.0060,
+        lng: -74.006,
         images: ['https://images.unsplash.com/photo-1545324418-cc1a3fa10c00'],
         amenities: ['parking', 'gym', 'pool'],
         ownerId: '2',

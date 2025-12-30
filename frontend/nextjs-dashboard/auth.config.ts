@@ -15,19 +15,19 @@ export const authConfig = {
             const isOnMarketplace = nextUrl.pathname.startsWith('/marketplace')
             const isOnMarketplaceHome = nextUrl.pathname === '/marketplace'
             const isOnMarketplaceLogin = nextUrl.pathname === '/marketplace/login'
-            
+
             // Protect dashboard routes
             if (isOnDashboard) {
                 if (isLoggedIn) return true
                 return false // Redirect unauthenticated users to login page
             }
-            
+
             // Protect marketplace routes (except home and login)
             if (isOnMarketplace && !isOnMarketplaceHome && !isOnMarketplaceLogin) {
                 if (isLoggedIn) return true
                 return false // Redirect unauthenticated users to login page
             }
-            
+
             return true
         }
     }

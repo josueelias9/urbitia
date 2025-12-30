@@ -4,11 +4,7 @@ import { notFound } from 'next/navigation'
 import { locales } from '@/proxy'
 import { LoginClient } from './login-client'
 
-export default async function LoginPage({
-    params
-}: {
-    params: Promise<{ lang: string }>
-}) {
+export default async function LoginPage({ params }: { params: Promise<{ lang: string }> }) {
     const { lang } = await params
 
     // Validate locale

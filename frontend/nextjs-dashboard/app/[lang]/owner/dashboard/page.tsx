@@ -88,7 +88,9 @@ export default function OwnerDashboardPage({ params }: { params: Promise<{ lang:
                             </div>
                         </div>
                         <div className='flex items-center space-x-4'>
-                            <span className='text-gray-700'>{dict.common.welcome}, {user.name}</span>
+                            <span className='text-gray-700'>
+                                {dict.common.welcome}, {user.name}
+                            </span>
                             <button
                                 onClick={handleLogout}
                                 className='text-sm text-gray-600 hover:text-gray-900'
@@ -103,7 +105,9 @@ export default function OwnerDashboardPage({ params }: { params: Promise<{ lang:
             {/* Main Content */}
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
                 <div className='mb-8'>
-                    <h1 className='text-3xl font-bold text-gray-900'>{dict.navigation.dashboard}</h1>
+                    <h1 className='text-3xl font-bold text-gray-900'>
+                        {dict.navigation.dashboard}
+                    </h1>
                     <p className='mt-2 text-gray-600'>{dict.owner.manageDescription}</p>
                 </div>
 
@@ -112,7 +116,9 @@ export default function OwnerDashboardPage({ params }: { params: Promise<{ lang:
                     <div className='bg-white rounded-lg shadow p-6'>
                         <div className='flex items-center justify-between'>
                             <div>
-                                <p className='text-gray-600 text-sm'>{dict.owner.totalProperties}</p>
+                                <p className='text-gray-600 text-sm'>
+                                    {dict.owner.totalProperties}
+                                </p>
                                 <p className='text-3xl font-bold text-gray-900 mt-1'>
                                     {stats.totalProperties}
                                 </p>
@@ -150,7 +156,9 @@ export default function OwnerDashboardPage({ params }: { params: Promise<{ lang:
 
                 {/* Quick Actions */}
                 <div className='bg-white rounded-lg shadow p-6'>
-                    <h2 className='text-xl font-bold text-gray-900 mb-4'>{dict.owner.quickActions}</h2>
+                    <h2 className='text-xl font-bold text-gray-900 mb-4'>
+                        {dict.owner.quickActions}
+                    </h2>
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                         <Link
                             href={`/${lang}/owner/properties/create`}

@@ -144,7 +144,7 @@ export async function sendChatMessage(chatId: string, senderId: string, content:
 export async function getChatsByUser(userId: string, role: 'buyer' | 'owner') {
     try {
         const where = role === 'owner' ? { ownerId: userId } : { buyerId: userId }
-        
+
         const chats = await prisma.chat.findMany({
             where,
             include: {
@@ -243,7 +243,10 @@ export async function getPropertyById(propertyId: string) {
                     city: property.city,
                     country: property.country,
                     zipCode: property.zipCode,
-                    coordinates: property.lat && property.lng ? { lat: property.lat, lng: property.lng } : undefined
+                    coordinates:
+                        property.lat && property.lng
+                            ? { lat: property.lat, lng: property.lng }
+                            : undefined
                 }
             }
         }

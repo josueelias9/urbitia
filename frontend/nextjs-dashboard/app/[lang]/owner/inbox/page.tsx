@@ -90,7 +90,8 @@ export default function OwnerInboxPage({ params }: { params: Promise<{ lang: Loc
 
     // Count unread messages across all chats
     const unreadCount = chats.reduce((count, chat) => {
-        const unreadInChat = chat.messages?.filter(m => !m.read && m.senderId !== user.id).length || 0
+        const unreadInChat =
+            chat.messages?.filter(m => !m.read && m.senderId !== user.id).length || 0
         return count + unreadInChat
     }, 0)
 
@@ -117,7 +118,10 @@ export default function OwnerInboxPage({ params }: { params: Promise<{ lang: Loc
                                 >
                                     {dict.owner.myProperties}
                                 </Link>
-                                <Link href={`/${lang}/owner/inbox`} className='text-blue-600 font-medium'>
+                                <Link
+                                    href={`/${lang}/owner/inbox`}
+                                    className='text-blue-600 font-medium'
+                                >
                                     {dict.navigation.inbox}
                                     {unreadCount > 0 && (
                                         <span className='ml-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full'>
@@ -128,7 +132,9 @@ export default function OwnerInboxPage({ params }: { params: Promise<{ lang: Loc
                             </div>
                         </div>
                         <div className='flex items-center space-x-4'>
-                            <span className='text-gray-700'>{dict.common.welcome}, {user.name}</span>
+                            <span className='text-gray-700'>
+                                {dict.common.welcome}, {user.name}
+                            </span>
                             <button
                                 onClick={handleLogout}
                                 className='text-sm text-gray-600 hover:text-gray-900'
@@ -146,9 +152,15 @@ export default function OwnerInboxPage({ params }: { params: Promise<{ lang: Loc
                     <h1 className='text-3xl font-bold text-gray-900'>{dict.navigation.inbox}</h1>
                     <p className='mt-2 text-gray-600'>
                         {unreadCount > 0
-                            ? (unreadCount > 1 
-                                ? dict.owner.unreadMessagesPlural.replace('{count}', unreadCount.toString())
-                                : dict.owner.unreadMessagesSingular.replace('{count}', unreadCount.toString()))
+                            ? unreadCount > 1
+                                ? dict.owner.unreadMessagesPlural.replace(
+                                      '{count}',
+                                      unreadCount.toString()
+                                  )
+                                : dict.owner.unreadMessagesSingular.replace(
+                                      '{count}',
+                                      unreadCount.toString()
+                                  )
                             : dict.owner.allMessagesRead}
                     </p>
                 </div>
@@ -164,16 +176,16 @@ export default function OwnerInboxPage({ params }: { params: Promise<{ lang: Loc
                         <h3 className='text-xl font-semibold text-gray-900 mb-2'>
                             {dict.owner.noMessagesYet}
                         </h3>
-                        <p className='text-gray-600'>
-                            {dict.owner.noMessagesDescription}
-                        </p>
+                        <p className='text-gray-600'>{dict.owner.noMessagesDescription}</p>
                     </div>
                 ) : (
                     <div className='bg-white rounded-lg shadow overflow-hidden'>
                         {chats.map((chat, index) => {
-                            const lastMessage = chat.messages && chat.messages.length > 0 ? chat.messages[0] : null
-                            const hasUnread = chat.messages?.some(m => !m.read && m.senderId !== user.id) || false
-                            
+                            const lastMessage =
+                                chat.messages && chat.messages.length > 0 ? chat.messages[0] : null
+                            const hasUnread =
+                                chat.messages?.some(m => !m.read && m.senderId !== user.id) || false
+
                             return (
                                 <div
                                     key={chat.id}
@@ -201,10 +213,15 @@ export default function OwnerInboxPage({ params }: { params: Promise<{ lang: Loc
                                             </div>
                                             <div className='ml-8'>
                                                 <p className='text-sm text-gray-600 mb-2'>
-                                                    Re: <strong>{chat.property?.title || 'Property'}</strong>
+                                                    Re:{' '}
+                                                    <strong>
+                                                        {chat.property?.title || 'Property'}
+                                                    </strong>
                                                 </p>
                                                 {lastMessage && (
-                                                    <p className='text-gray-800'>{lastMessage.content}</p>
+                                                    <p className='text-gray-800'>
+                                                        {lastMessage.content}
+                                                    </p>
                                                 )}
                                             </div>
                                         </div>

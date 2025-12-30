@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 }
 
 export async function generateStaticParams() {
-    return locales.map((locale) => ({ lang: locale }))
+    return locales.map(locale => ({ lang: locale }))
 }
 
 export default async function RootLayout({

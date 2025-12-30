@@ -35,7 +35,11 @@ export function LoginClient({ dict, lang }: LoginClientProps) {
         setIsLoading(true)
 
         if (!email || !password) {
-            setError(lang === 'es' ? 'Por favor ingresa tu correo y contraseña' : 'Please enter email and password')
+            setError(
+                lang === 'es'
+                    ? 'Por favor ingresa tu correo y contraseña'
+                    : 'Please enter email and password'
+            )
             setIsLoading(false)
             return
         }
@@ -48,11 +52,12 @@ export function LoginClient({ dict, lang }: LoginClientProps) {
 
         // Validate user exists with correct role
         const result = await validateLogin(email, role)
-        
+
         if (!result.success) {
-            setError(lang === 'es' 
-                ? 'Correo inválido o rol incorrecto. Solo usuarios registrados pueden acceder.' 
-                : 'Invalid email or role. Only registered users can access.'
+            setError(
+                lang === 'es'
+                    ? 'Correo inválido o rol incorrecto. Solo usuarios registrados pueden acceder.'
+                    : 'Invalid email or role. Only registered users can access.'
             )
             setIsLoading(false)
             return
@@ -73,14 +78,22 @@ export function LoginClient({ dict, lang }: LoginClientProps) {
         <div className='max-w-md w-full space-y-8'>
             <div>
                 <h2 className='mt-6 text-center text-3xl font-extrabold text-gray-900'>
-                    {role === 'buyer' 
-                        ? lang === 'es' ? 'Iniciar sesión como Comprador' : 'Sign in as a Buyer'
-                        : lang === 'es' ? 'Iniciar sesión como Propietario' : 'Sign in as a Property Owner'}
+                    {role === 'buyer'
+                        ? lang === 'es'
+                            ? 'Iniciar sesión como Comprador'
+                            : 'Sign in as a Buyer'
+                        : lang === 'es'
+                          ? 'Iniciar sesión como Propietario'
+                          : 'Sign in as a Property Owner'}
                 </h2>
                 <p className='mt-2 text-center text-sm text-gray-600'>
                     {role === 'buyer'
-                        ? lang === 'es' ? 'Accede a tu cuenta para explorar propiedades' : 'Access your account to browse properties'
-                        : lang === 'es' ? 'Accede a tu panel para gestionar listados' : 'Access your dashboard to manage listings'}
+                        ? lang === 'es'
+                            ? 'Accede a tu cuenta para explorar propiedades'
+                            : 'Access your account to browse properties'
+                        : lang === 'es'
+                          ? 'Accede a tu panel para gestionar listados'
+                          : 'Access your dashboard to manage listings'}
                 </p>
             </div>
             <form className='mt-8 space-y-6' onSubmit={handleSubmit}>
@@ -137,7 +150,11 @@ export function LoginClient({ dict, lang }: LoginClientProps) {
                                 aria-hidden='true'
                             />
                         </span>
-                        {isLoading ? (lang === 'es' ? 'Cargando...' : 'Loading...') : dict.auth.signIn}
+                        {isLoading
+                            ? lang === 'es'
+                                ? 'Cargando...'
+                                : 'Loading...'
+                            : dict.auth.signIn}
                     </button>
                 </div>
             </form>

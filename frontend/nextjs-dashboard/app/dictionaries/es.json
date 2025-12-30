@@ -1,129 +1,129 @@
 {
-  "navigation": {
-    "home": "Inicio",
-    "dashboard": "Panel",
-    "marketplace": "Mercado",
-    "properties": "Propiedades",
-    "favorites": "Favoritos",
-    "chat": "Chat",
-    "inbox": "Bandeja de entrada",
-    "login": "Iniciar sesión",
-    "logout": "Cerrar sesión"
-  },
-  "common": {
-    "welcome": "Bienvenido",
-    "search": "Buscar",
-    "filter": "Filtrar",
-    "save": "Guardar",
-    "cancel": "Cancelar",
-    "delete": "Eliminar",
-    "edit": "Editar",
-    "create": "Crear",
-    "back": "Volver",
-    "next": "Siguiente",
-    "previous": "Anterior",
-    "loading": "Cargando...",
-    "noResults": "No se encontraron resultados",
-    "viewAll": "Ver todo",
-    "learnMore": "Más información",
-    "justNow": "Ahora mismo",
-    "hoursAgo": "horas atrás",
-    "daysAgo": "días atrás",
-    "new": "Nuevo"
-  },
-  "hero": {
-    "title": "Encuentra tu hogar perfecto",
-    "subtitle": "Descubre increíbles oportunidades inmobiliarias o lista tu propiedad con nuestro mercado confiable",
-    "cta": "Explorar propiedades",
-    "buyerButton": "Busco comprar",
-    "ownerButton": "Soy propietario"
-  },
-  "features": {
-    "wideSelection": {
-      "title": "Amplia selección",
-      "description": "Navega a través de cientos de propiedades verificadas en ubicaciones privilegiadas"
+    "navigation": {
+        "home": "Inicio",
+        "dashboard": "Panel",
+        "marketplace": "Mercado",
+        "properties": "Propiedades",
+        "favorites": "Favoritos",
+        "chat": "Chat",
+        "inbox": "Bandeja de entrada",
+        "login": "Iniciar sesión",
+        "logout": "Cerrar sesión"
     },
-    "directCommunication": {
-      "title": "Comunicación directa",
-      "description": "Conéctate directamente con los propietarios a través de nuestro sistema de mensajería"
+    "common": {
+        "welcome": "Bienvenido",
+        "search": "Buscar",
+        "filter": "Filtrar",
+        "save": "Guardar",
+        "cancel": "Cancelar",
+        "delete": "Eliminar",
+        "edit": "Editar",
+        "create": "Crear",
+        "back": "Volver",
+        "next": "Siguiente",
+        "previous": "Anterior",
+        "loading": "Cargando...",
+        "noResults": "No se encontraron resultados",
+        "viewAll": "Ver todo",
+        "learnMore": "Más información",
+        "justNow": "Ahora mismo",
+        "hoursAgo": "horas atrás",
+        "daysAgo": "días atrás",
+        "new": "Nuevo"
     },
-    "trustedPlatform": {
-      "title": "Plataforma confiable",
-      "description": "Transacciones seguras y listados verificados para tu tranquilidad"
+    "hero": {
+        "title": "Encuentra tu hogar perfecto",
+        "subtitle": "Descubre increíbles oportunidades inmobiliarias o lista tu propiedad con nuestro mercado confiable",
+        "cta": "Explorar propiedades",
+        "buyerButton": "Busco comprar",
+        "ownerButton": "Soy propietario"
+    },
+    "features": {
+        "wideSelection": {
+            "title": "Amplia selección",
+            "description": "Navega a través de cientos de propiedades verificadas en ubicaciones privilegiadas"
+        },
+        "directCommunication": {
+            "title": "Comunicación directa",
+            "description": "Conéctate directamente con los propietarios a través de nuestro sistema de mensajería"
+        },
+        "trustedPlatform": {
+            "title": "Plataforma confiable",
+            "description": "Transacciones seguras y listados verificados para tu tranquilidad"
+        }
+    },
+    "cta": {
+        "title": "¿Listo para comenzar?",
+        "subtitle": "Únete a miles de usuarios satisfechos encontrando las propiedades de sus sueños"
+    },
+    "marketplace": {
+        "title": "Mercado Inmobiliario",
+        "featured": "Propiedades Destacadas",
+        "featuredSubtitle": "Descubre nuestra selección de propiedades premium disponibles ahora",
+        "viewAllProperties": "Ver Todas las Propiedades",
+        "stats": {
+            "propertiesListed": "Propiedades Listadas",
+            "happyCustomers": "Clientes Satisfechos",
+            "satisfactionRate": "Tasa de Satisfacción",
+            "citiesCovered": "Ciudades Cubiertas"
+        }
+    },
+    "properties": {
+        "title": "Propiedades",
+        "create": "Crear propiedad",
+        "edit": "Editar propiedad",
+        "delete": "Eliminar propiedad",
+        "details": "Detalles de la propiedad",
+        "price": "Precio",
+        "bedrooms": "Habitaciones",
+        "bathrooms": "Baños",
+        "sqft": "Pies cuadrados",
+        "area": "Área",
+        "location": "Ubicación",
+        "description": "Descripción",
+        "available": "Disponible",
+        "notAvailable": "No disponible",
+        "perMonth": "por mes",
+        "bed": "hab",
+        "bath": "baño"
+    },
+    "owner": {
+        "dashboard": "Panel del Propietario",
+        "myProperties": "Mis Propiedades",
+        "addProperty": "Agregar Propiedad",
+        "totalProperties": "Propiedades Totales",
+        "activeListings": "Listados Activos",
+        "totalViews": "Vistas Totales",
+        "messages": "Mensajes",
+        "unreadMessages": "Mensajes no leídos",
+        "quickActions": "Acciones Rápidas",
+        "addNewProperty": "Agregar Nueva Propiedad",
+        "checkMessages": "Ver Mensajes",
+        "manageDescription": "Gestiona tus propiedades y mensajes",
+        "noMessagesYet": "No hay mensajes todavía",
+        "noMessagesDescription": "Los mensajes de compradores interesados aparecerán aquí",
+        "unreadMessagesSingular": "Tienes {count} mensaje sin leer",
+        "unreadMessagesPlural": "Tienes {count} mensajes sin leer",
+        "allMessagesRead": "Todos los mensajes leídos"
+    },
+    "buyer": {
+        "dashboard": "Panel del Comprador",
+        "savedProperties": "Propiedades Guardadas",
+        "availableProperties": "Propiedades Disponibles",
+        "browseDescription": "Navega a través de nuestra selección de propiedades y encuentra tu pareja perfecta",
+        "loadingProperties": "Cargando propiedades...",
+        "noPropertiesAvailable": "No hay propiedades disponibles en este momento"
+    },
+    "auth": {
+        "signIn": "Iniciar Sesión",
+        "signUp": "Registrarse",
+        "signOut": "Cerrar Sesión",
+        "email": "Correo Electrónico",
+        "password": "Contraseña",
+        "forgotPassword": "¿Olvidaste tu Contraseña?",
+        "selectRole": "Selecciona tu Rol",
+        "buyerRole": "Comprador",
+        "ownerRole": "Propietario",
+        "continueAs": "Continuar como"
     }
-  },
-  "cta": {
-    "title": "¿Listo para comenzar?",
-    "subtitle": "Únete a miles de usuarios satisfechos encontrando las propiedades de sus sueños"
-  },
-  "marketplace": {
-    "title": "Mercado Inmobiliario",
-    "featured": "Propiedades Destacadas",
-    "featuredSubtitle": "Descubre nuestra selección de propiedades premium disponibles ahora",
-    "viewAllProperties": "Ver Todas las Propiedades",
-    "stats": {
-      "propertiesListed": "Propiedades Listadas",
-      "happyCustomers": "Clientes Satisfechos",
-      "satisfactionRate": "Tasa de Satisfacción",
-      "citiesCovered": "Ciudades Cubiertas"
-    }
-  },
-  "properties": {
-    "title": "Propiedades",
-    "create": "Crear propiedad",
-    "edit": "Editar propiedad",
-    "delete": "Eliminar propiedad",
-    "details": "Detalles de la propiedad",
-    "price": "Precio",
-    "bedrooms": "Habitaciones",
-    "bathrooms": "Baños",
-    "sqft": "Pies cuadrados",
-    "area": "Área",
-    "location": "Ubicación",
-    "description": "Descripción",
-    "available": "Disponible",
-    "notAvailable": "No disponible",
-    "perMonth": "por mes",
-    "bed": "hab",
-    "bath": "baño"
-  },
-  "owner": {
-    "dashboard": "Panel del Propietario",
-    "myProperties": "Mis Propiedades",
-    "addProperty": "Agregar Propiedad",
-    "totalProperties": "Propiedades Totales",
-    "activeListings": "Listados Activos",
-    "totalViews": "Vistas Totales",
-    "messages": "Mensajes",
-    "unreadMessages": "Mensajes no leídos",
-    "quickActions": "Acciones Rápidas",
-    "addNewProperty": "Agregar Nueva Propiedad",
-    "checkMessages": "Ver Mensajes",
-    "manageDescription": "Gestiona tus propiedades y mensajes",
-    "noMessagesYet": "No hay mensajes todavía",
-    "noMessagesDescription": "Los mensajes de compradores interesados aparecerán aquí",
-    "unreadMessagesSingular": "Tienes {count} mensaje sin leer",
-    "unreadMessagesPlural": "Tienes {count} mensajes sin leer",
-    "allMessagesRead": "Todos los mensajes leídos"
-  },
-  "buyer": {
-    "dashboard": "Panel del Comprador",
-    "savedProperties": "Propiedades Guardadas",
-    "availableProperties": "Propiedades Disponibles",
-    "browseDescription": "Navega a través de nuestra selección de propiedades y encuentra tu pareja perfecta",
-    "loadingProperties": "Cargando propiedades...",
-    "noPropertiesAvailable": "No hay propiedades disponibles en este momento"
-  },
-  "auth": {
-    "signIn": "Iniciar Sesión",
-    "signUp": "Registrarse",
-    "signOut": "Cerrar Sesión",
-    "email": "Correo Electrónico",
-    "password": "Contraseña",
-    "forgotPassword": "¿Olvidaste tu Contraseña?",
-    "selectRole": "Selecciona tu Rol",
-    "buyerRole": "Comprador",
-    "ownerRole": "Propietario",
-    "continueAs": "Continuar como"
-  }
 }

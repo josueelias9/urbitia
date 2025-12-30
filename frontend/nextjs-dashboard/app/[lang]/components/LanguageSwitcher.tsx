@@ -8,20 +8,20 @@ export default function LanguageSwitcher() {
     const router = useRouter()
 
     const currentLocale = pathname.split('/')[1] as Locale
-    
+
     const switchLanguage = (newLocale: Locale) => {
         if (!pathname) return
-        
+
         const segments = pathname.split('/')
         segments[1] = newLocale
         const newPath = segments.join('/')
-        
+
         router.push(newPath)
     }
 
     return (
         <div className='flex items-center gap-2 p-2 bg-white rounded-lg shadow-sm'>
-            {locales.map((locale) => (
+            {locales.map(locale => (
                 <button
                     key={locale}
                     onClick={() => switchLanguage(locale)}

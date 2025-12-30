@@ -1,129 +1,129 @@
 {
-  "navigation": {
-    "home": "Home",
-    "dashboard": "Dashboard",
-    "marketplace": "Marketplace",
-    "properties": "Properties",
-    "favorites": "Favorites",
-    "chat": "Chat",
-    "inbox": "Inbox",
-    "login": "Login",
-    "logout": "Logout"
-  },
-  "common": {
-    "welcome": "Welcome",
-    "search": "Search",
-    "filter": "Filter",
-    "save": "Save",
-    "cancel": "Cancel",
-    "delete": "Delete",
-    "edit": "Edit",
-    "create": "Create",
-    "back": "Back",
-    "next": "Next",
-    "previous": "Previous",
-    "loading": "Loading...",
-    "noResults": "No results found",
-    "viewAll": "View All",
-    "learnMore": "Learn More",
-    "justNow": "Just now",
-    "hoursAgo": "hours ago",
-    "daysAgo": "days ago",
-    "new": "New"
-  },
-  "hero": {
-    "title": "Find Your Perfect Home",
-    "subtitle": "Discover amazing real estate opportunities or list your property with our trusted marketplace",
-    "cta": "Explore properties",
-    "buyerButton": "I'm Looking to Buy",
-    "ownerButton": "I'm a Property Owner"
-  },
-  "features": {
-    "wideSelection": {
-      "title": "Wide Selection",
-      "description": "Browse through hundreds of verified properties in prime locations"
+    "navigation": {
+        "home": "Home",
+        "dashboard": "Dashboard",
+        "marketplace": "Marketplace",
+        "properties": "Properties",
+        "favorites": "Favorites",
+        "chat": "Chat",
+        "inbox": "Inbox",
+        "login": "Login",
+        "logout": "Logout"
     },
-    "directCommunication": {
-      "title": "Direct Communication",
-      "description": "Connect directly with property owners through our messaging system"
+    "common": {
+        "welcome": "Welcome",
+        "search": "Search",
+        "filter": "Filter",
+        "save": "Save",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "edit": "Edit",
+        "create": "Create",
+        "back": "Back",
+        "next": "Next",
+        "previous": "Previous",
+        "loading": "Loading...",
+        "noResults": "No results found",
+        "viewAll": "View All",
+        "learnMore": "Learn More",
+        "justNow": "Just now",
+        "hoursAgo": "hours ago",
+        "daysAgo": "days ago",
+        "new": "New"
     },
-    "trustedPlatform": {
-      "title": "Trusted Platform",
-      "description": "Secure transactions and verified listings for peace of mind"
+    "hero": {
+        "title": "Find Your Perfect Home",
+        "subtitle": "Discover amazing real estate opportunities or list your property with our trusted marketplace",
+        "cta": "Explore properties",
+        "buyerButton": "I'm Looking to Buy",
+        "ownerButton": "I'm a Property Owner"
+    },
+    "features": {
+        "wideSelection": {
+            "title": "Wide Selection",
+            "description": "Browse through hundreds of verified properties in prime locations"
+        },
+        "directCommunication": {
+            "title": "Direct Communication",
+            "description": "Connect directly with property owners through our messaging system"
+        },
+        "trustedPlatform": {
+            "title": "Trusted Platform",
+            "description": "Secure transactions and verified listings for peace of mind"
+        }
+    },
+    "cta": {
+        "title": "Ready to Get Started?",
+        "subtitle": "Join thousands of satisfied users finding their dream properties"
+    },
+    "marketplace": {
+        "title": "Real Estate Marketplace",
+        "featured": "Featured Properties",
+        "featuredSubtitle": "Discover our handpicked selection of premium properties available now",
+        "viewAllProperties": "View All Properties",
+        "stats": {
+            "propertiesListed": "Properties Listed",
+            "happyCustomers": "Happy Customers",
+            "satisfactionRate": "Satisfaction Rate",
+            "citiesCovered": "Cities Covered"
+        }
+    },
+    "properties": {
+        "title": "Properties",
+        "create": "Create property",
+        "edit": "Edit property",
+        "delete": "Delete property",
+        "details": "Property details",
+        "price": "Price",
+        "bedrooms": "Bedrooms",
+        "bathrooms": "Bathrooms",
+        "sqft": "Square feet",
+        "area": "Area",
+        "location": "Location",
+        "description": "Description",
+        "available": "Available",
+        "notAvailable": "Not available",
+        "perMonth": "per month",
+        "bed": "bed",
+        "bath": "bath"
+    },
+    "owner": {
+        "dashboard": "Owner Dashboard",
+        "myProperties": "My Properties",
+        "addProperty": "Add Property",
+        "totalProperties": "Total Properties",
+        "activeListings": "Active Listings",
+        "totalViews": "Total Views",
+        "messages": "Messages",
+        "unreadMessages": "Unread Messages",
+        "quickActions": "Quick Actions",
+        "addNewProperty": "Add New Property",
+        "checkMessages": "Check Messages",
+        "manageDescription": "Manage your properties and messages",
+        "noMessagesYet": "No messages yet",
+        "noMessagesDescription": "Messages from interested buyers will appear here",
+        "unreadMessagesSingular": "You have {count} unread message",
+        "unreadMessagesPlural": "You have {count} unread messages",
+        "allMessagesRead": "All messages read"
+    },
+    "buyer": {
+        "dashboard": "Buyer Dashboard",
+        "savedProperties": "Saved Properties",
+        "availableProperties": "Available Properties",
+        "browseDescription": "Browse through our selection of properties and find your perfect match",
+        "loadingProperties": "Loading properties...",
+        "noPropertiesAvailable": "No properties available at the moment"
+    },
+    "auth": {
+        "signIn": "Sign In",
+        "signUp": "Sign Up",
+        "signOut": "Sign Out",
+        "email": "Email",
+        "password": "Password",
+        "forgotPassword": "Forgot Password?",
+        "selectRole": "Select Your Role",
+        "buyerRole": "Buyer",
+        "ownerRole": "Owner",
+        "continueAs": "Continue as"
     }
-  },
-  "cta": {
-    "title": "Ready to Get Started?",
-    "subtitle": "Join thousands of satisfied users finding their dream properties"
-  },
-  "marketplace": {
-    "title": "Real Estate Marketplace",
-    "featured": "Featured Properties",
-    "featuredSubtitle": "Discover our handpicked selection of premium properties available now",
-    "viewAllProperties": "View All Properties",
-    "stats": {
-      "propertiesListed": "Properties Listed",
-      "happyCustomers": "Happy Customers",
-      "satisfactionRate": "Satisfaction Rate",
-      "citiesCovered": "Cities Covered"
-    }
-  },
-  "properties": {
-    "title": "Properties",
-    "create": "Create property",
-    "edit": "Edit property",
-    "delete": "Delete property",
-    "details": "Property details",
-    "price": "Price",
-    "bedrooms": "Bedrooms",
-    "bathrooms": "Bathrooms",
-    "sqft": "Square feet",
-    "area": "Area",
-    "location": "Location",
-    "description": "Description",
-    "available": "Available",
-    "notAvailable": "Not available",
-    "perMonth": "per month",
-    "bed": "bed",
-    "bath": "bath"
-  },
-  "owner": {
-    "dashboard": "Owner Dashboard",
-    "myProperties": "My Properties",
-    "addProperty": "Add Property",
-    "totalProperties": "Total Properties",
-    "activeListings": "Active Listings",
-    "totalViews": "Total Views",
-    "messages": "Messages",
-    "unreadMessages": "Unread Messages",
-    "quickActions": "Quick Actions",
-    "addNewProperty": "Add New Property",
-    "checkMessages": "Check Messages",
-    "manageDescription": "Manage your properties and messages",
-    "noMessagesYet": "No messages yet",
-    "noMessagesDescription": "Messages from interested buyers will appear here",
-    "unreadMessagesSingular": "You have {count} unread message",
-    "unreadMessagesPlural": "You have {count} unread messages",
-    "allMessagesRead": "All messages read"
-  },
-  "buyer": {
-    "dashboard": "Buyer Dashboard",
-    "savedProperties": "Saved Properties",
-    "availableProperties": "Available Properties",
-    "browseDescription": "Browse through our selection of properties and find your perfect match",
-    "loadingProperties": "Loading properties...",
-    "noPropertiesAvailable": "No properties available at the moment"
-  },
-  "auth": {
-    "signIn": "Sign In",
-    "signUp": "Sign Up",
-    "signOut": "Sign Out",
-    "email": "Email",
-    "password": "Password",
-    "forgotPassword": "Forgot Password?",
-    "selectRole": "Select Your Role",
-    "buyerRole": "Buyer",
-    "ownerRole": "Owner",
-    "continueAs": "Continue as"
-  }
 }

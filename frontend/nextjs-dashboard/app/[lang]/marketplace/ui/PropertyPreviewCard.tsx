@@ -27,7 +27,9 @@ export function PropertyPreviewCard({ property, lang }: { property: Property; la
                 </div>
                 <div className='p-4'>
                     <h3 className='font-semibold text-lg mb-2 truncate'>{property.title}</h3>
-                    <p className='text-gray-600 text-sm mb-3 line-clamp-2'>{property.description}</p>
+                    <p className='text-gray-600 text-sm mb-3 line-clamp-2'>
+                        {property.description}
+                    </p>
                     <div className='flex items-center justify-between'>
                         <span className='text-2xl font-bold text-green-600'>
                             {formatPrice(property.price, property.currency)}

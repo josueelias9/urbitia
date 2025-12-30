@@ -74,7 +74,9 @@ export default function BuyerPropertiesPage({ params }: { params: Promise<{ lang
                             </Link>
                         </div>
                         <div className='flex items-center space-x-4'>
-                            <span className='text-gray-700'>{dict.common.welcome}, {user.name}</span>
+                            <span className='text-gray-700'>
+                                {dict.common.welcome}, {user.name}
+                            </span>
                             <button
                                 onClick={handleLogout}
                                 className='text-sm text-gray-600 hover:text-gray-900'
@@ -89,10 +91,10 @@ export default function BuyerPropertiesPage({ params }: { params: Promise<{ lang
             {/* Main Content */}
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
                 <div className='mb-8'>
-                    <h1 className='text-3xl font-bold text-gray-900'>{dict.buyer.availableProperties}</h1>
-                    <p className='mt-2 text-gray-600'>
-                        {dict.buyer.browseDescription}
-                    </p>
+                    <h1 className='text-3xl font-bold text-gray-900'>
+                        {dict.buyer.availableProperties}
+                    </h1>
+                    <p className='mt-2 text-gray-600'>{dict.buyer.browseDescription}</p>
                 </div>
 
                 {isLoading ? (
@@ -107,7 +109,11 @@ export default function BuyerPropertiesPage({ params }: { params: Promise<{ lang
                 ) : (
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
                         {properties.map(property => (
-                            <PropertyPreviewCard key={property.id} property={property} lang={lang} />
+                            <PropertyPreviewCard
+                                key={property.id}
+                                property={property}
+                                lang={lang}
+                            />
                         ))}
                     </div>
                 )}

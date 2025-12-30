@@ -25,7 +25,7 @@ function i18nProxy(request: NextRequest) {
 
     // Check if there is any supported locale in the pathname
     const pathnameHasLocale = locales.some(
-        (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+        locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
     )
 
     if (pathnameHasLocale) return
