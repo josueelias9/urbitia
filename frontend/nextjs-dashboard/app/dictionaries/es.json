@@ -104,7 +104,12 @@
         "noMessagesDescription": "Los mensajes de compradores interesados aparecerán aquí",
         "unreadMessagesSingular": "Tienes {count} mensaje sin leer",
         "unreadMessagesPlural": "Tienes {count} mensajes sin leer",
-        "allMessagesRead": "Todos los mensajes leídos"
+        "allMessagesRead": "Todos los mensajes leídos",
+        "manageListings": "Gestiona tus listados de propiedades",
+        "noPropertiesYet": "Aún no hay propiedades",
+        "startByAdding": "Comienza agregando tu primer listado de propiedad",
+        "loadingProperties": "Cargando propiedades...",
+        "status": "Estado"
     },
     "buyer": {
         "dashboard": "Panel del Comprador",

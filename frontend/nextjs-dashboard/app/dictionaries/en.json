@@ -104,7 +104,12 @@
         "noMessagesDescription": "Messages from interested buyers will appear here",
         "unreadMessagesSingular": "You have {count} unread message",
         "unreadMessagesPlural": "You have {count} unread messages",
-        "allMessagesRead": "All messages read"
+        "allMessagesRead": "All messages read",
+        "manageListings": "Manage your property listings",
+        "noPropertiesYet": "No properties yet",
+        "startByAdding": "Start by adding your first property listing",
+        "loadingProperties": "Loading properties...",
+        "status": "Status"
     },
     "buyer": {
         "dashboard": "Buyer Dashboard",
