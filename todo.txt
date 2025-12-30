@@ -31,3 +31,5 @@
 
 [ ] merge to main
 [ ] add password validation to login
+[ ] delete the "User" entity
+[ ] add "password" property to the "marketplace_user" entity and update the placeholder data

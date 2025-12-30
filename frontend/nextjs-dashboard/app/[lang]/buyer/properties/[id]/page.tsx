@@ -2,11 +2,7 @@
 
 import { useState, useEffect, use } from 'react'
 import { useRouter } from 'next/navigation'
-import {
-    getPropertyById,
-    getOrCreateChat,
-    sendChatMessage
-} from '@/app/lib/actions'
+import { getPropertyById, getOrCreateChat, sendChatMessage } from '@/app/lib/actions'
 import { Property, Chat } from '@/app/lib/types'
 import Image from 'next/image'
 import Link from 'next/link'
