@@ -3,7 +3,7 @@
 import { useEffect, useState, use } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { PropertyPreviewCard } from '@/app/[lang]/marketplace/ui/PropertyPreviewCard'
+import { PropertyPreviewCard } from '@/app/ui/PropertyPreviewCard'
 import { Property } from '@/app/lib/types'
 import { getAllProperties } from '@/app/lib/data'
 import type { Locale } from '@/proxy'

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Property } from '../../../lib/types'
+import { Property } from '@/app/lib/types'
 
 export function PropertyPreviewCard({ property, lang }: { property: Property; lang: string }) {
     const formatPrice = (price: number, currency: string) => {
