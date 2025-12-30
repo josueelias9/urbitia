@@ -133,8 +133,7 @@ exports.Prisma.Marketplace_userScalarFieldEnum = {
   email: 'email',
   role: 'role',
   avatar: 'avatar',
-  phone: 'phone',
-  createdAt: 'createdAt'
+  phone: 'phone'
 };
 
 exports.Prisma.PropertyScalarFieldEnum = {
@@ -156,27 +155,23 @@ exports.Prisma.PropertyScalarFieldEnum = {
   lng: 'lng',
   images: 'images',
   amenities: 'amenities',
-  ownerId: 'ownerId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  ownerId: 'ownerId'
 };
 
 exports.Prisma.ChatScalarFieldEnum = {
   id: 'id',
   propertyId: 'propertyId',
   buyerId: 'buyerId',
-  ownerId: 'ownerId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  ownerId: 'ownerId'
 };
 
 exports.Prisma.Chat_messageScalarFieldEnum = {
   id: 'id',
-  chatId: 'chatId',
-  senderId: 'senderId',
   content: 'content',
   timestamp: 'timestamp',
-  read: 'read'
+  read: 'read',
+  chatId: 'chatId',
+  senderId: 'senderId'
 };
 
 exports.Prisma.SortOrder = {

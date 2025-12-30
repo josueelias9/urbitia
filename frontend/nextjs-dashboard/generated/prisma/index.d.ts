@@ -2342,7 +2342,6 @@ export namespace Prisma {
     role: string | null
     avatar: string | null
     phone: string | null
-    createdAt: Date | null
   }
 
   export type Marketplace_userMaxAggregateOutputType = {
@@ -2352,7 +2351,6 @@ export namespace Prisma {
     role: string | null
     avatar: string | null
     phone: string | null
-    createdAt: Date | null
   }
 
   export type Marketplace_userCountAggregateOutputType = {
@@ -2362,7 +2360,6 @@ export namespace Prisma {
     role: number
     avatar: number
     phone: number
-    createdAt: number
     _all: number
   }
 
@@ -2374,7 +2371,6 @@ export namespace Prisma {
     role?: true
     avatar?: true
     phone?: true
-    createdAt?: true
   }
 
   export type Marketplace_userMaxAggregateInputType = {
@@ -2384,7 +2380,6 @@ export namespace Prisma {
     role?: true
     avatar?: true
     phone?: true
-    createdAt?: true
   }
 
   export type Marketplace_userCountAggregateInputType = {
@@ -2394,7 +2389,6 @@ export namespace Prisma {
     role?: true
     avatar?: true
     phone?: true
-    createdAt?: true
     _all?: true
   }
 
@@ -2477,7 +2471,6 @@ export namespace Prisma {
     role: string
     avatar: string | null
     phone: string | null
-    createdAt: Date
     _count: Marketplace_userCountAggregateOutputType | null
     _min: Marketplace_userMinAggregateOutputType | null
     _max: Marketplace_userMaxAggregateOutputType | null
@@ -2504,7 +2497,6 @@ export namespace Prisma {
     role?: boolean
     avatar?: boolean
     phone?: boolean
-    createdAt?: boolean
     properties?: boolean | marketplace_user$propertiesArgs<ExtArgs>
     chats_buyer?: boolean | marketplace_user$chats_buyerArgs<ExtArgs>
     chats_owner?: boolean | marketplace_user$chats_ownerArgs<ExtArgs>
@@ -2519,7 +2511,6 @@ export namespace Prisma {
     role?: boolean
     avatar?: boolean
     phone?: boolean
-    createdAt?: boolean
   }, ExtArgs["result"]["marketplace_user"]>
 
   export type marketplace_userSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2529,7 +2520,6 @@ export namespace Prisma {
     role?: boolean
     avatar?: boolean
     phone?: boolean
-    createdAt?: boolean
   }, ExtArgs["result"]["marketplace_user"]>
 
   export type marketplace_userSelectScalar = {
@@ -2539,10 +2529,9 @@ export namespace Prisma {
     role?: boolean
     avatar?: boolean
     phone?: boolean
-    createdAt?: boolean
   }
 
-  export type marketplace_userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "role" | "avatar" | "phone" | "createdAt", ExtArgs["result"]["marketplace_user"]>
+  export type marketplace_userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "role" | "avatar" | "phone", ExtArgs["result"]["marketplace_user"]>
   export type marketplace_userInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     properties?: boolean | marketplace_user$propertiesArgs<ExtArgs>
     chats_buyer?: boolean | marketplace_user$chats_buyerArgs<ExtArgs>
@@ -2568,7 +2557,6 @@ export namespace Prisma {
       role: string
       avatar: string | null
       phone: string | null
-      createdAt: Date
     }, ExtArgs["result"]["marketplace_user"]>
     composites: {}
   }
@@ -3002,7 +2990,6 @@ export namespace Prisma {
     readonly role: FieldRef<"marketplace_user", 'String'>
     readonly avatar: FieldRef<"marketplace_user", 'String'>
     readonly phone: FieldRef<"marketplace_user", 'String'>
-    readonly createdAt: FieldRef<"marketplace_user", 'DateTime'>
   }
     
 
@@ -3553,8 +3540,6 @@ export namespace Prisma {
     lat: number | null
     lng: number | null
     ownerId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
   }
 
   export type PropertyMaxAggregateOutputType = {
@@ -3575,8 +3560,6 @@ export namespace Prisma {
     lat: number | null
     lng: number | null
     ownerId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
   }
 
   export type PropertyCountAggregateOutputType = {
@@ -3599,8 +3582,6 @@ export namespace Prisma {
     images: number
     amenities: number
     ownerId: number
-    createdAt: number
-    updatedAt: number
     _all: number
   }
 
@@ -3641,8 +3622,6 @@ export namespace Prisma {
     lat?: true
     lng?: true
     ownerId?: true
-    createdAt?: true
-    updatedAt?: true
   }
 
   export type PropertyMaxAggregateInputType = {
@@ -3663,8 +3642,6 @@ export namespace Prisma {
     lat?: true
     lng?: true
     ownerId?: true
-    createdAt?: true
-    updatedAt?: true
   }
 
   export type PropertyCountAggregateInputType = {
@@ -3687,8 +3664,6 @@ export namespace Prisma {
     images?: true
     amenities?: true
     ownerId?: true
-    createdAt?: true
-    updatedAt?: true
     _all?: true
   }
 
@@ -3798,8 +3773,6 @@ export namespace Prisma {
     images: string[]
     amenities: string[]
     ownerId: string
-    createdAt: Date
-    updatedAt: Date
     _count: PropertyCountAggregateOutputType | null
     _avg: PropertyAvgAggregateOutputType | null
     _sum: PropertySumAggregateOutputType | null
@@ -3841,8 +3814,6 @@ export namespace Prisma {
     images?: boolean
     amenities?: boolean
     ownerId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     owner?: boolean | marketplace_userDefaultArgs<ExtArgs>
     chats?: boolean | property$chatsArgs<ExtArgs>
     _count?: boolean | PropertyCountOutputTypeDefaultArgs<ExtArgs>
@@ -3868,8 +3839,6 @@ export namespace Prisma {
     images?: boolean
     amenities?: boolean
     ownerId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     owner?: boolean | marketplace_userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["property"]>
 
@@ -3893,8 +3862,6 @@ export namespace Prisma {
     images?: boolean
     amenities?: boolean
     ownerId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     owner?: boolean | marketplace_userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["property"]>
 
@@ -3918,11 +3885,9 @@ export namespace Prisma {
     images?: boolean
     amenities?: boolean
     ownerId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
   }
 
-  export type propertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "price" | "currency" | "type" | "status" | "bedrooms" | "bathrooms" | "area" | "street" | "city" | "country" | "zipCode" | "lat" | "lng" | "images" | "amenities" | "ownerId" | "createdAt" | "updatedAt", ExtArgs["result"]["property"]>
+  export type propertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "price" | "currency" | "type" | "status" | "bedrooms" | "bathrooms" | "area" | "street" | "city" | "country" | "zipCode" | "lat" | "lng" | "images" | "amenities" | "ownerId", ExtArgs["result"]["property"]>
   export type propertyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     owner?: boolean | marketplace_userDefaultArgs<ExtArgs>
     chats?: boolean | property$chatsArgs<ExtArgs>
@@ -3961,8 +3926,6 @@ export namespace Prisma {
       images: string[]
       amenities: string[]
       ownerId: string
-      createdAt: Date
-      updatedAt: Date
     }, ExtArgs["result"]["property"]>
     composites: {}
   }
@@ -4407,8 +4370,6 @@ export namespace Prisma {
     readonly images: FieldRef<"property", 'String[]'>
     readonly amenities: FieldRef<"property", 'String[]'>
     readonly ownerId: FieldRef<"property", 'String'>
-    readonly createdAt: FieldRef<"property", 'DateTime'>
-    readonly updatedAt: FieldRef<"property", 'DateTime'>
   }
     
 
@@ -4862,8 +4823,6 @@ export namespace Prisma {
     propertyId: string | null
     buyerId: string | null
     ownerId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
   }
 
   export type ChatMaxAggregateOutputType = {
@@ -4871,8 +4830,6 @@ export namespace Prisma {
     propertyId: string | null
     buyerId: string | null
     ownerId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
   }
 
   export type ChatCountAggregateOutputType = {
@@ -4880,8 +4837,6 @@ export namespace Prisma {
     propertyId: number
     buyerId: number
     ownerId: number
-    createdAt: number
-    updatedAt: number
     _all: number
   }
 
@@ -4891,8 +4846,6 @@ export namespace Prisma {
     propertyId?: true
     buyerId?: true
     ownerId?: true
-    createdAt?: true
-    updatedAt?: true
   }
 
   export type ChatMaxAggregateInputType = {
@@ -4900,8 +4853,6 @@ export namespace Prisma {
     propertyId?: true
     buyerId?: true
     ownerId?: true
-    createdAt?: true
-    updatedAt?: true
   }
 
   export type ChatCountAggregateInputType = {
@@ -4909,8 +4860,6 @@ export namespace Prisma {
     propertyId?: true
     buyerId?: true
     ownerId?: true
-    createdAt?: true
-    updatedAt?: true
     _all?: true
   }
 
@@ -4991,8 +4940,6 @@ export namespace Prisma {
     propertyId: string
     buyerId: string
     ownerId: string
-    createdAt: Date
-    updatedAt: Date
     _count: ChatCountAggregateOutputType | null
     _min: ChatMinAggregateOutputType | null
     _max: ChatMaxAggregateOutputType | null
@@ -5017,8 +4964,6 @@ export namespace Prisma {
     propertyId?: boolean
     buyerId?: boolean
     ownerId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     property?: boolean | propertyDefaultArgs<ExtArgs>
     buyer?: boolean | marketplace_userDefaultArgs<ExtArgs>
     owner?: boolean | marketplace_userDefaultArgs<ExtArgs>
@@ -5031,8 +4976,6 @@ export namespace Prisma {
     propertyId?: boolean
     buyerId?: boolean
     ownerId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     property?: boolean | propertyDefaultArgs<ExtArgs>
     buyer?: boolean | marketplace_userDefaultArgs<ExtArgs>
     owner?: boolean | marketplace_userDefaultArgs<ExtArgs>
@@ -5043,8 +4986,6 @@ export namespace Prisma {
     propertyId?: boolean
     buyerId?: boolean
     ownerId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     property?: boolean | propertyDefaultArgs<ExtArgs>
     buyer?: boolean | marketplace_userDefaultArgs<ExtArgs>
     owner?: boolean | marketplace_userDefaultArgs<ExtArgs>
@@ -5055,11 +4996,9 @@ export namespace Prisma {
     propertyId?: boolean
     buyerId?: boolean
     ownerId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
   }
 
-  export type chatOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "propertyId" | "buyerId" | "ownerId" | "createdAt" | "updatedAt", ExtArgs["result"]["chat"]>
+  export type chatOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "propertyId" | "buyerId" | "ownerId", ExtArgs["result"]["chat"]>
   export type chatInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     property?: boolean | propertyDefaultArgs<ExtArgs>
     buyer?: boolean | marketplace_userDefaultArgs<ExtArgs>
@@ -5091,8 +5030,6 @@ export namespace Prisma {
       propertyId: string
       buyerId: string
       ownerId: string
-      createdAt: Date
-      updatedAt: Date
     }, ExtArgs["result"]["chat"]>
     composites: {}
   }
@@ -5524,8 +5461,6 @@ export namespace Prisma {
     readonly propertyId: FieldRef<"chat", 'String'>
     readonly buyerId: FieldRef<"chat", 'String'>
     readonly ownerId: FieldRef<"chat", 'String'>
-    readonly createdAt: FieldRef<"chat", 'DateTime'>
-    readonly updatedAt: FieldRef<"chat", 'DateTime'>
   }
     
 
@@ -5976,58 +5911,58 @@ export namespace Prisma {
 
   export type Chat_messageMinAggregateOutputType = {
     id: string | null
-    chatId: string | null
-    senderId: string | null
     content: string | null
     timestamp: Date | null
     read: boolean | null
+    chatId: string | null
+    senderId: string | null
   }
 
   export type Chat_messageMaxAggregateOutputType = {
     id: string | null
-    chatId: string | null
-    senderId: string | null
     content: string | null
     timestamp: Date | null
     read: boolean | null
+    chatId: string | null
+    senderId: string | null
   }
 
   export type Chat_messageCountAggregateOutputType = {
     id: number
-    chatId: number
-    senderId: number
     content: number
     timestamp: number
     read: number
+    chatId: number
+    senderId: number
     _all: number
   }
 
 
   export type Chat_messageMinAggregateInputType = {
     id?: true
-    chatId?: true
-    senderId?: true
     content?: true
     timestamp?: true
     read?: true
+    chatId?: true
+    senderId?: true
   }
 
   export type Chat_messageMaxAggregateInputType = {
     id?: true
-    chatId?: true
-    senderId?: true
     content?: true
     timestamp?: true
     read?: true
+    chatId?: true
+    senderId?: true
   }
 
   export type Chat_messageCountAggregateInputType = {
     id?: true
-    chatId?: true
-    senderId?: true
     content?: true
     timestamp?: true
     read?: true
+    chatId?: true
+    senderId?: true
     _all?: true
   }
 
@@ -6105,11 +6040,11 @@ export namespace Prisma {
 
   export type Chat_messageGroupByOutputType = {
     id: string
-    chatId: string
-    senderId: string
     content: string
     timestamp: Date
     read: boolean
+    chatId: string
+    senderId: string
     _count: Chat_messageCountAggregateOutputType | null
     _min: Chat_messageMinAggregateOutputType | null
     _max: Chat_messageMaxAggregateOutputType | null
@@ -6131,47 +6066,47 @@ export namespace Prisma {
 
   export type chat_messageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    chatId?: boolean
-    senderId?: boolean
     content?: boolean
     timestamp?: boolean
     read?: boolean
+    chatId?: boolean
+    senderId?: boolean
     chat?: boolean | chatDefaultArgs<ExtArgs>
     sender?: boolean | marketplace_userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["chat_message"]>
 
   export type chat_messageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    chatId?: boolean
-    senderId?: boolean
     content?: boolean
     timestamp?: boolean
     read?: boolean
+    chatId?: boolean
+    senderId?: boolean
     chat?: boolean | chatDefaultArgs<ExtArgs>
     sender?: boolean | marketplace_userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["chat_message"]>
 
   export type chat_messageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    chatId?: boolean
-    senderId?: boolean
     content?: boolean
     timestamp?: boolean
     read?: boolean
+    chatId?: boolean
+    senderId?: boolean
     chat?: boolean | chatDefaultArgs<ExtArgs>
     sender?: boolean | marketplace_userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["chat_message"]>
 
   export type chat_messageSelectScalar = {
     id?: boolean
-    chatId?: boolean
-    senderId?: boolean
     content?: boolean
     timestamp?: boolean
     read?: boolean
+    chatId?: boolean
+    senderId?: boolean
   }
 
-  export type chat_messageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "chatId" | "senderId" | "content" | "timestamp" | "read", ExtArgs["result"]["chat_message"]>
+  export type chat_messageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "content" | "timestamp" | "read" | "chatId" | "senderId", ExtArgs["result"]["chat_message"]>
   export type chat_messageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     chat?: boolean | chatDefaultArgs<ExtArgs>
     sender?: boolean | marketplace_userDefaultArgs<ExtArgs>
@@ -6193,11 +6128,11 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      chatId: string
-      senderId: string
       content: string
       timestamp: Date
       read: boolean
+      chatId: string
+      senderId: string
     }, ExtArgs["result"]["chat_message"]>
     composites: {}
   }
@@ -6624,11 +6559,11 @@ export namespace Prisma {
    */
   interface chat_messageFieldRefs {
     readonly id: FieldRef<"chat_message", 'String'>
-    readonly chatId: FieldRef<"chat_message", 'String'>
-    readonly senderId: FieldRef<"chat_message", 'String'>
     readonly content: FieldRef<"chat_message", 'String'>
     readonly timestamp: FieldRef<"chat_message", 'DateTime'>
     readonly read: FieldRef<"chat_message", 'Boolean'>
+    readonly chatId: FieldRef<"chat_message", 'String'>
+    readonly senderId: FieldRef<"chat_message", 'String'>
   }
     
 
@@ -7073,8 +7008,7 @@ export namespace Prisma {
     email: 'email',
     role: 'role',
     avatar: 'avatar',
-    phone: 'phone',
-    createdAt: 'createdAt'
+    phone: 'phone'
   };
 
   export type Marketplace_userScalarFieldEnum = (typeof Marketplace_userScalarFieldEnum)[keyof typeof Marketplace_userScalarFieldEnum]
@@ -7099,9 +7033,7 @@ export namespace Prisma {
     lng: 'lng',
     images: 'images',
     amenities: 'amenities',
-    ownerId: 'ownerId',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    ownerId: 'ownerId'
   };
 
   export type PropertyScalarFieldEnum = (typeof PropertyScalarFieldEnum)[keyof typeof PropertyScalarFieldEnum]
@@ -7111,9 +7043,7 @@ export namespace Prisma {
     id: 'id',
     propertyId: 'propertyId',
     buyerId: 'buyerId',
-    ownerId: 'ownerId',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    ownerId: 'ownerId'
   };
 
   export type ChatScalarFieldEnum = (typeof ChatScalarFieldEnum)[keyof typeof ChatScalarFieldEnum]
@@ -7121,11 +7051,11 @@ export namespace Prisma {
 
   export const Chat_messageScalarFieldEnum: {
     id: 'id',
-    chatId: 'chatId',
-    senderId: 'senderId',
     content: 'content',
     timestamp: 'timestamp',
-    read: 'read'
+    read: 'read',
+    chatId: 'chatId',
+    senderId: 'senderId'
   };
 
   export type Chat_messageScalarFieldEnum = (typeof Chat_messageScalarFieldEnum)[keyof typeof Chat_messageScalarFieldEnum]
@@ -7175,20 +7105,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'DateTime'
-   */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-  /**
-   * Reference to a field of type 'DateTime[]'
-   */
-  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -7213,6 +7129,20 @@ export namespace Prisma {
    * Reference to a field of type 'Float[]'
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -7283,7 +7213,6 @@ export namespace Prisma {
     role?: StringFilter<"marketplace_user"> | string
     avatar?: StringNullableFilter<"marketplace_user"> | string | null
     phone?: StringNullableFilter<"marketplace_user"> | string | null
-    createdAt?: DateTimeFilter<"marketplace_user"> | Date | string
     properties?: PropertyListRelationFilter
     chats_buyer?: ChatListRelationFilter
     chats_owner?: ChatListRelationFilter
@@ -7297,7 +7226,6 @@ export namespace Prisma {
     role?: SortOrder
     avatar?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
     properties?: propertyOrderByRelationAggregateInput
     chats_buyer?: chatOrderByRelationAggregateInput
     chats_owner?: chatOrderByRelationAggregateInput
@@ -7314,7 +7242,6 @@ export namespace Prisma {
     role?: StringFilter<"marketplace_user"> | string
     avatar?: StringNullableFilter<"marketplace_user"> | string | null
     phone?: StringNullableFilter<"marketplace_user"> | string | null
-    createdAt?: DateTimeFilter<"marketplace_user"> | Date | string
     properties?: PropertyListRelationFilter
     chats_buyer?: ChatListRelationFilter
     chats_owner?: ChatListRelationFilter
@@ -7328,7 +7255,6 @@ export namespace Prisma {
     role?: SortOrder
     avatar?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
     _count?: marketplace_userCountOrderByAggregateInput
     _max?: marketplace_userMaxOrderByAggregateInput
     _min?: marketplace_userMinOrderByAggregateInput
@@ -7344,7 +7270,6 @@ export namespace Prisma {
     role?: StringWithAggregatesFilter<"marketplace_user"> | string
     avatar?: StringNullableWithAggregatesFilter<"marketplace_user"> | string | null
     phone?: StringNullableWithAggregatesFilter<"marketplace_user"> | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"marketplace_user"> | Date | string
   }
 
   export type propertyWhereInput = {
@@ -7370,8 +7295,6 @@ export namespace Prisma {
     images?: StringNullableListFilter<"property">
     amenities?: StringNullableListFilter<"property">
     ownerId?: StringFilter<"property"> | string
-    createdAt?: DateTimeFilter<"property"> | Date | string
-    updatedAt?: DateTimeFilter<"property"> | Date | string
     owner?: XOR<Marketplace_userScalarRelationFilter, marketplace_userWhereInput>
     chats?: ChatListRelationFilter
   }
@@ -7396,8 +7319,6 @@ export namespace Prisma {
     images?: SortOrder
     amenities?: SortOrder
     ownerId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     owner?: marketplace_userOrderByWithRelationInput
     chats?: chatOrderByRelationAggregateInput
   }
@@ -7425,8 +7346,6 @@ export namespace Prisma {
     images?: StringNullableListFilter<"property">
     amenities?: StringNullableListFilter<"property">
     ownerId?: StringFilter<"property"> | string
-    createdAt?: DateTimeFilter<"property"> | Date | string
-    updatedAt?: DateTimeFilter<"property"> | Date | string
     owner?: XOR<Marketplace_userScalarRelationFilter, marketplace_userWhereInput>
     chats?: ChatListRelationFilter
   }, "id">
@@ -7451,8 +7370,6 @@ export namespace Prisma {
     images?: SortOrder
     amenities?: SortOrder
     ownerId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     _count?: propertyCountOrderByAggregateInput
     _avg?: propertyAvgOrderByAggregateInput
     _max?: propertyMaxOrderByAggregateInput
@@ -7483,8 +7400,6 @@ export namespace Prisma {
     images?: StringNullableListFilter<"property">
     amenities?: StringNullableListFilter<"property">
     ownerId?: StringWithAggregatesFilter<"property"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"property"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"property"> | Date | string
   }
 
   export type chatWhereInput = {
@@ -7495,8 +7410,6 @@ export namespace Prisma {
     propertyId?: StringFilter<"chat"> | string
     buyerId?: StringFilter<"chat"> | string
     ownerId?: StringFilter<"chat"> | string
-    createdAt?: DateTimeFilter<"chat"> | Date | string
-    updatedAt?: DateTimeFilter<"chat"> | Date | string
     property?: XOR<PropertyScalarRelationFilter, propertyWhereInput>
     buyer?: XOR<Marketplace_userScalarRelationFilter, marketplace_userWhereInput>
     owner?: XOR<Marketplace_userScalarRelationFilter, marketplace_userWhereInput>
@@ -7508,8 +7421,6 @@ export namespace Prisma {
     propertyId?: SortOrder
     buyerId?: SortOrder
     ownerId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     property?: propertyOrderByWithRelationInput
     buyer?: marketplace_userOrderByWithRelationInput
     owner?: marketplace_userOrderByWithRelationInput
@@ -7524,8 +7435,6 @@ export namespace Prisma {
     propertyId?: StringFilter<"chat"> | string
     buyerId?: StringFilter<"chat"> | string
     ownerId?: StringFilter<"chat"> | string
-    createdAt?: DateTimeFilter<"chat"> | Date | string
-    updatedAt?: DateTimeFilter<"chat"> | Date | string
     property?: XOR<PropertyScalarRelationFilter, propertyWhereInput>
     buyer?: XOR<Marketplace_userScalarRelationFilter, marketplace_userWhereInput>
     owner?: XOR<Marketplace_userScalarRelationFilter, marketplace_userWhereInput>
@@ -7537,8 +7446,6 @@ export namespace Prisma {
     propertyId?: SortOrder
     buyerId?: SortOrder
     ownerId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     _count?: chatCountOrderByAggregateInput
     _max?: chatMaxOrderByAggregateInput
     _min?: chatMinOrderByAggregateInput
@@ -7552,8 +7459,6 @@ export namespace Prisma {
     propertyId?: StringWithAggregatesFilter<"chat"> | string
     buyerId?: StringWithAggregatesFilter<"chat"> | string
     ownerId?: StringWithAggregatesFilter<"chat"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"chat"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"chat"> | Date | string
   }
 
   export type chat_messageWhereInput = {
@@ -7561,22 +7466,22 @@ export namespace Prisma {
     OR?: chat_messageWhereInput[]
     NOT?: chat_messageWhereInput | chat_messageWhereInput[]
     id?: StringFilter<"chat_message"> | string
-    chatId?: StringFilter<"chat_message"> | string
-    senderId?: StringFilter<"chat_message"> | string
     content?: StringFilter<"chat_message"> | string
     timestamp?: DateTimeFilter<"chat_message"> | Date | string
     read?: BoolFilter<"chat_message"> | boolean
+    chatId?: StringFilter<"chat_message"> | string
+    senderId?: StringFilter<"chat_message"> | string
     chat?: XOR<ChatScalarRelationFilter, chatWhereInput>
     sender?: XOR<Marketplace_userScalarRelationFilter, marketplace_userWhereInput>
   }
 
   export type chat_messageOrderByWithRelationInput = {
     id?: SortOrder
-    chatId?: SortOrder
-    senderId?: SortOrder
     content?: SortOrder
     timestamp?: SortOrder
     read?: SortOrder
+    chatId?: SortOrder
+    senderId?: SortOrder
     chat?: chatOrderByWithRelationInput
     sender?: marketplace_userOrderByWithRelationInput
   }
@@ -7586,22 +7491,22 @@ export namespace Prisma {
     AND?: chat_messageWhereInput | chat_messageWhereInput[]
     OR?: chat_messageWhereInput[]
     NOT?: chat_messageWhereInput | chat_messageWhereInput[]
-    chatId?: StringFilter<"chat_message"> | string
-    senderId?: StringFilter<"chat_message"> | string
     content?: StringFilter<"chat_message"> | string
     timestamp?: DateTimeFilter<"chat_message"> | Date | string
     read?: BoolFilter<"chat_message"> | boolean
+    chatId?: StringFilter<"chat_message"> | string
+    senderId?: StringFilter<"chat_message"> | string
     chat?: XOR<ChatScalarRelationFilter, chatWhereInput>
     sender?: XOR<Marketplace_userScalarRelationFilter, marketplace_userWhereInput>
   }, "id">
 
   export type chat_messageOrderByWithAggregationInput = {
     id?: SortOrder
-    chatId?: SortOrder
-    senderId?: SortOrder
     content?: SortOrder
     timestamp?: SortOrder
     read?: SortOrder
+    chatId?: SortOrder
+    senderId?: SortOrder
     _count?: chat_messageCountOrderByAggregateInput
     _max?: chat_messageMaxOrderByAggregateInput
     _min?: chat_messageMinOrderByAggregateInput
@@ -7612,11 +7517,11 @@ export namespace Prisma {
     OR?: chat_messageScalarWhereWithAggregatesInput[]
     NOT?: chat_messageScalarWhereWithAggregatesInput | chat_messageScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"chat_message"> | string
-    chatId?: StringWithAggregatesFilter<"chat_message"> | string
-    senderId?: StringWithAggregatesFilter<"chat_message"> | string
     content?: StringWithAggregatesFilter<"chat_message"> | string
     timestamp?: DateTimeWithAggregatesFilter<"chat_message"> | Date | string
     read?: BoolWithAggregatesFilter<"chat_message"> | boolean
+    chatId?: StringWithAggregatesFilter<"chat_message"> | string
+    senderId?: StringWithAggregatesFilter<"chat_message"> | string
   }
 
   export type usersCreateInput = {
@@ -7675,7 +7580,6 @@ export namespace Prisma {
     role: string
     avatar?: string | null
     phone?: string | null
-    createdAt?: Date | string
     properties?: propertyCreateNestedManyWithoutOwnerInput
     chats_buyer?: chatCreateNestedManyWithoutBuyerInput
     chats_owner?: chatCreateNestedManyWithoutOwnerInput
@@ -7689,7 +7593,6 @@ export namespace Prisma {
     role: string
     avatar?: string | null
     phone?: string | null
-    createdAt?: Date | string
     properties?: propertyUncheckedCreateNestedManyWithoutOwnerInput
     chats_buyer?: chatUncheckedCreateNestedManyWithoutBuyerInput
     chats_owner?: chatUncheckedCreateNestedManyWithoutOwnerInput
@@ -7703,7 +7606,6 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     properties?: propertyUpdateManyWithoutOwnerNestedInput
     chats_buyer?: chatUpdateManyWithoutBuyerNestedInput
     chats_owner?: chatUpdateManyWithoutOwnerNestedInput
@@ -7717,7 +7619,6 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     properties?: propertyUncheckedUpdateManyWithoutOwnerNestedInput
     chats_buyer?: chatUncheckedUpdateManyWithoutBuyerNestedInput
     chats_owner?: chatUncheckedUpdateManyWithoutOwnerNestedInput
@@ -7731,7 +7632,6 @@ export namespace Prisma {
     role: string
     avatar?: string | null
     phone?: string | null
-    createdAt?: Date | string
   }
 
   export type marketplace_userUpdateManyMutationInput = {
@@ -7741,7 +7641,6 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type marketplace_userUncheckedUpdateManyInput = {
@@ -7751,7 +7650,6 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type propertyCreateInput = {
@@ -7773,8 +7671,6 @@ export namespace Prisma {
     lng?: number | null
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
     owner: marketplace_userCreateNestedOneWithoutPropertiesInput
     chats?: chatCreateNestedManyWithoutPropertyInput
   }
@@ -7799,8 +7695,6 @@ export namespace Prisma {
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
     ownerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     chats?: chatUncheckedCreateNestedManyWithoutPropertyInput
   }
 
@@ -7823,8 +7717,6 @@ export namespace Prisma {
     lng?: NullableFloatFieldUpdateOperationsInput | number | null
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: marketplace_userUpdateOneRequiredWithoutPropertiesNestedInput
     chats?: chatUpdateManyWithoutPropertyNestedInput
   }
@@ -7849,8 +7741,6 @@ export namespace Prisma {
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
     ownerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     chats?: chatUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
@@ -7874,8 +7764,6 @@ export namespace Prisma {
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
     ownerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type propertyUpdateManyMutationInput = {
@@ -7897,8 +7785,6 @@ export namespace Prisma {
     lng?: NullableFloatFieldUpdateOperationsInput | number | null
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type propertyUncheckedUpdateManyInput = {
@@ -7921,14 +7807,10 @@ export namespace Prisma {
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
     ownerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type chatCreateInput = {
     id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     property: propertyCreateNestedOneWithoutChatsInput
     buyer: marketplace_userCreateNestedOneWithoutChats_buyerInput
     owner: marketplace_userCreateNestedOneWithoutChats_ownerInput
@@ -7940,15 +7822,11 @@ export namespace Prisma {
     propertyId: string
     buyerId: string
     ownerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     messages?: chat_messageUncheckedCreateNestedManyWithoutChatInput
   }
 
   export type chatUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     property?: propertyUpdateOneRequiredWithoutChatsNestedInput
     buyer?: marketplace_userUpdateOneRequiredWithoutChats_buyerNestedInput
     owner?: marketplace_userUpdateOneRequiredWithoutChats_ownerNestedInput
@@ -7960,8 +7838,6 @@ export namespace Prisma {
     propertyId?: StringFieldUpdateOperationsInput | string
     buyerId?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     messages?: chat_messageUncheckedUpdateManyWithoutChatNestedInput
   }
 
@@ -7970,14 +7846,10 @@ export namespace Prisma {
     propertyId: string
     buyerId: string
     ownerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type chatUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type chatUncheckedUpdateManyInput = {
@@ -7985,8 +7857,6 @@ export namespace Prisma {
     propertyId?: StringFieldUpdateOperationsInput | string
     buyerId?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type chat_messageCreateInput = {
@@ -8000,11 +7870,11 @@ export namespace Prisma {
 
   export type chat_messageUncheckedCreateInput = {
     id?: string
-    chatId: string
-    senderId: string
     content: string
     timestamp?: Date | string
     read?: boolean
+    chatId: string
+    senderId: string
   }
 
   export type chat_messageUpdateInput = {
@@ -8018,20 +7888,20 @@ export namespace Prisma {
 
   export type chat_messageUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    chatId?: StringFieldUpdateOperationsInput | string
-    senderId?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     read?: BoolFieldUpdateOperationsInput | boolean
+    chatId?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
   }
 
   export type chat_messageCreateManyInput = {
     id?: string
-    chatId: string
-    senderId: string
     content: string
     timestamp?: Date | string
     read?: boolean
+    chatId: string
+    senderId: string
   }
 
   export type chat_messageUpdateManyMutationInput = {
@@ -8043,11 +7913,11 @@ export namespace Prisma {
 
   export type chat_messageUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    chatId?: StringFieldUpdateOperationsInput | string
-    senderId?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     read?: BoolFieldUpdateOperationsInput | boolean
+    chatId?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -8119,17 +7989,6 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
   export type PropertyListRelationFilter = {
     every?: propertyWhereInput
     some?: propertyWhereInput
@@ -8172,7 +8031,6 @@ export namespace Prisma {
     role?: SortOrder
     avatar?: SortOrder
     phone?: SortOrder
-    createdAt?: SortOrder
   }
 
   export type marketplace_userMaxOrderByAggregateInput = {
@@ -8182,7 +8040,6 @@ export namespace Prisma {
     role?: SortOrder
     avatar?: SortOrder
     phone?: SortOrder
-    createdAt?: SortOrder
   }
 
   export type marketplace_userMinOrderByAggregateInput = {
@@ -8192,7 +8049,6 @@ export namespace Prisma {
     role?: SortOrder
     avatar?: SortOrder
     phone?: SortOrder
-    createdAt?: SortOrder
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -8211,20 +8067,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -8282,8 +8124,6 @@ export namespace Prisma {
     images?: SortOrder
     amenities?: SortOrder
     ownerId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type propertyAvgOrderByAggregateInput = {
@@ -8313,8 +8153,6 @@ export namespace Prisma {
     lat?: SortOrder
     lng?: SortOrder
     ownerId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type propertyMinOrderByAggregateInput = {
@@ -8335,8 +8173,6 @@ export namespace Prisma {
     lat?: SortOrder
     lng?: SortOrder
     ownerId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type propertySumOrderByAggregateInput = {
@@ -8390,8 +8226,6 @@ export namespace Prisma {
     propertyId?: SortOrder
     buyerId?: SortOrder
     ownerId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type chatMaxOrderByAggregateInput = {
@@ -8399,8 +8233,6 @@ export namespace Prisma {
     propertyId?: SortOrder
     buyerId?: SortOrder
     ownerId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type chatMinOrderByAggregateInput = {
@@ -8408,8 +8240,17 @@ export namespace Prisma {
     propertyId?: SortOrder
     buyerId?: SortOrder
     ownerId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+  }
+
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type BoolFilter<$PrismaModel = never> = {
@@ -8424,29 +8265,43 @@ export namespace Prisma {
 
   export type chat_messageCountOrderByAggregateInput = {
     id?: SortOrder
-    chatId?: SortOrder
-    senderId?: SortOrder
     content?: SortOrder
     timestamp?: SortOrder
     read?: SortOrder
+    chatId?: SortOrder
+    senderId?: SortOrder
   }
 
   export type chat_messageMaxOrderByAggregateInput = {
     id?: SortOrder
-    chatId?: SortOrder
-    senderId?: SortOrder
     content?: SortOrder
     timestamp?: SortOrder
     read?: SortOrder
+    chatId?: SortOrder
+    senderId?: SortOrder
   }
 
   export type chat_messageMinOrderByAggregateInput = {
     id?: SortOrder
-    chatId?: SortOrder
-    senderId?: SortOrder
     content?: SortOrder
     timestamp?: SortOrder
     read?: SortOrder
+    chatId?: SortOrder
+    senderId?: SortOrder
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -8519,10 +8374,6 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
   }
 
   export type propertyUpdateManyWithoutOwnerNestedInput = {
@@ -8823,6 +8674,10 @@ export namespace Prisma {
     connect?: marketplace_userWhereUniqueInput
   }
 
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
   }
@@ -8899,17 +8754,6 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -8936,20 +8780,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type NestedFloatNullableFilter<$PrismaModel = never> = {
@@ -9006,9 +8836,34 @@ export namespace Prisma {
     _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -9038,8 +8893,6 @@ export namespace Prisma {
     lng?: number | null
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
     chats?: chatCreateNestedManyWithoutPropertyInput
   }
 
@@ -9062,8 +8915,6 @@ export namespace Prisma {
     lng?: number | null
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
     chats?: chatUncheckedCreateNestedManyWithoutPropertyInput
   }
 
@@ -9079,8 +8930,6 @@ export namespace Prisma {
 
   export type chatCreateWithoutBuyerInput = {
     id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     property: propertyCreateNestedOneWithoutChatsInput
     owner: marketplace_userCreateNestedOneWithoutChats_ownerInput
     messages?: chat_messageCreateNestedManyWithoutChatInput
@@ -9090,8 +8939,6 @@ export namespace Prisma {
     id?: string
     propertyId: string
     ownerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     messages?: chat_messageUncheckedCreateNestedManyWithoutChatInput
   }
 
@@ -9107,8 +8954,6 @@ export namespace Prisma {
 
   export type chatCreateWithoutOwnerInput = {
     id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     property: propertyCreateNestedOneWithoutChatsInput
     buyer: marketplace_userCreateNestedOneWithoutChats_buyerInput
     messages?: chat_messageCreateNestedManyWithoutChatInput
@@ -9118,8 +8963,6 @@ export namespace Prisma {
     id?: string
     propertyId: string
     buyerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     messages?: chat_messageUncheckedCreateNestedManyWithoutChatInput
   }
 
@@ -9143,10 +8986,10 @@ export namespace Prisma {
 
   export type chat_messageUncheckedCreateWithoutSenderInput = {
     id?: string
-    chatId: string
     content: string
     timestamp?: Date | string
     read?: boolean
+    chatId: string
   }
 
   export type chat_messageCreateOrConnectWithoutSenderInput = {
@@ -9198,8 +9041,6 @@ export namespace Prisma {
     images?: StringNullableListFilter<"property">
     amenities?: StringNullableListFilter<"property">
     ownerId?: StringFilter<"property"> | string
-    createdAt?: DateTimeFilter<"property"> | Date | string
-    updatedAt?: DateTimeFilter<"property"> | Date | string
   }
 
   export type chatUpsertWithWhereUniqueWithoutBuyerInput = {
@@ -9226,8 +9067,6 @@ export namespace Prisma {
     propertyId?: StringFilter<"chat"> | string
     buyerId?: StringFilter<"chat"> | string
     ownerId?: StringFilter<"chat"> | string
-    createdAt?: DateTimeFilter<"chat"> | Date | string
-    updatedAt?: DateTimeFilter<"chat"> | Date | string
   }
 
   export type chatUpsertWithWhereUniqueWithoutOwnerInput = {
@@ -9267,11 +9106,11 @@ export namespace Prisma {
     OR?: chat_messageScalarWhereInput[]
     NOT?: chat_messageScalarWhereInput | chat_messageScalarWhereInput[]
     id?: StringFilter<"chat_message"> | string
-    chatId?: StringFilter<"chat_message"> | string
-    senderId?: StringFilter<"chat_message"> | string
     content?: StringFilter<"chat_message"> | string
     timestamp?: DateTimeFilter<"chat_message"> | Date | string
     read?: BoolFilter<"chat_message"> | boolean
+    chatId?: StringFilter<"chat_message"> | string
+    senderId?: StringFilter<"chat_message"> | string
   }
 
   export type marketplace_userCreateWithoutPropertiesInput = {
@@ -9281,7 +9120,6 @@ export namespace Prisma {
     role: string
     avatar?: string | null
     phone?: string | null
-    createdAt?: Date | string
     chats_buyer?: chatCreateNestedManyWithoutBuyerInput
     chats_owner?: chatCreateNestedManyWithoutOwnerInput
     sent_messages?: chat_messageCreateNestedManyWithoutSenderInput
@@ -9294,7 +9132,6 @@ export namespace Prisma {
     role: string
     avatar?: string | null
     phone?: string | null
-    createdAt?: Date | string
     chats_buyer?: chatUncheckedCreateNestedManyWithoutBuyerInput
     chats_owner?: chatUncheckedCreateNestedManyWithoutOwnerInput
     sent_messages?: chat_messageUncheckedCreateNestedManyWithoutSenderInput
@@ -9307,8 +9144,6 @@ export namespace Prisma {
 
   export type chatCreateWithoutPropertyInput = {
     id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     buyer: marketplace_userCreateNestedOneWithoutChats_buyerInput
     owner: marketplace_userCreateNestedOneWithoutChats_ownerInput
     messages?: chat_messageCreateNestedManyWithoutChatInput
@@ -9318,8 +9153,6 @@ export namespace Prisma {
     id?: string
     buyerId: string
     ownerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     messages?: chat_messageUncheckedCreateNestedManyWithoutChatInput
   }
 
@@ -9351,7 +9184,6 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     chats_buyer?: chatUpdateManyWithoutBuyerNestedInput
     chats_owner?: chatUpdateManyWithoutOwnerNestedInput
     sent_messages?: chat_messageUpdateManyWithoutSenderNestedInput
@@ -9364,7 +9196,6 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     chats_buyer?: chatUncheckedUpdateManyWithoutBuyerNestedInput
     chats_owner?: chatUncheckedUpdateManyWithoutOwnerNestedInput
     sent_messages?: chat_messageUncheckedUpdateManyWithoutSenderNestedInput
@@ -9405,8 +9236,6 @@ export namespace Prisma {
     lng?: number | null
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
     owner: marketplace_userCreateNestedOneWithoutPropertiesInput
   }
 
@@ -9430,8 +9259,6 @@ export namespace Prisma {
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
     ownerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type propertyCreateOrConnectWithoutChatsInput = {
@@ -9446,7 +9273,6 @@ export namespace Prisma {
     role: string
     avatar?: string | null
     phone?: string | null
-    createdAt?: Date | string
     properties?: propertyCreateNestedManyWithoutOwnerInput
     chats_owner?: chatCreateNestedManyWithoutOwnerInput
     sent_messages?: chat_messageCreateNestedManyWithoutSenderInput
@@ -9459,7 +9285,6 @@ export namespace Prisma {
     role: string
     avatar?: string | null
     phone?: string | null
-    createdAt?: Date | string
     properties?: propertyUncheckedCreateNestedManyWithoutOwnerInput
     chats_owner?: chatUncheckedCreateNestedManyWithoutOwnerInput
     sent_messages?: chat_messageUncheckedCreateNestedManyWithoutSenderInput
@@ -9477,7 +9302,6 @@ export namespace Prisma {
     role: string
     avatar?: string | null
     phone?: string | null
-    createdAt?: Date | string
     properties?: propertyCreateNestedManyWithoutOwnerInput
     chats_buyer?: chatCreateNestedManyWithoutBuyerInput
     sent_messages?: chat_messageCreateNestedManyWithoutSenderInput
@@ -9490,7 +9314,6 @@ export namespace Prisma {
     role: string
     avatar?: string | null
     phone?: string | null
-    createdAt?: Date | string
     properties?: propertyUncheckedCreateNestedManyWithoutOwnerInput
     chats_buyer?: chatUncheckedCreateNestedManyWithoutBuyerInput
     sent_messages?: chat_messageUncheckedCreateNestedManyWithoutSenderInput
@@ -9511,10 +9334,10 @@ export namespace Prisma {
 
   export type chat_messageUncheckedCreateWithoutChatInput = {
     id?: string
-    senderId: string
     content: string
     timestamp?: Date | string
     read?: boolean
+    senderId: string
   }
 
   export type chat_messageCreateOrConnectWithoutChatInput = {
@@ -9557,8 +9380,6 @@ export namespace Prisma {
     lng?: NullableFloatFieldUpdateOperationsInput | number | null
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: marketplace_userUpdateOneRequiredWithoutPropertiesNestedInput
   }
 
@@ -9582,8 +9403,6 @@ export namespace Prisma {
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
     ownerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type marketplace_userUpsertWithoutChats_buyerInput = {
@@ -9604,7 +9423,6 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     properties?: propertyUpdateManyWithoutOwnerNestedInput
     chats_owner?: chatUpdateManyWithoutOwnerNestedInput
     sent_messages?: chat_messageUpdateManyWithoutSenderNestedInput
@@ -9617,7 +9435,6 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     properties?: propertyUncheckedUpdateManyWithoutOwnerNestedInput
     chats_owner?: chatUncheckedUpdateManyWithoutOwnerNestedInput
     sent_messages?: chat_messageUncheckedUpdateManyWithoutSenderNestedInput
@@ -9641,7 +9458,6 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     properties?: propertyUpdateManyWithoutOwnerNestedInput
     chats_buyer?: chatUpdateManyWithoutBuyerNestedInput
     sent_messages?: chat_messageUpdateManyWithoutSenderNestedInput
@@ -9654,7 +9470,6 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     properties?: propertyUncheckedUpdateManyWithoutOwnerNestedInput
     chats_buyer?: chatUncheckedUpdateManyWithoutBuyerNestedInput
     sent_messages?: chat_messageUncheckedUpdateManyWithoutSenderNestedInput
@@ -9678,8 +9493,6 @@ export namespace Prisma {
 
   export type chatCreateWithoutMessagesInput = {
     id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     property: propertyCreateNestedOneWithoutChatsInput
     buyer: marketplace_userCreateNestedOneWithoutChats_buyerInput
     owner: marketplace_userCreateNestedOneWithoutChats_ownerInput
@@ -9690,8 +9503,6 @@ export namespace Prisma {
     propertyId: string
     buyerId: string
     ownerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type chatCreateOrConnectWithoutMessagesInput = {
@@ -9706,7 +9517,6 @@ export namespace Prisma {
     role: string
     avatar?: string | null
     phone?: string | null
-    createdAt?: Date | string
     properties?: propertyCreateNestedManyWithoutOwnerInput
     chats_buyer?: chatCreateNestedManyWithoutBuyerInput
     chats_owner?: chatCreateNestedManyWithoutOwnerInput
@@ -9719,7 +9529,6 @@ export namespace Prisma {
     role: string
     avatar?: string | null
     phone?: string | null
-    createdAt?: Date | string
     properties?: propertyUncheckedCreateNestedManyWithoutOwnerInput
     chats_buyer?: chatUncheckedCreateNestedManyWithoutBuyerInput
     chats_owner?: chatUncheckedCreateNestedManyWithoutOwnerInput
@@ -9743,8 +9552,6 @@ export namespace Prisma {
 
   export type chatUpdateWithoutMessagesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     property?: propertyUpdateOneRequiredWithoutChatsNestedInput
     buyer?: marketplace_userUpdateOneRequiredWithoutChats_buyerNestedInput
     owner?: marketplace_userUpdateOneRequiredWithoutChats_ownerNestedInput
@@ -9755,8 +9562,6 @@ export namespace Prisma {
     propertyId?: StringFieldUpdateOperationsInput | string
     buyerId?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type marketplace_userUpsertWithoutSent_messagesInput = {
@@ -9777,7 +9582,6 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     properties?: propertyUpdateManyWithoutOwnerNestedInput
     chats_buyer?: chatUpdateManyWithoutBuyerNestedInput
     chats_owner?: chatUpdateManyWithoutOwnerNestedInput
@@ -9790,7 +9594,6 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     properties?: propertyUncheckedUpdateManyWithoutOwnerNestedInput
     chats_buyer?: chatUncheckedUpdateManyWithoutBuyerNestedInput
     chats_owner?: chatUncheckedUpdateManyWithoutOwnerNestedInput
@@ -9815,32 +9618,26 @@ export namespace Prisma {
     lng?: number | null
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type chatCreateManyBuyerInput = {
     id?: string
     propertyId: string
     ownerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type chatCreateManyOwnerInput = {
     id?: string
     propertyId: string
     buyerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type chat_messageCreateManySenderInput = {
     id?: string
-    chatId: string
     content: string
     timestamp?: Date | string
     read?: boolean
+    chatId: string
   }
 
   export type propertyUpdateWithoutOwnerInput = {
@@ -9862,8 +9659,6 @@ export namespace Prisma {
     lng?: NullableFloatFieldUpdateOperationsInput | number | null
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     chats?: chatUpdateManyWithoutPropertyNestedInput
   }
 
@@ -9886,8 +9681,6 @@ export namespace Prisma {
     lng?: NullableFloatFieldUpdateOperationsInput | number | null
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     chats?: chatUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
@@ -9910,14 +9703,10 @@ export namespace Prisma {
     lng?: NullableFloatFieldUpdateOperationsInput | number | null
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type chatUpdateWithoutBuyerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     property?: propertyUpdateOneRequiredWithoutChatsNestedInput
     owner?: marketplace_userUpdateOneRequiredWithoutChats_ownerNestedInput
     messages?: chat_messageUpdateManyWithoutChatNestedInput
@@ -9927,8 +9716,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     propertyId?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     messages?: chat_messageUncheckedUpdateManyWithoutChatNestedInput
   }
 
@@ -9936,14 +9723,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     propertyId?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type chatUpdateWithoutOwnerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     property?: propertyUpdateOneRequiredWithoutChatsNestedInput
     buyer?: marketplace_userUpdateOneRequiredWithoutChats_buyerNestedInput
     messages?: chat_messageUpdateManyWithoutChatNestedInput
@@ -9953,8 +9736,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     propertyId?: StringFieldUpdateOperationsInput | string
     buyerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     messages?: chat_messageUncheckedUpdateManyWithoutChatNestedInput
   }
 
@@ -9962,8 +9743,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     propertyId?: StringFieldUpdateOperationsInput | string
     buyerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type chat_messageUpdateWithoutSenderInput = {
@@ -9976,32 +9755,28 @@ export namespace Prisma {
 
   export type chat_messageUncheckedUpdateWithoutSenderInput = {
     id?: StringFieldUpdateOperationsInput | string
-    chatId?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     read?: BoolFieldUpdateOperationsInput | boolean
+    chatId?: StringFieldUpdateOperationsInput | string
   }
 
   export type chat_messageUncheckedUpdateManyWithoutSenderInput = {
     id?: StringFieldUpdateOperationsInput | string
-    chatId?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     read?: BoolFieldUpdateOperationsInput | boolean
+    chatId?: StringFieldUpdateOperationsInput | string
   }
 
   export type chatCreateManyPropertyInput = {
     id?: string
     buyerId: string
     ownerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type chatUpdateWithoutPropertyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     buyer?: marketplace_userUpdateOneRequiredWithoutChats_buyerNestedInput
     owner?: marketplace_userUpdateOneRequiredWithoutChats_ownerNestedInput
     messages?: chat_messageUpdateManyWithoutChatNestedInput
@@ -10011,8 +9786,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     buyerId?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     messages?: chat_messageUncheckedUpdateManyWithoutChatNestedInput
   }
 
@@ -10020,16 +9793,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     buyerId?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type chat_messageCreateManyChatInput = {
     id?: string
-    senderId: string
     content: string
     timestamp?: Date | string
     read?: boolean
+    senderId: string
   }
 
   export type chat_messageUpdateWithoutChatInput = {
@@ -10042,18 +9813,18 @@ export namespace Prisma {
 
   export type chat_messageUncheckedUpdateWithoutChatInput = {
     id?: StringFieldUpdateOperationsInput | string
-    senderId?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     read?: BoolFieldUpdateOperationsInput | boolean
+    senderId?: StringFieldUpdateOperationsInput | string
   }
 
   export type chat_messageUncheckedUpdateManyWithoutChatInput = {
     id?: StringFieldUpdateOperationsInput | string
-    senderId?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     read?: BoolFieldUpdateOperationsInput | boolean
+    senderId?: StringFieldUpdateOperationsInput | string
   }
 
 
