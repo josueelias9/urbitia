@@ -35,6 +35,11 @@ cd nextjs-dashboard
 npx prettier . --write
 ```
 
+```sh
+cd nextjs-dashboard
+pnpm knip
+```
+
 # update de database
 
 Summary:

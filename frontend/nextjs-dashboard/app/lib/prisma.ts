@@ -1,4 +1,7 @@
+// TODO: validate if this file is still needed or can be removed
+
 // lib/prisma.ts
+
 import { PrismaClient } from '../../generated/prisma'
 
 declare global {
