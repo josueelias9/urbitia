@@ -5,10 +5,10 @@ import { locales } from '@/proxy'
 
 export const metadata: Metadata = {
     title: {
-        template: '%s | Acme Dashboard',
-        default: 'Acme Dashboard'
+        template: '%s | Urbitia',
+        default: 'Urbitia (transforma tu propiedad en oportunidad)'
     },
-    description: 'The official Next.js Learn Dashboard built with App Router.',
+    description: 'Urbitia - Transforma tu propiedad en oportunidad.',
     metadataBase: new URL('https://next-learn-dashboard.vercel.sh')
 }
 
