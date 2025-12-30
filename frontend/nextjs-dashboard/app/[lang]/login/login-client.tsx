@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { ArrowRightIcon } from '@heroicons/react/20/solid'
-import { validateLogin } from '@/app/[lang]/marketplace/lib/actions'
+import { validateLogin } from '@/app/lib/actions'
 
 interface LoginClientProps {
     dict: {

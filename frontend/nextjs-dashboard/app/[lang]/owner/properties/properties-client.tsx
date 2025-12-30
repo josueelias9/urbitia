@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { PlusIcon, PencilIcon, TrashIcon } from '@heroicons/react/24/outline'
-import { Property } from '@/app/[lang]/marketplace/lib/types'
-import { getPropertiesByOwner } from '@/app/[lang]/marketplace/lib/data'
+import { Property } from '@/app/lib/types'
+import { getPropertiesByOwner } from '@/app/lib/data'
 
 interface OwnerPropertiesClientProps {
     dict: any

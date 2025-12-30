@@ -2,8 +2,8 @@
 
 import { useState, useMemo, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
-import { getAllProperties } from '@/app/[lang]/marketplace/lib/data'
-import { Property } from '@/app/[lang]/marketplace/lib/types'
+import { getAllProperties } from '@/app/lib/data'
+import { Property } from '@/app/lib/types'
 import { PropertyCard } from '@/app/[lang]/marketplace/ui/components/property-card'
 import {
     SearchFilters,

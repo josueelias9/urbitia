@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { SessionProvider } from 'next-auth/react'
-import { AuthProvider } from './lib/auth-context'
+import { AuthProvider } from '../../lib/auth-context'
 
 export const metadata: Metadata = {
     title: {

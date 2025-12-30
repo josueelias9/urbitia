@@ -1,5 +1,5 @@
-import { getPropertiesByOwner, getChatsByUser } from '@/app/[lang]/marketplace/lib/data'
-import { Property } from '@/app/[lang]/marketplace/lib/types'
+import { getPropertiesByOwner, getChatsByUser } from '@/app/lib/data'
+import { Property } from '@/app/lib/types'
 import { PropertyCard } from '@/app/[lang]/marketplace/ui/components/property-card'
 import Link from 'next/link'
 import {

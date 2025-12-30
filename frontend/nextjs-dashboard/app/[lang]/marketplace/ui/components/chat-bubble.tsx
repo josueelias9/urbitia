@@ -1,4 +1,4 @@
-import { ChatMessage } from '@/app/[lang]/marketplace/lib/types'
+import { ChatMessage } from '@/app/lib/types'
 import { UserAvatar } from './user-avatar'
 
 interface ChatBubbleProps {

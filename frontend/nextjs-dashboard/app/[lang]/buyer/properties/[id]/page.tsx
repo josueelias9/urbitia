@@ -6,8 +6,8 @@ import {
     getPropertyById,
     getOrCreateChat,
     sendChatMessage
-} from '@/app/[lang]/marketplace/lib/actions'
-import { Property, Chat } from '@/app/[lang]/marketplace/lib/types'
+} from '@/app/lib/actions'
+import { Property, Chat } from '@/app/lib/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeftIcon, MapPinIcon, HomeIcon } from '@heroicons/react/24/outline'

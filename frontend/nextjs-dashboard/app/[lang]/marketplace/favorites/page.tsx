@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useAuth } from '@/app/[lang]/marketplace/lib/auth-context'
+import { useAuth } from '@/app/lib/auth-context'
 import { PrismaClient, property as Property } from '@/generated/prisma/client'
 import { PropertyCard } from '@/app/[lang]/marketplace/ui/components/property-card'
 import Link from 'next/link'

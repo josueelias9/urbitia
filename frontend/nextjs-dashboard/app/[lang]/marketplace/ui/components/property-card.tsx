@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Property } from '@/app/[lang]/marketplace/lib/types'
+import { Property } from '@/app/lib/types'
 import { HeartIcon, MapPinIcon, HomeIcon, BanknotesIcon } from '@heroicons/react/24/outline'
 import { HeartIcon as HeartSolidIcon } from '@heroicons/react/24/solid'
 

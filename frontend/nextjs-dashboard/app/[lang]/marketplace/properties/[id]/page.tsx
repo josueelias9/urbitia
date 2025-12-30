@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
-import { useAuth } from '@/app/[lang]/marketplace/lib/auth-context'
-import { getAllProperties } from '@/app/[lang]/marketplace/lib/data'
-import { Property, User } from '@/app/[lang]/marketplace/lib/types'
+import { useAuth } from '@/app/lib/auth-context'
+import { getAllProperties } from '@/app/lib/data'
+import { Property, User } from '@/app/lib/types'
 import { UserAvatar } from '@/app/[lang]/marketplace/ui/components/user-avatar'
 import Image from 'next/image'
 import Link from 'next/link'

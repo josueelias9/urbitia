@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { useAuth } from '@/app/[lang]/marketplace/lib/auth-context'
+import { useAuth } from '@/app/lib/auth-context'
 import { useSearchParams } from 'next/navigation'
 import {
     mockChats,
@@ -9,8 +9,8 @@ import {
     mockUsers,
     getUserById,
     getPropertyById
-} from '@/app/[lang]/marketplace/lib/mock-data'
-import { Chat, ChatMessage, Property, User } from '@/app/[lang]/marketplace/lib/types'
+} from '@/app/lib/mock-data'
+import { Chat, ChatMessage, Property, User } from '@/app/lib/types'
 import { ChatBubble } from '@/app/[lang]/marketplace/ui/components/chat-bubble'
 import { UserAvatar } from '@/app/[lang]/marketplace/ui/components/user-avatar'
 import Link from 'next/link'
