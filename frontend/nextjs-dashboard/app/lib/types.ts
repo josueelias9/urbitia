@@ -1,3 +1,6 @@
+// https://www.prisma.io/docs/orm/prisma-schema/overview/generators#importing-generated-model-types
+// TODO: check if it is better to import from "models" instead of "client"
+
 import type { marketplace_user, property, chat, chat_message } from '@/generated/prisma/client'
 
 export type User = marketplace_user

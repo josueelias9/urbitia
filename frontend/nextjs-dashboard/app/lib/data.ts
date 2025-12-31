@@ -1,6 +1,6 @@
 'use server'
 import { PrismaClient } from '@/generated/prisma'
-import { Property } from './types'
+import { Property } from '@/app/lib/types'
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient }
 
