@@ -5,14 +5,14 @@ You need to be inside the devcontainer
 - install dependancies
 
 ```sh
-cd nextjs-dashboard
+cd /workspace/frontend/nextjs-dashboard
 pnpm i
 ```
 
 - apply migrations to the db without creating any file
 
 ```sh
-cd nextjs-dashboard
+cd /workspace/frontend/nextjs-dashboard
 npx prisma migrate deploy
 ```
 
@@ -20,6 +20,7 @@ npx prisma migrate deploy
 
 ```sh
 # https://www.prisma.io/docs/orm/prisma-migrate/workflows/seeding
+cd /workspace/frontend/nextjs-dashboard
 npx prisma db seed
 ```
 
@@ -27,12 +28,16 @@ npx prisma db seed
 
 ![alt text](image.png)
 
-
 - before commiting, run prettier
 
 ```sh
 cd nextjs-dashboard
 npx prettier . --write
+```
+
+```sh
+cd nextjs-dashboard
+pnpm knip
 ```
 
 # update de database
@@ -50,5 +55,5 @@ steps:
 
 ```sh
 cd nextjs-dashboard
-npx prisma migrate dev --name customers-invoices-relationship
+npx prisma migrate dev --name <EXPLAIN-THE-CHANGES>
 ```

@@ -14,11 +14,6 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model users
- * 
- */
-export type users = $Result.DefaultSelection<Prisma.$usersPayload>
-/**
  * Model marketplace_user
  * 
  */
@@ -46,8 +41,8 @@ export type chat_message = $Result.DefaultSelection<Prisma.$chat_messagePayload>
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Users
- * const users = await prisma.users.findMany()
+ * // Fetch zero or more Marketplace_users
+ * const marketplace_users = await prisma.marketplace_user.findMany()
  * ```
  *
  *
@@ -67,8 +62,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Users
-   * const users = await prisma.users.findMany()
+   * // Fetch zero or more Marketplace_users
+   * const marketplace_users = await prisma.marketplace_user.findMany()
    * ```
    *
    *
@@ -158,16 +153,6 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.users`: Exposes CRUD operations for the **users** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Users
-    * const users = await prisma.users.findMany()
-    * ```
-    */
-  get users(): Prisma.usersDelegate<ExtArgs, ClientOptions>;
-
-  /**
    * `prisma.marketplace_user`: Exposes CRUD operations for the **marketplace_user** model.
     * Example usage:
     * ```ts
@@ -646,7 +631,6 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    users: 'users',
     marketplace_user: 'marketplace_user',
     property: 'property',
     chat: 'chat',
@@ -669,84 +653,10 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "users" | "marketplace_user" | "property" | "chat" | "chat_message"
+      modelProps: "marketplace_user" | "property" | "chat" | "chat_message"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      users: {
-        payload: Prisma.$usersPayload<ExtArgs>
-        fields: Prisma.usersFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.usersFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$usersPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.usersFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$usersPayload>
-          }
-          findFirst: {
-            args: Prisma.usersFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$usersPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.usersFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$usersPayload>
-          }
-          findMany: {
-            args: Prisma.usersFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$usersPayload>[]
-          }
-          create: {
-            args: Prisma.usersCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$usersPayload>
-          }
-          createMany: {
-            args: Prisma.usersCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.usersCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$usersPayload>[]
-          }
-          delete: {
-            args: Prisma.usersDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$usersPayload>
-          }
-          update: {
-            args: Prisma.usersUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$usersPayload>
-          }
-          deleteMany: {
-            args: Prisma.usersDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.usersUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.usersUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$usersPayload>[]
-          }
-          upsert: {
-            args: Prisma.usersUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$usersPayload>
-          }
-          aggregate: {
-            args: Prisma.UsersAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateUsers>
-          }
-          groupBy: {
-            args: Prisma.usersGroupByArgs<ExtArgs>
-            result: $Utils.Optional<UsersGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.usersCountArgs<ExtArgs>
-            result: $Utils.Optional<UsersCountAggregateOutputType> | number
-          }
-        }
-      }
       marketplace_user: {
         payload: Prisma.$marketplace_userPayload<ExtArgs>
         fields: Prisma.marketplace_userFieldRefs
@@ -1139,7 +1049,6 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
-    users?: usersOmit
     marketplace_user?: marketplace_userOmit
     property?: propertyOmit
     chat?: chatOmit
@@ -1344,988 +1253,6 @@ export namespace Prisma {
    */
 
   /**
-   * Model users
-   */
-
-  export type AggregateUsers = {
-    _count: UsersCountAggregateOutputType | null
-    _min: UsersMinAggregateOutputType | null
-    _max: UsersMaxAggregateOutputType | null
-  }
-
-  export type UsersMinAggregateOutputType = {
-    id: string | null
-    name: string | null
-    email: string | null
-    password: string | null
-  }
-
-  export type UsersMaxAggregateOutputType = {
-    id: string | null
-    name: string | null
-    email: string | null
-    password: string | null
-  }
-
-  export type UsersCountAggregateOutputType = {
-    id: number
-    name: number
-    email: number
-    password: number
-    _all: number
-  }
-
-
-  export type UsersMinAggregateInputType = {
-    id?: true
-    name?: true
-    email?: true
-    password?: true
-  }
-
-  export type UsersMaxAggregateInputType = {
-    id?: true
-    name?: true
-    email?: true
-    password?: true
-  }
-
-  export type UsersCountAggregateInputType = {
-    id?: true
-    name?: true
-    email?: true
-    password?: true
-    _all?: true
-  }
-
-  export type UsersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which users to aggregate.
-     */
-    where?: usersWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of users to fetch.
-     */
-    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: usersWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` users from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` users.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned users
-    **/
-    _count?: true | UsersCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: UsersMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: UsersMaxAggregateInputType
-  }
-
-  export type GetUsersAggregateType<T extends UsersAggregateArgs> = {
-        [P in keyof T & keyof AggregateUsers]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateUsers[P]>
-      : GetScalarType<T[P], AggregateUsers[P]>
-  }
-
-
-
-
-  export type usersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: usersWhereInput
-    orderBy?: usersOrderByWithAggregationInput | usersOrderByWithAggregationInput[]
-    by: UsersScalarFieldEnum[] | UsersScalarFieldEnum
-    having?: usersScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: UsersCountAggregateInputType | true
-    _min?: UsersMinAggregateInputType
-    _max?: UsersMaxAggregateInputType
-  }
-
-  export type UsersGroupByOutputType = {
-    id: string
-    name: string
-    email: string
-    password: string
-    _count: UsersCountAggregateOutputType | null
-    _min: UsersMinAggregateOutputType | null
-    _max: UsersMaxAggregateOutputType | null
-  }
-
-  type GetUsersGroupByPayload<T extends usersGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<UsersGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof UsersGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], UsersGroupByOutputType[P]>
-            : GetScalarType<T[P], UsersGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type usersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    email?: boolean
-    password?: boolean
-  }, ExtArgs["result"]["users"]>
-
-  export type usersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    email?: boolean
-    password?: boolean
-  }, ExtArgs["result"]["users"]>
-
-  export type usersSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    email?: boolean
-    password?: boolean
-  }, ExtArgs["result"]["users"]>
-
-  export type usersSelectScalar = {
-    id?: boolean
-    name?: boolean
-    email?: boolean
-    password?: boolean
-  }
-
-  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password", ExtArgs["result"]["users"]>
-
-  export type $usersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "users"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      name: string
-      email: string
-      password: string
-    }, ExtArgs["result"]["users"]>
-    composites: {}
-  }
-
-  type usersGetPayload<S extends boolean | null | undefined | usersDefaultArgs> = $Result.GetResult<Prisma.$usersPayload, S>
-
-  type usersCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<usersFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: UsersCountAggregateInputType | true
-    }
-
-  export interface usersDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['users'], meta: { name: 'users' } }
-    /**
-     * Find zero or one Users that matches the filter.
-     * @param {usersFindUniqueArgs} args - Arguments to find a Users
-     * @example
-     * // Get one Users
-     * const users = await prisma.users.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends usersFindUniqueArgs>(args: SelectSubset<T, usersFindUniqueArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Users that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {usersFindUniqueOrThrowArgs} args - Arguments to find a Users
-     * @example
-     * // Get one Users
-     * const users = await prisma.users.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends usersFindUniqueOrThrowArgs>(args: SelectSubset<T, usersFindUniqueOrThrowArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Users that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {usersFindFirstArgs} args - Arguments to find a Users
-     * @example
-     * // Get one Users
-     * const users = await prisma.users.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends usersFindFirstArgs>(args?: SelectSubset<T, usersFindFirstArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Users that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {usersFindFirstOrThrowArgs} args - Arguments to find a Users
-     * @example
-     * // Get one Users
-     * const users = await prisma.users.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends usersFindFirstOrThrowArgs>(args?: SelectSubset<T, usersFindFirstOrThrowArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Users that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {usersFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Users
-     * const users = await prisma.users.findMany()
-     * 
-     * // Get first 10 Users
-     * const users = await prisma.users.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const usersWithIdOnly = await prisma.users.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends usersFindManyArgs>(args?: SelectSubset<T, usersFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Users.
-     * @param {usersCreateArgs} args - Arguments to create a Users.
-     * @example
-     * // Create one Users
-     * const Users = await prisma.users.create({
-     *   data: {
-     *     // ... data to create a Users
-     *   }
-     * })
-     * 
-     */
-    create<T extends usersCreateArgs>(args: SelectSubset<T, usersCreateArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Users.
-     * @param {usersCreateManyArgs} args - Arguments to create many Users.
-     * @example
-     * // Create many Users
-     * const users = await prisma.users.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends usersCreateManyArgs>(args?: SelectSubset<T, usersCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Users and returns the data saved in the database.
-     * @param {usersCreateManyAndReturnArgs} args - Arguments to create many Users.
-     * @example
-     * // Create many Users
-     * const users = await prisma.users.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Users and only return the `id`
-     * const usersWithIdOnly = await prisma.users.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends usersCreateManyAndReturnArgs>(args?: SelectSubset<T, usersCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Users.
-     * @param {usersDeleteArgs} args - Arguments to delete one Users.
-     * @example
-     * // Delete one Users
-     * const Users = await prisma.users.delete({
-     *   where: {
-     *     // ... filter to delete one Users
-     *   }
-     * })
-     * 
-     */
-    delete<T extends usersDeleteArgs>(args: SelectSubset<T, usersDeleteArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Users.
-     * @param {usersUpdateArgs} args - Arguments to update one Users.
-     * @example
-     * // Update one Users
-     * const users = await prisma.users.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends usersUpdateArgs>(args: SelectSubset<T, usersUpdateArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Users.
-     * @param {usersDeleteManyArgs} args - Arguments to filter Users to delete.
-     * @example
-     * // Delete a few Users
-     * const { count } = await prisma.users.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends usersDeleteManyArgs>(args?: SelectSubset<T, usersDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Users.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {usersUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Users
-     * const users = await prisma.users.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends usersUpdateManyArgs>(args: SelectSubset<T, usersUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Users and returns the data updated in the database.
-     * @param {usersUpdateManyAndReturnArgs} args - Arguments to update many Users.
-     * @example
-     * // Update many Users
-     * const users = await prisma.users.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Users and only return the `id`
-     * const usersWithIdOnly = await prisma.users.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends usersUpdateManyAndReturnArgs>(args: SelectSubset<T, usersUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Users.
-     * @param {usersUpsertArgs} args - Arguments to update or create a Users.
-     * @example
-     * // Update or create a Users
-     * const users = await prisma.users.upsert({
-     *   create: {
-     *     // ... data to create a Users
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Users we want to update
-     *   }
-     * })
-     */
-    upsert<T extends usersUpsertArgs>(args: SelectSubset<T, usersUpsertArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Users.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {usersCountArgs} args - Arguments to filter Users to count.
-     * @example
-     * // Count the number of Users
-     * const count = await prisma.users.count({
-     *   where: {
-     *     // ... the filter for the Users we want to count
-     *   }
-     * })
-    **/
-    count<T extends usersCountArgs>(
-      args?: Subset<T, usersCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], UsersCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Users.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UsersAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends UsersAggregateArgs>(args: Subset<T, UsersAggregateArgs>): Prisma.PrismaPromise<GetUsersAggregateType<T>>
-
-    /**
-     * Group by Users.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {usersGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends usersGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: usersGroupByArgs['orderBy'] }
-        : { orderBy?: usersGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, usersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUsersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the users model
-   */
-  readonly fields: usersFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for users.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__usersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the users model
-   */
-  interface usersFieldRefs {
-    readonly id: FieldRef<"users", 'String'>
-    readonly name: FieldRef<"users", 'String'>
-    readonly email: FieldRef<"users", 'String'>
-    readonly password: FieldRef<"users", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * users findUnique
-   */
-  export type usersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the users
-     */
-    select?: usersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the users
-     */
-    omit?: usersOmit<ExtArgs> | null
-    /**
-     * Filter, which users to fetch.
-     */
-    where: usersWhereUniqueInput
-  }
-
-  /**
-   * users findUniqueOrThrow
-   */
-  export type usersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the users
-     */
-    select?: usersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the users
-     */
-    omit?: usersOmit<ExtArgs> | null
-    /**
-     * Filter, which users to fetch.
-     */
-    where: usersWhereUniqueInput
-  }
-
-  /**
-   * users findFirst
-   */
-  export type usersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the users
-     */
-    select?: usersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the users
-     */
-    omit?: usersOmit<ExtArgs> | null
-    /**
-     * Filter, which users to fetch.
-     */
-    where?: usersWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of users to fetch.
-     */
-    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for users.
-     */
-    cursor?: usersWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` users from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` users.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of users.
-     */
-    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
-  }
-
-  /**
-   * users findFirstOrThrow
-   */
-  export type usersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the users
-     */
-    select?: usersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the users
-     */
-    omit?: usersOmit<ExtArgs> | null
-    /**
-     * Filter, which users to fetch.
-     */
-    where?: usersWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of users to fetch.
-     */
-    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for users.
-     */
-    cursor?: usersWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` users from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` users.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of users.
-     */
-    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
-  }
-
-  /**
-   * users findMany
-   */
-  export type usersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the users
-     */
-    select?: usersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the users
-     */
-    omit?: usersOmit<ExtArgs> | null
-    /**
-     * Filter, which users to fetch.
-     */
-    where?: usersWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of users to fetch.
-     */
-    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing users.
-     */
-    cursor?: usersWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` users from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` users.
-     */
-    skip?: number
-    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
-  }
-
-  /**
-   * users create
-   */
-  export type usersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the users
-     */
-    select?: usersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the users
-     */
-    omit?: usersOmit<ExtArgs> | null
-    /**
-     * The data needed to create a users.
-     */
-    data: XOR<usersCreateInput, usersUncheckedCreateInput>
-  }
-
-  /**
-   * users createMany
-   */
-  export type usersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many users.
-     */
-    data: usersCreateManyInput | usersCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * users createManyAndReturn
-   */
-  export type usersCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the users
-     */
-    select?: usersSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the users
-     */
-    omit?: usersOmit<ExtArgs> | null
-    /**
-     * The data used to create many users.
-     */
-    data: usersCreateManyInput | usersCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * users update
-   */
-  export type usersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the users
-     */
-    select?: usersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the users
-     */
-    omit?: usersOmit<ExtArgs> | null
-    /**
-     * The data needed to update a users.
-     */
-    data: XOR<usersUpdateInput, usersUncheckedUpdateInput>
-    /**
-     * Choose, which users to update.
-     */
-    where: usersWhereUniqueInput
-  }
-
-  /**
-   * users updateMany
-   */
-  export type usersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update users.
-     */
-    data: XOR<usersUpdateManyMutationInput, usersUncheckedUpdateManyInput>
-    /**
-     * Filter which users to update
-     */
-    where?: usersWhereInput
-    /**
-     * Limit how many users to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * users updateManyAndReturn
-   */
-  export type usersUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the users
-     */
-    select?: usersSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the users
-     */
-    omit?: usersOmit<ExtArgs> | null
-    /**
-     * The data used to update users.
-     */
-    data: XOR<usersUpdateManyMutationInput, usersUncheckedUpdateManyInput>
-    /**
-     * Filter which users to update
-     */
-    where?: usersWhereInput
-    /**
-     * Limit how many users to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * users upsert
-   */
-  export type usersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the users
-     */
-    select?: usersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the users
-     */
-    omit?: usersOmit<ExtArgs> | null
-    /**
-     * The filter to search for the users to update in case it exists.
-     */
-    where: usersWhereUniqueInput
-    /**
-     * In case the users found by the `where` argument doesn't exist, create a new users with this data.
-     */
-    create: XOR<usersCreateInput, usersUncheckedCreateInput>
-    /**
-     * In case the users was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<usersUpdateInput, usersUncheckedUpdateInput>
-  }
-
-  /**
-   * users delete
-   */
-  export type usersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the users
-     */
-    select?: usersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the users
-     */
-    omit?: usersOmit<ExtArgs> | null
-    /**
-     * Filter which users to delete.
-     */
-    where: usersWhereUniqueInput
-  }
-
-  /**
-   * users deleteMany
-   */
-  export type usersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which users to delete
-     */
-    where?: usersWhereInput
-    /**
-     * Limit how many users to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * users without action
-   */
-  export type usersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the users
-     */
-    select?: usersSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the users
-     */
-    omit?: usersOmit<ExtArgs> | null
-  }
-
-
-  /**
    * Model marketplace_user
    */
 
@@ -2342,7 +1269,7 @@ export namespace Prisma {
     role: string | null
     avatar: string | null
     phone: string | null
-    createdAt: Date | null
+    password: string | null
   }
 
   export type Marketplace_userMaxAggregateOutputType = {
@@ -2352,7 +1279,7 @@ export namespace Prisma {
     role: string | null
     avatar: string | null
     phone: string | null
-    createdAt: Date | null
+    password: string | null
   }
 
   export type Marketplace_userCountAggregateOutputType = {
@@ -2362,7 +1289,7 @@ export namespace Prisma {
     role: number
     avatar: number
     phone: number
-    createdAt: number
+    password: number
     _all: number
   }
 
@@ -2374,7 +1301,7 @@ export namespace Prisma {
     role?: true
     avatar?: true
     phone?: true
-    createdAt?: true
+    password?: true
   }
 
   export type Marketplace_userMaxAggregateInputType = {
@@ -2384,7 +1311,7 @@ export namespace Prisma {
     role?: true
     avatar?: true
     phone?: true
-    createdAt?: true
+    password?: true
   }
 
   export type Marketplace_userCountAggregateInputType = {
@@ -2394,7 +1321,7 @@ export namespace Prisma {
     role?: true
     avatar?: true
     phone?: true
-    createdAt?: true
+    password?: true
     _all?: true
   }
 
@@ -2477,7 +1404,7 @@ export namespace Prisma {
     role: string
     avatar: string | null
     phone: string | null
-    createdAt: Date
+    password: string | null
     _count: Marketplace_userCountAggregateOutputType | null
     _min: Marketplace_userMinAggregateOutputType | null
     _max: Marketplace_userMaxAggregateOutputType | null
@@ -2504,7 +1431,7 @@ export namespace Prisma {
     role?: boolean
     avatar?: boolean
     phone?: boolean
-    createdAt?: boolean
+    password?: boolean
     properties?: boolean | marketplace_user$propertiesArgs<ExtArgs>
     chats_buyer?: boolean | marketplace_user$chats_buyerArgs<ExtArgs>
     chats_owner?: boolean | marketplace_user$chats_ownerArgs<ExtArgs>
@@ -2519,7 +1446,7 @@ export namespace Prisma {
     role?: boolean
     avatar?: boolean
     phone?: boolean
-    createdAt?: boolean
+    password?: boolean
   }, ExtArgs["result"]["marketplace_user"]>
 
   export type marketplace_userSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2529,7 +1456,7 @@ export namespace Prisma {
     role?: boolean
     avatar?: boolean
     phone?: boolean
-    createdAt?: boolean
+    password?: boolean
   }, ExtArgs["result"]["marketplace_user"]>
 
   export type marketplace_userSelectScalar = {
@@ -2539,10 +1466,10 @@ export namespace Prisma {
     role?: boolean
     avatar?: boolean
     phone?: boolean
-    createdAt?: boolean
+    password?: boolean
   }
 
-  export type marketplace_userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "role" | "avatar" | "phone" | "createdAt", ExtArgs["result"]["marketplace_user"]>
+  export type marketplace_userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "role" | "avatar" | "phone" | "password", ExtArgs["result"]["marketplace_user"]>
   export type marketplace_userInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     properties?: boolean | marketplace_user$propertiesArgs<ExtArgs>
     chats_buyer?: boolean | marketplace_user$chats_buyerArgs<ExtArgs>
@@ -2568,7 +1495,7 @@ export namespace Prisma {
       role: string
       avatar: string | null
       phone: string | null
-      createdAt: Date
+      password: string | null
     }, ExtArgs["result"]["marketplace_user"]>
     composites: {}
   }
@@ -3002,7 +1929,7 @@ export namespace Prisma {
     readonly role: FieldRef<"marketplace_user", 'String'>
     readonly avatar: FieldRef<"marketplace_user", 'String'>
     readonly phone: FieldRef<"marketplace_user", 'String'>
-    readonly createdAt: FieldRef<"marketplace_user", 'DateTime'>
+    readonly password: FieldRef<"marketplace_user", 'String'>
   }
     
 
@@ -3553,8 +2480,6 @@ export namespace Prisma {
     lat: number | null
     lng: number | null
     ownerId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
   }
 
   export type PropertyMaxAggregateOutputType = {
@@ -3575,8 +2500,6 @@ export namespace Prisma {
     lat: number | null
     lng: number | null
     ownerId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
   }
 
   export type PropertyCountAggregateOutputType = {
@@ -3599,8 +2522,6 @@ export namespace Prisma {
     images: number
     amenities: number
     ownerId: number
-    createdAt: number
-    updatedAt: number
     _all: number
   }
 
@@ -3641,8 +2562,6 @@ export namespace Prisma {
     lat?: true
     lng?: true
     ownerId?: true
-    createdAt?: true
-    updatedAt?: true
   }
 
   export type PropertyMaxAggregateInputType = {
@@ -3663,8 +2582,6 @@ export namespace Prisma {
     lat?: true
     lng?: true
     ownerId?: true
-    createdAt?: true
-    updatedAt?: true
   }
 
   export type PropertyCountAggregateInputType = {
@@ -3687,8 +2604,6 @@ export namespace Prisma {
     images?: true
     amenities?: true
     ownerId?: true
-    createdAt?: true
-    updatedAt?: true
     _all?: true
   }
 
@@ -3798,8 +2713,6 @@ export namespace Prisma {
     images: string[]
     amenities: string[]
     ownerId: string
-    createdAt: Date
-    updatedAt: Date
     _count: PropertyCountAggregateOutputType | null
     _avg: PropertyAvgAggregateOutputType | null
     _sum: PropertySumAggregateOutputType | null
@@ -3841,8 +2754,6 @@ export namespace Prisma {
     images?: boolean
     amenities?: boolean
     ownerId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     owner?: boolean | marketplace_userDefaultArgs<ExtArgs>
     chats?: boolean | property$chatsArgs<ExtArgs>
     _count?: boolean | PropertyCountOutputTypeDefaultArgs<ExtArgs>
@@ -3868,8 +2779,6 @@ export namespace Prisma {
     images?: boolean
     amenities?: boolean
     ownerId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     owner?: boolean | marketplace_userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["property"]>
 
@@ -3893,8 +2802,6 @@ export namespace Prisma {
     images?: boolean
     amenities?: boolean
     ownerId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     owner?: boolean | marketplace_userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["property"]>
 
@@ -3918,11 +2825,9 @@ export namespace Prisma {
     images?: boolean
     amenities?: boolean
     ownerId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
   }
 
-  export type propertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "price" | "currency" | "type" | "status" | "bedrooms" | "bathrooms" | "area" | "street" | "city" | "country" | "zipCode" | "lat" | "lng" | "images" | "amenities" | "ownerId" | "createdAt" | "updatedAt", ExtArgs["result"]["property"]>
+  export type propertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "price" | "currency" | "type" | "status" | "bedrooms" | "bathrooms" | "area" | "street" | "city" | "country" | "zipCode" | "lat" | "lng" | "images" | "amenities" | "ownerId", ExtArgs["result"]["property"]>
   export type propertyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     owner?: boolean | marketplace_userDefaultArgs<ExtArgs>
     chats?: boolean | property$chatsArgs<ExtArgs>
@@ -3961,8 +2866,6 @@ export namespace Prisma {
       images: string[]
       amenities: string[]
       ownerId: string
-      createdAt: Date
-      updatedAt: Date
     }, ExtArgs["result"]["property"]>
     composites: {}
   }
@@ -4407,8 +3310,6 @@ export namespace Prisma {
     readonly images: FieldRef<"property", 'String[]'>
     readonly amenities: FieldRef<"property", 'String[]'>
     readonly ownerId: FieldRef<"property", 'String'>
-    readonly createdAt: FieldRef<"property", 'DateTime'>
-    readonly updatedAt: FieldRef<"property", 'DateTime'>
   }
     
 
@@ -4862,8 +3763,6 @@ export namespace Prisma {
     propertyId: string | null
     buyerId: string | null
     ownerId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
   }
 
   export type ChatMaxAggregateOutputType = {
@@ -4871,8 +3770,6 @@ export namespace Prisma {
     propertyId: string | null
     buyerId: string | null
     ownerId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
   }
 
   export type ChatCountAggregateOutputType = {
@@ -4880,8 +3777,6 @@ export namespace Prisma {
     propertyId: number
     buyerId: number
     ownerId: number
-    createdAt: number
-    updatedAt: number
     _all: number
   }
 
@@ -4891,8 +3786,6 @@ export namespace Prisma {
     propertyId?: true
     buyerId?: true
     ownerId?: true
-    createdAt?: true
-    updatedAt?: true
   }
 
   export type ChatMaxAggregateInputType = {
@@ -4900,8 +3793,6 @@ export namespace Prisma {
     propertyId?: true
     buyerId?: true
     ownerId?: true
-    createdAt?: true
-    updatedAt?: true
   }
 
   export type ChatCountAggregateInputType = {
@@ -4909,8 +3800,6 @@ export namespace Prisma {
     propertyId?: true
     buyerId?: true
     ownerId?: true
-    createdAt?: true
-    updatedAt?: true
     _all?: true
   }
 
@@ -4991,8 +3880,6 @@ export namespace Prisma {
     propertyId: string
     buyerId: string
     ownerId: string
-    createdAt: Date
-    updatedAt: Date
     _count: ChatCountAggregateOutputType | null
     _min: ChatMinAggregateOutputType | null
     _max: ChatMaxAggregateOutputType | null
@@ -5017,8 +3904,6 @@ export namespace Prisma {
     propertyId?: boolean
     buyerId?: boolean
     ownerId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     property?: boolean | propertyDefaultArgs<ExtArgs>
     buyer?: boolean | marketplace_userDefaultArgs<ExtArgs>
     owner?: boolean | marketplace_userDefaultArgs<ExtArgs>
@@ -5031,8 +3916,6 @@ export namespace Prisma {
     propertyId?: boolean
     buyerId?: boolean
     ownerId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     property?: boolean | propertyDefaultArgs<ExtArgs>
     buyer?: boolean | marketplace_userDefaultArgs<ExtArgs>
     owner?: boolean | marketplace_userDefaultArgs<ExtArgs>
@@ -5043,8 +3926,6 @@ export namespace Prisma {
     propertyId?: boolean
     buyerId?: boolean
     ownerId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     property?: boolean | propertyDefaultArgs<ExtArgs>
     buyer?: boolean | marketplace_userDefaultArgs<ExtArgs>
     owner?: boolean | marketplace_userDefaultArgs<ExtArgs>
@@ -5055,11 +3936,9 @@ export namespace Prisma {
     propertyId?: boolean
     buyerId?: boolean
     ownerId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
   }
 
-  export type chatOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "propertyId" | "buyerId" | "ownerId" | "createdAt" | "updatedAt", ExtArgs["result"]["chat"]>
+  export type chatOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "propertyId" | "buyerId" | "ownerId", ExtArgs["result"]["chat"]>
   export type chatInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     property?: boolean | propertyDefaultArgs<ExtArgs>
     buyer?: boolean | marketplace_userDefaultArgs<ExtArgs>
@@ -5091,8 +3970,6 @@ export namespace Prisma {
       propertyId: string
       buyerId: string
       ownerId: string
-      createdAt: Date
-      updatedAt: Date
     }, ExtArgs["result"]["chat"]>
     composites: {}
   }
@@ -5524,8 +4401,6 @@ export namespace Prisma {
     readonly propertyId: FieldRef<"chat", 'String'>
     readonly buyerId: FieldRef<"chat", 'String'>
     readonly ownerId: FieldRef<"chat", 'String'>
-    readonly createdAt: FieldRef<"chat", 'DateTime'>
-    readonly updatedAt: FieldRef<"chat", 'DateTime'>
   }
     
 
@@ -5976,58 +4851,58 @@ export namespace Prisma {
 
   export type Chat_messageMinAggregateOutputType = {
     id: string | null
-    chatId: string | null
-    senderId: string | null
     content: string | null
     timestamp: Date | null
     read: boolean | null
+    chatId: string | null
+    senderId: string | null
   }
 
   export type Chat_messageMaxAggregateOutputType = {
     id: string | null
-    chatId: string | null
-    senderId: string | null
     content: string | null
     timestamp: Date | null
     read: boolean | null
+    chatId: string | null
+    senderId: string | null
   }
 
   export type Chat_messageCountAggregateOutputType = {
     id: number
-    chatId: number
-    senderId: number
     content: number
     timestamp: number
     read: number
+    chatId: number
+    senderId: number
     _all: number
   }
 
 
   export type Chat_messageMinAggregateInputType = {
     id?: true
-    chatId?: true
-    senderId?: true
     content?: true
     timestamp?: true
     read?: true
+    chatId?: true
+    senderId?: true
   }
 
   export type Chat_messageMaxAggregateInputType = {
     id?: true
-    chatId?: true
-    senderId?: true
     content?: true
     timestamp?: true
     read?: true
+    chatId?: true
+    senderId?: true
   }
 
   export type Chat_messageCountAggregateInputType = {
     id?: true
-    chatId?: true
-    senderId?: true
     content?: true
     timestamp?: true
     read?: true
+    chatId?: true
+    senderId?: true
     _all?: true
   }
 
@@ -6105,11 +4980,11 @@ export namespace Prisma {
 
   export type Chat_messageGroupByOutputType = {
     id: string
-    chatId: string
-    senderId: string
     content: string
     timestamp: Date
     read: boolean
+    chatId: string
+    senderId: string
     _count: Chat_messageCountAggregateOutputType | null
     _min: Chat_messageMinAggregateOutputType | null
     _max: Chat_messageMaxAggregateOutputType | null
@@ -6131,47 +5006,47 @@ export namespace Prisma {
 
   export type chat_messageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    chatId?: boolean
-    senderId?: boolean
     content?: boolean
     timestamp?: boolean
     read?: boolean
+    chatId?: boolean
+    senderId?: boolean
     chat?: boolean | chatDefaultArgs<ExtArgs>
     sender?: boolean | marketplace_userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["chat_message"]>
 
   export type chat_messageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    chatId?: boolean
-    senderId?: boolean
     content?: boolean
     timestamp?: boolean
     read?: boolean
+    chatId?: boolean
+    senderId?: boolean
     chat?: boolean | chatDefaultArgs<ExtArgs>
     sender?: boolean | marketplace_userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["chat_message"]>
 
   export type chat_messageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    chatId?: boolean
-    senderId?: boolean
     content?: boolean
     timestamp?: boolean
     read?: boolean
+    chatId?: boolean
+    senderId?: boolean
     chat?: boolean | chatDefaultArgs<ExtArgs>
     sender?: boolean | marketplace_userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["chat_message"]>
 
   export type chat_messageSelectScalar = {
     id?: boolean
-    chatId?: boolean
-    senderId?: boolean
     content?: boolean
     timestamp?: boolean
     read?: boolean
+    chatId?: boolean
+    senderId?: boolean
   }
 
-  export type chat_messageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "chatId" | "senderId" | "content" | "timestamp" | "read", ExtArgs["result"]["chat_message"]>
+  export type chat_messageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "content" | "timestamp" | "read" | "chatId" | "senderId", ExtArgs["result"]["chat_message"]>
   export type chat_messageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     chat?: boolean | chatDefaultArgs<ExtArgs>
     sender?: boolean | marketplace_userDefaultArgs<ExtArgs>
@@ -6193,11 +5068,11 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      chatId: string
-      senderId: string
       content: string
       timestamp: Date
       read: boolean
+      chatId: string
+      senderId: string
     }, ExtArgs["result"]["chat_message"]>
     composites: {}
   }
@@ -6624,11 +5499,11 @@ export namespace Prisma {
    */
   interface chat_messageFieldRefs {
     readonly id: FieldRef<"chat_message", 'String'>
-    readonly chatId: FieldRef<"chat_message", 'String'>
-    readonly senderId: FieldRef<"chat_message", 'String'>
     readonly content: FieldRef<"chat_message", 'String'>
     readonly timestamp: FieldRef<"chat_message", 'DateTime'>
     readonly read: FieldRef<"chat_message", 'Boolean'>
+    readonly chatId: FieldRef<"chat_message", 'String'>
+    readonly senderId: FieldRef<"chat_message", 'String'>
   }
     
 
@@ -7057,16 +5932,6 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const UsersScalarFieldEnum: {
-    id: 'id',
-    name: 'name',
-    email: 'email',
-    password: 'password'
-  };
-
-  export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
-
-
   export const Marketplace_userScalarFieldEnum: {
     id: 'id',
     name: 'name',
@@ -7074,7 +5939,7 @@ export namespace Prisma {
     role: 'role',
     avatar: 'avatar',
     phone: 'phone',
-    createdAt: 'createdAt'
+    password: 'password'
   };
 
   export type Marketplace_userScalarFieldEnum = (typeof Marketplace_userScalarFieldEnum)[keyof typeof Marketplace_userScalarFieldEnum]
@@ -7099,9 +5964,7 @@ export namespace Prisma {
     lng: 'lng',
     images: 'images',
     amenities: 'amenities',
-    ownerId: 'ownerId',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    ownerId: 'ownerId'
   };
 
   export type PropertyScalarFieldEnum = (typeof PropertyScalarFieldEnum)[keyof typeof PropertyScalarFieldEnum]
@@ -7111,9 +5974,7 @@ export namespace Prisma {
     id: 'id',
     propertyId: 'propertyId',
     buyerId: 'buyerId',
-    ownerId: 'ownerId',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    ownerId: 'ownerId'
   };
 
   export type ChatScalarFieldEnum = (typeof ChatScalarFieldEnum)[keyof typeof ChatScalarFieldEnum]
@@ -7121,11 +5982,11 @@ export namespace Prisma {
 
   export const Chat_messageScalarFieldEnum: {
     id: 'id',
-    chatId: 'chatId',
-    senderId: 'senderId',
     content: 'content',
     timestamp: 'timestamp',
-    read: 'read'
+    read: 'read',
+    chatId: 'chatId',
+    senderId: 'senderId'
   };
 
   export type Chat_messageScalarFieldEnum = (typeof Chat_messageScalarFieldEnum)[keyof typeof Chat_messageScalarFieldEnum]
@@ -7175,20 +6036,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'DateTime'
-   */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-  /**
-   * Reference to a field of type 'DateTime[]'
-   */
-  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -7217,6 +6064,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
@@ -7225,53 +6086,6 @@ export namespace Prisma {
    * Deep Input Types
    */
 
-
-  export type usersWhereInput = {
-    AND?: usersWhereInput | usersWhereInput[]
-    OR?: usersWhereInput[]
-    NOT?: usersWhereInput | usersWhereInput[]
-    id?: StringFilter<"users"> | string
-    name?: StringFilter<"users"> | string
-    email?: StringFilter<"users"> | string
-    password?: StringFilter<"users"> | string
-  }
-
-  export type usersOrderByWithRelationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    email?: SortOrder
-    password?: SortOrder
-  }
-
-  export type usersWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    email?: string
-    AND?: usersWhereInput | usersWhereInput[]
-    OR?: usersWhereInput[]
-    NOT?: usersWhereInput | usersWhereInput[]
-    name?: StringFilter<"users"> | string
-    password?: StringFilter<"users"> | string
-  }, "id" | "email">
-
-  export type usersOrderByWithAggregationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    email?: SortOrder
-    password?: SortOrder
-    _count?: usersCountOrderByAggregateInput
-    _max?: usersMaxOrderByAggregateInput
-    _min?: usersMinOrderByAggregateInput
-  }
-
-  export type usersScalarWhereWithAggregatesInput = {
-    AND?: usersScalarWhereWithAggregatesInput | usersScalarWhereWithAggregatesInput[]
-    OR?: usersScalarWhereWithAggregatesInput[]
-    NOT?: usersScalarWhereWithAggregatesInput | usersScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"users"> | string
-    name?: StringWithAggregatesFilter<"users"> | string
-    email?: StringWithAggregatesFilter<"users"> | string
-    password?: StringWithAggregatesFilter<"users"> | string
-  }
 
   export type marketplace_userWhereInput = {
     AND?: marketplace_userWhereInput | marketplace_userWhereInput[]
@@ -7283,7 +6097,7 @@ export namespace Prisma {
     role?: StringFilter<"marketplace_user"> | string
     avatar?: StringNullableFilter<"marketplace_user"> | string | null
     phone?: StringNullableFilter<"marketplace_user"> | string | null
-    createdAt?: DateTimeFilter<"marketplace_user"> | Date | string
+    password?: StringNullableFilter<"marketplace_user"> | string | null
     properties?: PropertyListRelationFilter
     chats_buyer?: ChatListRelationFilter
     chats_owner?: ChatListRelationFilter
@@ -7297,7 +6111,7 @@ export namespace Prisma {
     role?: SortOrder
     avatar?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
+    password?: SortOrderInput | SortOrder
     properties?: propertyOrderByRelationAggregateInput
     chats_buyer?: chatOrderByRelationAggregateInput
     chats_owner?: chatOrderByRelationAggregateInput
@@ -7314,7 +6128,7 @@ export namespace Prisma {
     role?: StringFilter<"marketplace_user"> | string
     avatar?: StringNullableFilter<"marketplace_user"> | string | null
     phone?: StringNullableFilter<"marketplace_user"> | string | null
-    createdAt?: DateTimeFilter<"marketplace_user"> | Date | string
+    password?: StringNullableFilter<"marketplace_user"> | string | null
     properties?: PropertyListRelationFilter
     chats_buyer?: ChatListRelationFilter
     chats_owner?: ChatListRelationFilter
@@ -7328,7 +6142,7 @@ export namespace Prisma {
     role?: SortOrder
     avatar?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
+    password?: SortOrderInput | SortOrder
     _count?: marketplace_userCountOrderByAggregateInput
     _max?: marketplace_userMaxOrderByAggregateInput
     _min?: marketplace_userMinOrderByAggregateInput
@@ -7344,7 +6158,7 @@ export namespace Prisma {
     role?: StringWithAggregatesFilter<"marketplace_user"> | string
     avatar?: StringNullableWithAggregatesFilter<"marketplace_user"> | string | null
     phone?: StringNullableWithAggregatesFilter<"marketplace_user"> | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"marketplace_user"> | Date | string
+    password?: StringNullableWithAggregatesFilter<"marketplace_user"> | string | null
   }
 
   export type propertyWhereInput = {
@@ -7370,8 +6184,6 @@ export namespace Prisma {
     images?: StringNullableListFilter<"property">
     amenities?: StringNullableListFilter<"property">
     ownerId?: StringFilter<"property"> | string
-    createdAt?: DateTimeFilter<"property"> | Date | string
-    updatedAt?: DateTimeFilter<"property"> | Date | string
     owner?: XOR<Marketplace_userScalarRelationFilter, marketplace_userWhereInput>
     chats?: ChatListRelationFilter
   }
@@ -7396,8 +6208,6 @@ export namespace Prisma {
     images?: SortOrder
     amenities?: SortOrder
     ownerId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     owner?: marketplace_userOrderByWithRelationInput
     chats?: chatOrderByRelationAggregateInput
   }
@@ -7425,8 +6235,6 @@ export namespace Prisma {
     images?: StringNullableListFilter<"property">
     amenities?: StringNullableListFilter<"property">
     ownerId?: StringFilter<"property"> | string
-    createdAt?: DateTimeFilter<"property"> | Date | string
-    updatedAt?: DateTimeFilter<"property"> | Date | string
     owner?: XOR<Marketplace_userScalarRelationFilter, marketplace_userWhereInput>
     chats?: ChatListRelationFilter
   }, "id">
@@ -7451,8 +6259,6 @@ export namespace Prisma {
     images?: SortOrder
     amenities?: SortOrder
     ownerId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     _count?: propertyCountOrderByAggregateInput
     _avg?: propertyAvgOrderByAggregateInput
     _max?: propertyMaxOrderByAggregateInput
@@ -7483,8 +6289,6 @@ export namespace Prisma {
     images?: StringNullableListFilter<"property">
     amenities?: StringNullableListFilter<"property">
     ownerId?: StringWithAggregatesFilter<"property"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"property"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"property"> | Date | string
   }
 
   export type chatWhereInput = {
@@ -7495,8 +6299,6 @@ export namespace Prisma {
     propertyId?: StringFilter<"chat"> | string
     buyerId?: StringFilter<"chat"> | string
     ownerId?: StringFilter<"chat"> | string
-    createdAt?: DateTimeFilter<"chat"> | Date | string
-    updatedAt?: DateTimeFilter<"chat"> | Date | string
     property?: XOR<PropertyScalarRelationFilter, propertyWhereInput>
     buyer?: XOR<Marketplace_userScalarRelationFilter, marketplace_userWhereInput>
     owner?: XOR<Marketplace_userScalarRelationFilter, marketplace_userWhereInput>
@@ -7508,8 +6310,6 @@ export namespace Prisma {
     propertyId?: SortOrder
     buyerId?: SortOrder
     ownerId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     property?: propertyOrderByWithRelationInput
     buyer?: marketplace_userOrderByWithRelationInput
     owner?: marketplace_userOrderByWithRelationInput
@@ -7524,8 +6324,6 @@ export namespace Prisma {
     propertyId?: StringFilter<"chat"> | string
     buyerId?: StringFilter<"chat"> | string
     ownerId?: StringFilter<"chat"> | string
-    createdAt?: DateTimeFilter<"chat"> | Date | string
-    updatedAt?: DateTimeFilter<"chat"> | Date | string
     property?: XOR<PropertyScalarRelationFilter, propertyWhereInput>
     buyer?: XOR<Marketplace_userScalarRelationFilter, marketplace_userWhereInput>
     owner?: XOR<Marketplace_userScalarRelationFilter, marketplace_userWhereInput>
@@ -7537,8 +6335,6 @@ export namespace Prisma {
     propertyId?: SortOrder
     buyerId?: SortOrder
     ownerId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     _count?: chatCountOrderByAggregateInput
     _max?: chatMaxOrderByAggregateInput
     _min?: chatMinOrderByAggregateInput
@@ -7552,8 +6348,6 @@ export namespace Prisma {
     propertyId?: StringWithAggregatesFilter<"chat"> | string
     buyerId?: StringWithAggregatesFilter<"chat"> | string
     ownerId?: StringWithAggregatesFilter<"chat"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"chat"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"chat"> | Date | string
   }
 
   export type chat_messageWhereInput = {
@@ -7561,22 +6355,22 @@ export namespace Prisma {
     OR?: chat_messageWhereInput[]
     NOT?: chat_messageWhereInput | chat_messageWhereInput[]
     id?: StringFilter<"chat_message"> | string
-    chatId?: StringFilter<"chat_message"> | string
-    senderId?: StringFilter<"chat_message"> | string
     content?: StringFilter<"chat_message"> | string
     timestamp?: DateTimeFilter<"chat_message"> | Date | string
     read?: BoolFilter<"chat_message"> | boolean
+    chatId?: StringFilter<"chat_message"> | string
+    senderId?: StringFilter<"chat_message"> | string
     chat?: XOR<ChatScalarRelationFilter, chatWhereInput>
     sender?: XOR<Marketplace_userScalarRelationFilter, marketplace_userWhereInput>
   }
 
   export type chat_messageOrderByWithRelationInput = {
     id?: SortOrder
-    chatId?: SortOrder
-    senderId?: SortOrder
     content?: SortOrder
     timestamp?: SortOrder
     read?: SortOrder
+    chatId?: SortOrder
+    senderId?: SortOrder
     chat?: chatOrderByWithRelationInput
     sender?: marketplace_userOrderByWithRelationInput
   }
@@ -7586,22 +6380,22 @@ export namespace Prisma {
     AND?: chat_messageWhereInput | chat_messageWhereInput[]
     OR?: chat_messageWhereInput[]
     NOT?: chat_messageWhereInput | chat_messageWhereInput[]
-    chatId?: StringFilter<"chat_message"> | string
-    senderId?: StringFilter<"chat_message"> | string
     content?: StringFilter<"chat_message"> | string
     timestamp?: DateTimeFilter<"chat_message"> | Date | string
     read?: BoolFilter<"chat_message"> | boolean
+    chatId?: StringFilter<"chat_message"> | string
+    senderId?: StringFilter<"chat_message"> | string
     chat?: XOR<ChatScalarRelationFilter, chatWhereInput>
     sender?: XOR<Marketplace_userScalarRelationFilter, marketplace_userWhereInput>
   }, "id">
 
   export type chat_messageOrderByWithAggregationInput = {
     id?: SortOrder
-    chatId?: SortOrder
-    senderId?: SortOrder
     content?: SortOrder
     timestamp?: SortOrder
     read?: SortOrder
+    chatId?: SortOrder
+    senderId?: SortOrder
     _count?: chat_messageCountOrderByAggregateInput
     _max?: chat_messageMaxOrderByAggregateInput
     _min?: chat_messageMinOrderByAggregateInput
@@ -7612,60 +6406,11 @@ export namespace Prisma {
     OR?: chat_messageScalarWhereWithAggregatesInput[]
     NOT?: chat_messageScalarWhereWithAggregatesInput | chat_messageScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"chat_message"> | string
-    chatId?: StringWithAggregatesFilter<"chat_message"> | string
-    senderId?: StringWithAggregatesFilter<"chat_message"> | string
     content?: StringWithAggregatesFilter<"chat_message"> | string
     timestamp?: DateTimeWithAggregatesFilter<"chat_message"> | Date | string
     read?: BoolWithAggregatesFilter<"chat_message"> | boolean
-  }
-
-  export type usersCreateInput = {
-    id?: string
-    name: string
-    email: string
-    password: string
-  }
-
-  export type usersUncheckedCreateInput = {
-    id?: string
-    name: string
-    email: string
-    password: string
-  }
-
-  export type usersUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type usersUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type usersCreateManyInput = {
-    id?: string
-    name: string
-    email: string
-    password: string
-  }
-
-  export type usersUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type usersUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
+    chatId?: StringWithAggregatesFilter<"chat_message"> | string
+    senderId?: StringWithAggregatesFilter<"chat_message"> | string
   }
 
   export type marketplace_userCreateInput = {
@@ -7675,7 +6420,7 @@ export namespace Prisma {
     role: string
     avatar?: string | null
     phone?: string | null
-    createdAt?: Date | string
+    password?: string | null
     properties?: propertyCreateNestedManyWithoutOwnerInput
     chats_buyer?: chatCreateNestedManyWithoutBuyerInput
     chats_owner?: chatCreateNestedManyWithoutOwnerInput
@@ -7689,7 +6434,7 @@ export namespace Prisma {
     role: string
     avatar?: string | null
     phone?: string | null
-    createdAt?: Date | string
+    password?: string | null
     properties?: propertyUncheckedCreateNestedManyWithoutOwnerInput
     chats_buyer?: chatUncheckedCreateNestedManyWithoutBuyerInput
     chats_owner?: chatUncheckedCreateNestedManyWithoutOwnerInput
@@ -7703,7 +6448,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     properties?: propertyUpdateManyWithoutOwnerNestedInput
     chats_buyer?: chatUpdateManyWithoutBuyerNestedInput
     chats_owner?: chatUpdateManyWithoutOwnerNestedInput
@@ -7717,7 +6462,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     properties?: propertyUncheckedUpdateManyWithoutOwnerNestedInput
     chats_buyer?: chatUncheckedUpdateManyWithoutBuyerNestedInput
     chats_owner?: chatUncheckedUpdateManyWithoutOwnerNestedInput
@@ -7731,7 +6476,7 @@ export namespace Prisma {
     role: string
     avatar?: string | null
     phone?: string | null
-    createdAt?: Date | string
+    password?: string | null
   }
 
   export type marketplace_userUpdateManyMutationInput = {
@@ -7741,7 +6486,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type marketplace_userUncheckedUpdateManyInput = {
@@ -7751,7 +6496,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type propertyCreateInput = {
@@ -7773,8 +6518,6 @@ export namespace Prisma {
     lng?: number | null
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
     owner: marketplace_userCreateNestedOneWithoutPropertiesInput
     chats?: chatCreateNestedManyWithoutPropertyInput
   }
@@ -7799,8 +6542,6 @@ export namespace Prisma {
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
     ownerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     chats?: chatUncheckedCreateNestedManyWithoutPropertyInput
   }
 
@@ -7823,8 +6564,6 @@ export namespace Prisma {
     lng?: NullableFloatFieldUpdateOperationsInput | number | null
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: marketplace_userUpdateOneRequiredWithoutPropertiesNestedInput
     chats?: chatUpdateManyWithoutPropertyNestedInput
   }
@@ -7849,8 +6588,6 @@ export namespace Prisma {
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
     ownerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     chats?: chatUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
@@ -7874,8 +6611,6 @@ export namespace Prisma {
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
     ownerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type propertyUpdateManyMutationInput = {
@@ -7897,8 +6632,6 @@ export namespace Prisma {
     lng?: NullableFloatFieldUpdateOperationsInput | number | null
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type propertyUncheckedUpdateManyInput = {
@@ -7921,14 +6654,10 @@ export namespace Prisma {
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
     ownerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type chatCreateInput = {
     id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     property: propertyCreateNestedOneWithoutChatsInput
     buyer: marketplace_userCreateNestedOneWithoutChats_buyerInput
     owner: marketplace_userCreateNestedOneWithoutChats_ownerInput
@@ -7940,15 +6669,11 @@ export namespace Prisma {
     propertyId: string
     buyerId: string
     ownerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     messages?: chat_messageUncheckedCreateNestedManyWithoutChatInput
   }
 
   export type chatUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     property?: propertyUpdateOneRequiredWithoutChatsNestedInput
     buyer?: marketplace_userUpdateOneRequiredWithoutChats_buyerNestedInput
     owner?: marketplace_userUpdateOneRequiredWithoutChats_ownerNestedInput
@@ -7960,8 +6685,6 @@ export namespace Prisma {
     propertyId?: StringFieldUpdateOperationsInput | string
     buyerId?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     messages?: chat_messageUncheckedUpdateManyWithoutChatNestedInput
   }
 
@@ -7970,14 +6693,10 @@ export namespace Prisma {
     propertyId: string
     buyerId: string
     ownerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type chatUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type chatUncheckedUpdateManyInput = {
@@ -7985,8 +6704,6 @@ export namespace Prisma {
     propertyId?: StringFieldUpdateOperationsInput | string
     buyerId?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type chat_messageCreateInput = {
@@ -8000,11 +6717,11 @@ export namespace Prisma {
 
   export type chat_messageUncheckedCreateInput = {
     id?: string
-    chatId: string
-    senderId: string
     content: string
     timestamp?: Date | string
     read?: boolean
+    chatId: string
+    senderId: string
   }
 
   export type chat_messageUpdateInput = {
@@ -8018,20 +6735,20 @@ export namespace Prisma {
 
   export type chat_messageUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    chatId?: StringFieldUpdateOperationsInput | string
-    senderId?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     read?: BoolFieldUpdateOperationsInput | boolean
+    chatId?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
   }
 
   export type chat_messageCreateManyInput = {
     id?: string
-    chatId: string
-    senderId: string
     content: string
     timestamp?: Date | string
     read?: boolean
+    chatId: string
+    senderId: string
   }
 
   export type chat_messageUpdateManyMutationInput = {
@@ -8043,11 +6760,11 @@ export namespace Prisma {
 
   export type chat_messageUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    chatId?: StringFieldUpdateOperationsInput | string
-    senderId?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     read?: BoolFieldUpdateOperationsInput | boolean
+    chatId?: StringFieldUpdateOperationsInput | string
+    senderId?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -8065,45 +6782,6 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type usersCountOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    email?: SortOrder
-    password?: SortOrder
-  }
-
-  export type usersMaxOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    email?: SortOrder
-    password?: SortOrder
-  }
-
-  export type usersMinOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    email?: SortOrder
-    password?: SortOrder
-  }
-
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -8117,17 +6795,6 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type PropertyListRelationFilter = {
@@ -8172,7 +6839,7 @@ export namespace Prisma {
     role?: SortOrder
     avatar?: SortOrder
     phone?: SortOrder
-    createdAt?: SortOrder
+    password?: SortOrder
   }
 
   export type marketplace_userMaxOrderByAggregateInput = {
@@ -8182,7 +6849,7 @@ export namespace Prisma {
     role?: SortOrder
     avatar?: SortOrder
     phone?: SortOrder
-    createdAt?: SortOrder
+    password?: SortOrder
   }
 
   export type marketplace_userMinOrderByAggregateInput = {
@@ -8192,7 +6859,25 @@ export namespace Prisma {
     role?: SortOrder
     avatar?: SortOrder
     phone?: SortOrder
-    createdAt?: SortOrder
+    password?: SortOrder
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -8211,20 +6896,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -8282,8 +6953,6 @@ export namespace Prisma {
     images?: SortOrder
     amenities?: SortOrder
     ownerId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type propertyAvgOrderByAggregateInput = {
@@ -8313,8 +6982,6 @@ export namespace Prisma {
     lat?: SortOrder
     lng?: SortOrder
     ownerId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type propertyMinOrderByAggregateInput = {
@@ -8335,8 +7002,6 @@ export namespace Prisma {
     lat?: SortOrder
     lng?: SortOrder
     ownerId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type propertySumOrderByAggregateInput = {
@@ -8390,8 +7055,6 @@ export namespace Prisma {
     propertyId?: SortOrder
     buyerId?: SortOrder
     ownerId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type chatMaxOrderByAggregateInput = {
@@ -8399,8 +7062,6 @@ export namespace Prisma {
     propertyId?: SortOrder
     buyerId?: SortOrder
     ownerId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type chatMinOrderByAggregateInput = {
@@ -8408,8 +7069,17 @@ export namespace Prisma {
     propertyId?: SortOrder
     buyerId?: SortOrder
     ownerId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
+  }
+
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type BoolFilter<$PrismaModel = never> = {
@@ -8424,29 +7094,43 @@ export namespace Prisma {
 
   export type chat_messageCountOrderByAggregateInput = {
     id?: SortOrder
-    chatId?: SortOrder
-    senderId?: SortOrder
     content?: SortOrder
     timestamp?: SortOrder
     read?: SortOrder
+    chatId?: SortOrder
+    senderId?: SortOrder
   }
 
   export type chat_messageMaxOrderByAggregateInput = {
     id?: SortOrder
-    chatId?: SortOrder
-    senderId?: SortOrder
     content?: SortOrder
     timestamp?: SortOrder
     read?: SortOrder
+    chatId?: SortOrder
+    senderId?: SortOrder
   }
 
   export type chat_messageMinOrderByAggregateInput = {
     id?: SortOrder
-    chatId?: SortOrder
-    senderId?: SortOrder
     content?: SortOrder
     timestamp?: SortOrder
     read?: SortOrder
+    chatId?: SortOrder
+    senderId?: SortOrder
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -8455,10 +7139,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
-  }
-
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
   }
 
   export type propertyCreateNestedManyWithoutOwnerInput = {
@@ -8517,12 +7197,12 @@ export namespace Prisma {
     connect?: chat_messageWhereUniqueInput | chat_messageWhereUniqueInput[]
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
   }
 
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type propertyUpdateManyWithoutOwnerNestedInput = {
@@ -8823,6 +7503,10 @@ export namespace Prisma {
     connect?: marketplace_userWhereUniqueInput
   }
 
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
   }
@@ -8857,6 +7541,20 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -8885,31 +7583,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -8936,20 +7609,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type NestedFloatNullableFilter<$PrismaModel = never> = {
@@ -9006,9 +7665,34 @@ export namespace Prisma {
     _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -9038,8 +7722,6 @@ export namespace Prisma {
     lng?: number | null
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
     chats?: chatCreateNestedManyWithoutPropertyInput
   }
 
@@ -9062,8 +7744,6 @@ export namespace Prisma {
     lng?: number | null
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
     chats?: chatUncheckedCreateNestedManyWithoutPropertyInput
   }
 
@@ -9079,8 +7759,6 @@ export namespace Prisma {
 
   export type chatCreateWithoutBuyerInput = {
     id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     property: propertyCreateNestedOneWithoutChatsInput
     owner: marketplace_userCreateNestedOneWithoutChats_ownerInput
     messages?: chat_messageCreateNestedManyWithoutChatInput
@@ -9090,8 +7768,6 @@ export namespace Prisma {
     id?: string
     propertyId: string
     ownerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     messages?: chat_messageUncheckedCreateNestedManyWithoutChatInput
   }
 
@@ -9107,8 +7783,6 @@ export namespace Prisma {
 
   export type chatCreateWithoutOwnerInput = {
     id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     property: propertyCreateNestedOneWithoutChatsInput
     buyer: marketplace_userCreateNestedOneWithoutChats_buyerInput
     messages?: chat_messageCreateNestedManyWithoutChatInput
@@ -9118,8 +7792,6 @@ export namespace Prisma {
     id?: string
     propertyId: string
     buyerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     messages?: chat_messageUncheckedCreateNestedManyWithoutChatInput
   }
 
@@ -9143,10 +7815,10 @@ export namespace Prisma {
 
   export type chat_messageUncheckedCreateWithoutSenderInput = {
     id?: string
-    chatId: string
     content: string
     timestamp?: Date | string
     read?: boolean
+    chatId: string
   }
 
   export type chat_messageCreateOrConnectWithoutSenderInput = {
@@ -9198,8 +7870,6 @@ export namespace Prisma {
     images?: StringNullableListFilter<"property">
     amenities?: StringNullableListFilter<"property">
     ownerId?: StringFilter<"property"> | string
-    createdAt?: DateTimeFilter<"property"> | Date | string
-    updatedAt?: DateTimeFilter<"property"> | Date | string
   }
 
   export type chatUpsertWithWhereUniqueWithoutBuyerInput = {
@@ -9226,8 +7896,6 @@ export namespace Prisma {
     propertyId?: StringFilter<"chat"> | string
     buyerId?: StringFilter<"chat"> | string
     ownerId?: StringFilter<"chat"> | string
-    createdAt?: DateTimeFilter<"chat"> | Date | string
-    updatedAt?: DateTimeFilter<"chat"> | Date | string
   }
 
   export type chatUpsertWithWhereUniqueWithoutOwnerInput = {
@@ -9267,11 +7935,11 @@ export namespace Prisma {
     OR?: chat_messageScalarWhereInput[]
     NOT?: chat_messageScalarWhereInput | chat_messageScalarWhereInput[]
     id?: StringFilter<"chat_message"> | string
-    chatId?: StringFilter<"chat_message"> | string
-    senderId?: StringFilter<"chat_message"> | string
     content?: StringFilter<"chat_message"> | string
     timestamp?: DateTimeFilter<"chat_message"> | Date | string
     read?: BoolFilter<"chat_message"> | boolean
+    chatId?: StringFilter<"chat_message"> | string
+    senderId?: StringFilter<"chat_message"> | string
   }
 
   export type marketplace_userCreateWithoutPropertiesInput = {
@@ -9281,7 +7949,7 @@ export namespace Prisma {
     role: string
     avatar?: string | null
     phone?: string | null
-    createdAt?: Date | string
+    password?: string | null
     chats_buyer?: chatCreateNestedManyWithoutBuyerInput
     chats_owner?: chatCreateNestedManyWithoutOwnerInput
     sent_messages?: chat_messageCreateNestedManyWithoutSenderInput
@@ -9294,7 +7962,7 @@ export namespace Prisma {
     role: string
     avatar?: string | null
     phone?: string | null
-    createdAt?: Date | string
+    password?: string | null
     chats_buyer?: chatUncheckedCreateNestedManyWithoutBuyerInput
     chats_owner?: chatUncheckedCreateNestedManyWithoutOwnerInput
     sent_messages?: chat_messageUncheckedCreateNestedManyWithoutSenderInput
@@ -9307,8 +7975,6 @@ export namespace Prisma {
 
   export type chatCreateWithoutPropertyInput = {
     id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     buyer: marketplace_userCreateNestedOneWithoutChats_buyerInput
     owner: marketplace_userCreateNestedOneWithoutChats_ownerInput
     messages?: chat_messageCreateNestedManyWithoutChatInput
@@ -9318,8 +7984,6 @@ export namespace Prisma {
     id?: string
     buyerId: string
     ownerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     messages?: chat_messageUncheckedCreateNestedManyWithoutChatInput
   }
 
@@ -9351,7 +8015,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     chats_buyer?: chatUpdateManyWithoutBuyerNestedInput
     chats_owner?: chatUpdateManyWithoutOwnerNestedInput
     sent_messages?: chat_messageUpdateManyWithoutSenderNestedInput
@@ -9364,7 +8028,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     chats_buyer?: chatUncheckedUpdateManyWithoutBuyerNestedInput
     chats_owner?: chatUncheckedUpdateManyWithoutOwnerNestedInput
     sent_messages?: chat_messageUncheckedUpdateManyWithoutSenderNestedInput
@@ -9405,8 +8069,6 @@ export namespace Prisma {
     lng?: number | null
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
     owner: marketplace_userCreateNestedOneWithoutPropertiesInput
   }
 
@@ -9430,8 +8092,6 @@ export namespace Prisma {
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
     ownerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type propertyCreateOrConnectWithoutChatsInput = {
@@ -9446,7 +8106,7 @@ export namespace Prisma {
     role: string
     avatar?: string | null
     phone?: string | null
-    createdAt?: Date | string
+    password?: string | null
     properties?: propertyCreateNestedManyWithoutOwnerInput
     chats_owner?: chatCreateNestedManyWithoutOwnerInput
     sent_messages?: chat_messageCreateNestedManyWithoutSenderInput
@@ -9459,7 +8119,7 @@ export namespace Prisma {
     role: string
     avatar?: string | null
     phone?: string | null
-    createdAt?: Date | string
+    password?: string | null
     properties?: propertyUncheckedCreateNestedManyWithoutOwnerInput
     chats_owner?: chatUncheckedCreateNestedManyWithoutOwnerInput
     sent_messages?: chat_messageUncheckedCreateNestedManyWithoutSenderInput
@@ -9477,7 +8137,7 @@ export namespace Prisma {
     role: string
     avatar?: string | null
     phone?: string | null
-    createdAt?: Date | string
+    password?: string | null
     properties?: propertyCreateNestedManyWithoutOwnerInput
     chats_buyer?: chatCreateNestedManyWithoutBuyerInput
     sent_messages?: chat_messageCreateNestedManyWithoutSenderInput
@@ -9490,7 +8150,7 @@ export namespace Prisma {
     role: string
     avatar?: string | null
     phone?: string | null
-    createdAt?: Date | string
+    password?: string | null
     properties?: propertyUncheckedCreateNestedManyWithoutOwnerInput
     chats_buyer?: chatUncheckedCreateNestedManyWithoutBuyerInput
     sent_messages?: chat_messageUncheckedCreateNestedManyWithoutSenderInput
@@ -9511,10 +8171,10 @@ export namespace Prisma {
 
   export type chat_messageUncheckedCreateWithoutChatInput = {
     id?: string
-    senderId: string
     content: string
     timestamp?: Date | string
     read?: boolean
+    senderId: string
   }
 
   export type chat_messageCreateOrConnectWithoutChatInput = {
@@ -9557,8 +8217,6 @@ export namespace Prisma {
     lng?: NullableFloatFieldUpdateOperationsInput | number | null
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     owner?: marketplace_userUpdateOneRequiredWithoutPropertiesNestedInput
   }
 
@@ -9582,8 +8240,6 @@ export namespace Prisma {
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
     ownerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type marketplace_userUpsertWithoutChats_buyerInput = {
@@ -9604,7 +8260,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     properties?: propertyUpdateManyWithoutOwnerNestedInput
     chats_owner?: chatUpdateManyWithoutOwnerNestedInput
     sent_messages?: chat_messageUpdateManyWithoutSenderNestedInput
@@ -9617,7 +8273,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     properties?: propertyUncheckedUpdateManyWithoutOwnerNestedInput
     chats_owner?: chatUncheckedUpdateManyWithoutOwnerNestedInput
     sent_messages?: chat_messageUncheckedUpdateManyWithoutSenderNestedInput
@@ -9641,7 +8297,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     properties?: propertyUpdateManyWithoutOwnerNestedInput
     chats_buyer?: chatUpdateManyWithoutBuyerNestedInput
     sent_messages?: chat_messageUpdateManyWithoutSenderNestedInput
@@ -9654,7 +8310,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     properties?: propertyUncheckedUpdateManyWithoutOwnerNestedInput
     chats_buyer?: chatUncheckedUpdateManyWithoutBuyerNestedInput
     sent_messages?: chat_messageUncheckedUpdateManyWithoutSenderNestedInput
@@ -9678,8 +8334,6 @@ export namespace Prisma {
 
   export type chatCreateWithoutMessagesInput = {
     id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     property: propertyCreateNestedOneWithoutChatsInput
     buyer: marketplace_userCreateNestedOneWithoutChats_buyerInput
     owner: marketplace_userCreateNestedOneWithoutChats_ownerInput
@@ -9690,8 +8344,6 @@ export namespace Prisma {
     propertyId: string
     buyerId: string
     ownerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type chatCreateOrConnectWithoutMessagesInput = {
@@ -9706,7 +8358,7 @@ export namespace Prisma {
     role: string
     avatar?: string | null
     phone?: string | null
-    createdAt?: Date | string
+    password?: string | null
     properties?: propertyCreateNestedManyWithoutOwnerInput
     chats_buyer?: chatCreateNestedManyWithoutBuyerInput
     chats_owner?: chatCreateNestedManyWithoutOwnerInput
@@ -9719,7 +8371,7 @@ export namespace Prisma {
     role: string
     avatar?: string | null
     phone?: string | null
-    createdAt?: Date | string
+    password?: string | null
     properties?: propertyUncheckedCreateNestedManyWithoutOwnerInput
     chats_buyer?: chatUncheckedCreateNestedManyWithoutBuyerInput
     chats_owner?: chatUncheckedCreateNestedManyWithoutOwnerInput
@@ -9743,8 +8395,6 @@ export namespace Prisma {
 
   export type chatUpdateWithoutMessagesInput = {
     id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     property?: propertyUpdateOneRequiredWithoutChatsNestedInput
     buyer?: marketplace_userUpdateOneRequiredWithoutChats_buyerNestedInput
     owner?: marketplace_userUpdateOneRequiredWithoutChats_ownerNestedInput
@@ -9755,8 +8405,6 @@ export namespace Prisma {
     propertyId?: StringFieldUpdateOperationsInput | string
     buyerId?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type marketplace_userUpsertWithoutSent_messagesInput = {
@@ -9777,7 +8425,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     properties?: propertyUpdateManyWithoutOwnerNestedInput
     chats_buyer?: chatUpdateManyWithoutBuyerNestedInput
     chats_owner?: chatUpdateManyWithoutOwnerNestedInput
@@ -9790,7 +8438,7 @@ export namespace Prisma {
     role?: StringFieldUpdateOperationsInput | string
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     properties?: propertyUncheckedUpdateManyWithoutOwnerNestedInput
     chats_buyer?: chatUncheckedUpdateManyWithoutBuyerNestedInput
     chats_owner?: chatUncheckedUpdateManyWithoutOwnerNestedInput
@@ -9815,32 +8463,26 @@ export namespace Prisma {
     lng?: number | null
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type chatCreateManyBuyerInput = {
     id?: string
     propertyId: string
     ownerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type chatCreateManyOwnerInput = {
     id?: string
     propertyId: string
     buyerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type chat_messageCreateManySenderInput = {
     id?: string
-    chatId: string
     content: string
     timestamp?: Date | string
     read?: boolean
+    chatId: string
   }
 
   export type propertyUpdateWithoutOwnerInput = {
@@ -9862,8 +8504,6 @@ export namespace Prisma {
     lng?: NullableFloatFieldUpdateOperationsInput | number | null
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     chats?: chatUpdateManyWithoutPropertyNestedInput
   }
 
@@ -9886,8 +8526,6 @@ export namespace Prisma {
     lng?: NullableFloatFieldUpdateOperationsInput | number | null
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     chats?: chatUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
@@ -9910,14 +8548,10 @@ export namespace Prisma {
     lng?: NullableFloatFieldUpdateOperationsInput | number | null
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type chatUpdateWithoutBuyerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     property?: propertyUpdateOneRequiredWithoutChatsNestedInput
     owner?: marketplace_userUpdateOneRequiredWithoutChats_ownerNestedInput
     messages?: chat_messageUpdateManyWithoutChatNestedInput
@@ -9927,8 +8561,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     propertyId?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     messages?: chat_messageUncheckedUpdateManyWithoutChatNestedInput
   }
 
@@ -9936,14 +8568,10 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     propertyId?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type chatUpdateWithoutOwnerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     property?: propertyUpdateOneRequiredWithoutChatsNestedInput
     buyer?: marketplace_userUpdateOneRequiredWithoutChats_buyerNestedInput
     messages?: chat_messageUpdateManyWithoutChatNestedInput
@@ -9953,8 +8581,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     propertyId?: StringFieldUpdateOperationsInput | string
     buyerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     messages?: chat_messageUncheckedUpdateManyWithoutChatNestedInput
   }
 
@@ -9962,8 +8588,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     propertyId?: StringFieldUpdateOperationsInput | string
     buyerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type chat_messageUpdateWithoutSenderInput = {
@@ -9976,32 +8600,28 @@ export namespace Prisma {
 
   export type chat_messageUncheckedUpdateWithoutSenderInput = {
     id?: StringFieldUpdateOperationsInput | string
-    chatId?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     read?: BoolFieldUpdateOperationsInput | boolean
+    chatId?: StringFieldUpdateOperationsInput | string
   }
 
   export type chat_messageUncheckedUpdateManyWithoutSenderInput = {
     id?: StringFieldUpdateOperationsInput | string
-    chatId?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     read?: BoolFieldUpdateOperationsInput | boolean
+    chatId?: StringFieldUpdateOperationsInput | string
   }
 
   export type chatCreateManyPropertyInput = {
     id?: string
     buyerId: string
     ownerId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type chatUpdateWithoutPropertyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     buyer?: marketplace_userUpdateOneRequiredWithoutChats_buyerNestedInput
     owner?: marketplace_userUpdateOneRequiredWithoutChats_ownerNestedInput
     messages?: chat_messageUpdateManyWithoutChatNestedInput
@@ -10011,8 +8631,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     buyerId?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     messages?: chat_messageUncheckedUpdateManyWithoutChatNestedInput
   }
 
@@ -10020,16 +8638,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     buyerId?: StringFieldUpdateOperationsInput | string
     ownerId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type chat_messageCreateManyChatInput = {
     id?: string
-    senderId: string
     content: string
     timestamp?: Date | string
     read?: boolean
+    senderId: string
   }
 
   export type chat_messageUpdateWithoutChatInput = {
@@ -10042,18 +8658,18 @@ export namespace Prisma {
 
   export type chat_messageUncheckedUpdateWithoutChatInput = {
     id?: StringFieldUpdateOperationsInput | string
-    senderId?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     read?: BoolFieldUpdateOperationsInput | boolean
+    senderId?: StringFieldUpdateOperationsInput | string
   }
 
   export type chat_messageUncheckedUpdateManyWithoutChatInput = {
     id?: StringFieldUpdateOperationsInput | string
-    senderId?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     read?: BoolFieldUpdateOperationsInput | boolean
+    senderId?: StringFieldUpdateOperationsInput | string
   }
 
 

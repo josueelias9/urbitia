@@ -6,12 +6,16 @@
   "workspaceFolder": "/workspace/frontend",
   "features": {
     "ghcr.io/devcontainers/features/git:1": {},
-    "ghcr.io/devcontainers-extra/features/pnpm:2": {}
+    // "ghcr.io/devcontainers-extra/features/pnpm:2": {}
   },
   "customizations": {
     "vscode": {
       "extensions": [
-        "stateful.runme"
+        "stateful.runme",
+        "bierner.markdown-mermaid",
+        "eamodio.gitlens",
+        "Prisma.prisma",
+        "docker.docker"
       ],
       "settings": {
         "workbench.colorTheme": "Monokai"

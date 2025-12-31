@@ -120,13 +120,6 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UsersScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  email: 'email',
-  password: 'password'
-};
-
 exports.Prisma.Marketplace_userScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -134,7 +127,7 @@ exports.Prisma.Marketplace_userScalarFieldEnum = {
   role: 'role',
   avatar: 'avatar',
   phone: 'phone',
-  createdAt: 'createdAt'
+  password: 'password'
 };
 
 exports.Prisma.PropertyScalarFieldEnum = {
@@ -156,27 +149,23 @@ exports.Prisma.PropertyScalarFieldEnum = {
   lng: 'lng',
   images: 'images',
   amenities: 'amenities',
-  ownerId: 'ownerId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  ownerId: 'ownerId'
 };
 
 exports.Prisma.ChatScalarFieldEnum = {
   id: 'id',
   propertyId: 'propertyId',
   buyerId: 'buyerId',
-  ownerId: 'ownerId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  ownerId: 'ownerId'
 };
 
 exports.Prisma.Chat_messageScalarFieldEnum = {
   id: 'id',
-  chatId: 'chatId',
-  senderId: 'senderId',
   content: 'content',
   timestamp: 'timestamp',
-  read: 'read'
+  read: 'read',
+  chatId: 'chatId',
+  senderId: 'senderId'
 };
 
 exports.Prisma.SortOrder = {
@@ -196,7 +185,6 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  users: 'users',
   marketplace_user: 'marketplace_user',
   property: 'property',
   chat: 'chat',

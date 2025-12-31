@@ -16,6 +16,11 @@ const config: Config = {
                     400: '#2589FE',
                     500: '#0070F3',
                     600: '#2F6FEB'
+                },
+                urbitia: {
+                    primary: '#B85C2B', // Terracota/naranja cálido
+                    secondary: '#F2E6D8', // Beige claro
+                    dark: '#2E2E2E' // Gris oscuro/negro
                 }
             }
         },

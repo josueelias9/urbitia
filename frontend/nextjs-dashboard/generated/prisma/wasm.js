@@ -92,13 +92,6 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UsersScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  email: 'email',
-  password: 'password'
-};
-
 exports.Prisma.Marketplace_userScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -106,7 +99,7 @@ exports.Prisma.Marketplace_userScalarFieldEnum = {
   role: 'role',
   avatar: 'avatar',
   phone: 'phone',
-  createdAt: 'createdAt'
+  password: 'password'
 };
 
 exports.Prisma.PropertyScalarFieldEnum = {
@@ -128,27 +121,23 @@ exports.Prisma.PropertyScalarFieldEnum = {
   lng: 'lng',
   images: 'images',
   amenities: 'amenities',
-  ownerId: 'ownerId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  ownerId: 'ownerId'
 };
 
 exports.Prisma.ChatScalarFieldEnum = {
   id: 'id',
   propertyId: 'propertyId',
   buyerId: 'buyerId',
-  ownerId: 'ownerId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  ownerId: 'ownerId'
 };
 
 exports.Prisma.Chat_messageScalarFieldEnum = {
   id: 'id',
-  chatId: 'chatId',
-  senderId: 'senderId',
   content: 'content',
   timestamp: 'timestamp',
-  read: 'read'
+  read: 'read',
+  chatId: 'chatId',
+  senderId: 'senderId'
 };
 
 exports.Prisma.SortOrder = {
@@ -168,7 +157,6 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  users: 'users',
   marketplace_user: 'marketplace_user',
   property: 'property',
   chat: 'chat',
@@ -221,13 +209,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel users {\n  id       String @id @default(uuid())\n  name     String @db.VarChar(255)\n  email    String @unique\n  password String\n}\n\nmodel marketplace_user {\n  id            String         @id @default(uuid())\n  name          String         @db.VarChar(255)\n  email         String         @unique\n  role          String // 'buyer' | 'owner'\n  avatar        String?        @db.VarChar(255)\n  phone         String?        @db.VarChar(32)\n  createdAt     DateTime       @default(now())\n  properties    property[]     @relation(\"OwnerProperties\")\n  chats_buyer   chat[]         @relation(\"BuyerChats\")\n  chats_owner   chat[]         @relation(\"OwnerChats\")\n  sent_messages chat_message[] @relation(\"SenderMessages\")\n}\n\nmodel property {\n  id          String           @id @default(uuid())\n  title       String           @db.VarChar(255)\n  description String\n  price       Int\n  currency    String // 'USD' | 'EUR' | 'GBP'\n  type        String // 'apartment' | 'house' | 'condo' | 'commercial'\n  status      String // 'available' | 'sold' | 'rented'\n  bedrooms    Int\n  bathrooms   Int\n  area        Int\n  street      String           @db.VarChar(255)\n  city        String           @db.VarChar(255)\n  country     String           @db.VarChar(255)\n  zipCode     String           @db.VarChar(32)\n  lat         Float?\n  lng         Float?\n  images      String[]         @db.VarChar(255)\n  amenities   String[]\n  ownerId     String\n  owner       marketplace_user @relation(\"OwnerProperties\", fields: [ownerId], references: [id])\n  createdAt   DateTime         @default(now())\n  updatedAt   DateTime         @updatedAt\n  chats       chat[]\n}\n\nmodel chat {\n  id         String           @id @default(uuid())\n  propertyId String\n  property   property         @relation(fields: [propertyId], references: [id])\n  buyerId    String\n  buyer      marketplace_user @relation(\"BuyerChats\", fields: [buyerId], references: [id])\n  ownerId    String\n  owner      marketplace_user @relation(\"OwnerChats\", fields: [ownerId], references: [id])\n  messages   chat_message[]\n  createdAt  DateTime         @default(now())\n  updatedAt  DateTime         @updatedAt\n}\n\nmodel chat_message {\n  id        String           @id @default(uuid())\n  chatId    String\n  chat      chat             @relation(fields: [chatId], references: [id])\n  senderId  String\n  sender    marketplace_user @relation(\"SenderMessages\", fields: [senderId], references: [id])\n  content   String\n  timestamp DateTime         @default(now())\n  read      Boolean          @default(false)\n}\n",
-  "inlineSchemaHash": "67f098eca03d363d8cf109524476e48085dfe3911eba641916fcec32c1f41b24",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel marketplace_user {\n  id       String  @id @default(uuid())\n  name     String  @db.VarChar(255)\n  email    String  @unique\n  role     String // 'buyer' | 'owner'\n  avatar   String? @db.VarChar(255)\n  phone    String? @db.VarChar(32)\n  password String?\n\n  properties    property[]     @relation(\"OwnerProperties\")\n  chats_buyer   chat[]         @relation(\"BuyerChats\")\n  chats_owner   chat[]         @relation(\"OwnerChats\")\n  sent_messages chat_message[] @relation(\"SenderMessages\")\n}\n\nmodel property {\n  id          String   @id @default(uuid())\n  title       String   @db.VarChar(255)\n  description String\n  price       Int\n  currency    String // 'USD' | 'EUR' | 'GBP'\n  type        String // 'apartment' | 'house' | 'condo' | 'commercial'\n  status      String // 'available' | 'sold' | 'rented'\n  bedrooms    Int\n  bathrooms   Int\n  area        Int\n  street      String   @db.VarChar(255)\n  city        String   @db.VarChar(255)\n  country     String   @db.VarChar(255)\n  zipCode     String   @db.VarChar(32)\n  lat         Float?\n  lng         Float?\n  images      String[] @db.VarChar(255)\n  amenities   String[]\n\n  owner   marketplace_user @relation(\"OwnerProperties\", fields: [ownerId], references: [id])\n  ownerId String\n  chats   chat[]\n}\n\nmodel chat {\n  id         String @id @default(uuid())\n  propertyId String\n\n  property property         @relation(fields: [propertyId], references: [id])\n  buyerId  String\n  buyer    marketplace_user @relation(\"BuyerChats\", fields: [buyerId], references: [id])\n  ownerId  String\n  owner    marketplace_user @relation(\"OwnerChats\", fields: [ownerId], references: [id])\n  messages chat_message[]\n}\n\nmodel chat_message {\n  id        String   @id @default(uuid())\n  content   String\n  timestamp DateTime @default(now())\n  read      Boolean  @default(false)\n\n  chat     chat             @relation(fields: [chatId], references: [id])\n  chatId   String\n  sender   marketplace_user @relation(\"SenderMessages\", fields: [senderId], references: [id])\n  senderId String\n}\n",
+  "inlineSchemaHash": "03ea2e4f78434ae0ff68d4d3748237258d79d7003ec8241fd46f914c9a8e5d53",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"users\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null},\"marketplace_user\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"role\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"avatar\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"properties\",\"kind\":\"object\",\"type\":\"property\",\"relationName\":\"OwnerProperties\"},{\"name\":\"chats_buyer\",\"kind\":\"object\",\"type\":\"chat\",\"relationName\":\"BuyerChats\"},{\"name\":\"chats_owner\",\"kind\":\"object\",\"type\":\"chat\",\"relationName\":\"OwnerChats\"},{\"name\":\"sent_messages\",\"kind\":\"object\",\"type\":\"chat_message\",\"relationName\":\"SenderMessages\"}],\"dbName\":null},\"property\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"currency\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"type\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"bedrooms\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"bathrooms\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"area\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"street\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"city\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"country\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"zipCode\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"lat\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"lng\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"images\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"amenities\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"ownerId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"owner\",\"kind\":\"object\",\"type\":\"marketplace_user\",\"relationName\":\"OwnerProperties\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"chats\",\"kind\":\"object\",\"type\":\"chat\",\"relationName\":\"chatToproperty\"}],\"dbName\":null},\"chat\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"propertyId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"property\",\"kind\":\"object\",\"type\":\"property\",\"relationName\":\"chatToproperty\"},{\"name\":\"buyerId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"buyer\",\"kind\":\"object\",\"type\":\"marketplace_user\",\"relationName\":\"BuyerChats\"},{\"name\":\"ownerId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"owner\",\"kind\":\"object\",\"type\":\"marketplace_user\",\"relationName\":\"OwnerChats\"},{\"name\":\"messages\",\"kind\":\"object\",\"type\":\"chat_message\",\"relationName\":\"chatTochat_message\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"chat_message\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"chatId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"chat\",\"kind\":\"object\",\"type\":\"chat\",\"relationName\":\"chatTochat_message\"},{\"name\":\"senderId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sender\",\"kind\":\"object\",\"type\":\"marketplace_user\",\"relationName\":\"SenderMessages\"},{\"name\":\"content\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"timestamp\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"read\",\"kind\":\"scalar\",\"type\":\"Boolean\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"marketplace_user\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"role\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"avatar\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"properties\",\"kind\":\"object\",\"type\":\"property\",\"relationName\":\"OwnerProperties\"},{\"name\":\"chats_buyer\",\"kind\":\"object\",\"type\":\"chat\",\"relationName\":\"BuyerChats\"},{\"name\":\"chats_owner\",\"kind\":\"object\",\"type\":\"chat\",\"relationName\":\"OwnerChats\"},{\"name\":\"sent_messages\",\"kind\":\"object\",\"type\":\"chat_message\",\"relationName\":\"SenderMessages\"}],\"dbName\":null},\"property\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"currency\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"type\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"bedrooms\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"bathrooms\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"area\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"street\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"city\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"country\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"zipCode\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"lat\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"lng\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"images\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"amenities\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"owner\",\"kind\":\"object\",\"type\":\"marketplace_user\",\"relationName\":\"OwnerProperties\"},{\"name\":\"ownerId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"chats\",\"kind\":\"object\",\"type\":\"chat\",\"relationName\":\"chatToproperty\"}],\"dbName\":null},\"chat\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"propertyId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"property\",\"kind\":\"object\",\"type\":\"property\",\"relationName\":\"chatToproperty\"},{\"name\":\"buyerId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"buyer\",\"kind\":\"object\",\"type\":\"marketplace_user\",\"relationName\":\"BuyerChats\"},{\"name\":\"ownerId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"owner\",\"kind\":\"object\",\"type\":\"marketplace_user\",\"relationName\":\"OwnerChats\"},{\"name\":\"messages\",\"kind\":\"object\",\"type\":\"chat_message\",\"relationName\":\"chatTochat_message\"}],\"dbName\":null},\"chat_message\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"content\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"timestamp\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"read\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"chat\",\"kind\":\"object\",\"type\":\"chat\",\"relationName\":\"chatTochat_message\"},{\"name\":\"chatId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"sender\",\"kind\":\"object\",\"type\":\"marketplace_user\",\"relationName\":\"SenderMessages\"},{\"name\":\"senderId\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

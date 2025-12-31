@@ -1,5 +1,8 @@
+// TODO: validate if this file is still needed or can be removed
+
 // lib/prisma.ts
-import { PrismaClient } from '../../generated/prisma'
+
+import { PrismaClient } from '@/generated/prisma/client'
 
 declare global {
     // Trick para evitar múltiples instancias en hot reload (Next.js dev mode)
