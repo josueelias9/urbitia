@@ -1,8 +1,8 @@
 import { Suspense } from 'react'
-import { getDictionary } from '../../dictionaries'
+import { getDictionary } from '@/app/[lang]/dictionaries'
 import { notFound } from 'next/navigation'
 import { locales } from '@/proxy'
-import OwnerPropertiesClient from './properties-client'
+import OwnerPropertiesClient from '@/app/[lang]/owner/properties/properties-client'
 
 export default async function OwnerPropertiesPage({
     params

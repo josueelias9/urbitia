@@ -2,7 +2,7 @@ import NextAuth from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
 import bcrypt from 'bcrypt'
 import { z } from 'zod'
-import { authConfig } from './auth.config'
+import { authConfig } from '@/auth.config'
 import { PrismaClient } from '@/generated/prisma/client'
 
 const prisma = new PrismaClient()

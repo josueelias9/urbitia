@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getDictionary } from '../dictionaries'
+import { getDictionary } from '@/app/[lang]/dictionaries'
 import { locales } from '@/proxy'
-import LanguageSwitcher from '../components/LanguageSwitcher'
+import LanguageSwitcher from '@/app/[lang]/components/LanguageSwitcher'
 import Image from 'next/image'
 import {
     ScaleIcon,

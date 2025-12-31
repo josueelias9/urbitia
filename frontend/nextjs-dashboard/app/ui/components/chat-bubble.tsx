@@ -1,5 +1,5 @@
 import { ChatMessage } from '@/app/lib/types'
-import { UserAvatar } from './user-avatar'
+import { UserAvatar } from '@/app/ui/components/user-avatar'
 
 interface ChatBubbleProps {
     message: ChatMessage

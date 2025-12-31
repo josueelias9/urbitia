@@ -9,7 +9,7 @@ import { Chat } from '@/app/lib/types'
 import type { Locale } from '@/proxy'
 import enDict from '@/app/dictionaries/en.json'
 import esDict from '@/app/dictionaries/es.json'
-import ChatInterface from '../../components/ChatInterface'
+import ChatInterface from '@/app/[lang]/components/ChatInterface'
 
 export default function OwnerInboxPage({ params }: { params: Promise<{ lang: Locale }> }) {
     const resolvedParams = use(params)

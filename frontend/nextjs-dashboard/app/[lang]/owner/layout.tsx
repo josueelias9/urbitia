@@ -1,6 +1,6 @@
 'use client'
 
-import { AuthProvider } from '../../lib/auth-context'
+import { AuthProvider } from '@/app/lib/auth-context'
 
 export default function OwnerLayout({ children }: { children: React.ReactNode }) {
     return <AuthProvider>{children}</AuthProvider>

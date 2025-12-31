@@ -3,7 +3,7 @@ import { PropertyPreviewCard } from '@/app/ui/PropertyPreviewCard'
 import { NavigationBar } from '@/app//ui/NavigationBar'
 import { HeroSection } from '@/app/ui/HeroSection'
 import { getFeaturedProperties } from '@/app/lib/data'
-import { getDictionary } from '../dictionaries'
+import { getDictionary } from '@/app/[lang]/dictionaries'
 import { notFound } from 'next/navigation'
 import { locales, type Locale } from '@/proxy'
 
