@@ -2,7 +2,7 @@ import { Suspense } from 'react'
 import { getDictionary } from '@/app/[lang]/dictionaries'
 import { notFound } from 'next/navigation'
 import { locales } from '@/proxy'
-import { LoginClient } from '@/app/[lang]/login/login-client'
+import { LoginClient } from '@/app/ui/login/login-client'
 
 export default async function LoginPage({ params }: { params: Promise<{ lang: string }> }) {
     const { lang } = await params
