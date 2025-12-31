@@ -3,7 +3,12 @@
 import { useEffect, useState, use } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { EnvelopeIcon, EnvelopeOpenIcon, ChatBubbleLeftIcon } from '@heroicons/react/24/outline'
+import {
+    EnvelopeIcon,
+    EnvelopeOpenIcon,
+    ChatBubbleLeftIcon,
+    ArrowLeftIcon
+} from '@heroicons/react/24/outline'
 import { getChatsByUser, markMessagesAsRead } from '@/app/lib/actions'
 import { Chat } from '@/app/lib/types'
 import type { Locale } from '@/proxy'
@@ -11,7 +16,7 @@ import enDict from '@/app/dictionaries/en.json'
 import esDict from '@/app/dictionaries/es.json'
 import ChatInterface from '../../components/ChatInterface'
 
-export default function OwnerInboxPage({ params }: { params: Promise<{ lang: Locale }> }) {
+export default function BuyerChatPage({ params }: { params: Promise<{ lang: Locale }> }) {
     const resolvedParams = use(params)
     const [user, setUser] = useState<any>(null)
     const [chats, setChats] = useState<Chat[]>([])
@@ -28,13 +33,13 @@ export default function OwnerInboxPage({ params }: { params: Promise<{ lang: Loc
 
         const savedUser = localStorage.getItem('marketplace-user')
         if (!savedUser) {
-            router.push(`/${lang}/login?role=owner`)
+            router.push(`/${lang}/login?role=buyer`)
             return
         }
 
         const parsedUser = JSON.parse(savedUser)
-        if (parsedUser.role !== 'owner') {
-            router.push(`/${lang}/login?role=owner`)
+        if (parsedUser.role !== 'buyer') {
+            router.push(`/${lang}/login?role=buyer`)
             return
         }
 
@@ -42,7 +47,7 @@ export default function OwnerInboxPage({ params }: { params: Promise<{ lang: Loc
 
         // Fetch real chats from database
         async function fetchChats() {
-            const result = await getChatsByUser(parsedUser.id, 'owner')
+            const result = await getChatsByUser(parsedUser.id, 'buyer')
             if (result.success && result.chats) {
                 setChats(result.chats as Chat[])
             }
@@ -73,7 +78,7 @@ export default function OwnerInboxPage({ params }: { params: Promise<{ lang: Loc
 
     const refreshChats = async () => {
         if (!user) return
-        const result = await getChatsByUser(user.id, 'owner')
+        const result = await getChatsByUser(user.id, 'buyer')
         if (result.success && result.chats) {
             setChats(result.chats as Chat[])
             // Update selected chat if it exists
@@ -121,22 +126,18 @@ export default function OwnerInboxPage({ params }: { params: Promise<{ lang: Loc
                             </Link>
                             <div className='flex space-x-4'>
                                 <Link
-                                    href={`/${lang}/owner/dashboard`}
-                                    className='text-gray-600 hover:text-gray-900'
+                                    href={`/${lang}/buyer/properties`}
+                                    className='text-gray-600 hover:text-gray-900 flex items-center'
                                 >
-                                    {dict.navigation.dashboard}
+                                    <ArrowLeftIcon className='h-4 w-4 mr-1' />
+                                    {dict.navigation.properties}
                                 </Link>
                                 <Link
-                                    href={`/${lang}/owner/properties`}
-                                    className='text-gray-600 hover:text-gray-900'
+                                    href={`/${lang}/buyer/chat`}
+                                    className='text-blue-600 font-medium flex items-center'
                                 >
-                                    {dict.owner.myProperties}
-                                </Link>
-                                <Link
-                                    href={`/${lang}/owner/inbox`}
-                                    className='text-blue-600 font-medium'
-                                >
-                                    {dict.navigation.inbox}
+                                    <ChatBubbleLeftIcon className='h-5 w-5 mr-1' />
+                                    {dict.navigation.chat}
                                     {unreadCount > 0 && (
                                         <span className='ml-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full'>
                                             {unreadCount}
@@ -163,7 +164,9 @@ export default function OwnerInboxPage({ params }: { params: Promise<{ lang: Loc
             {/* Main Content */}
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
                 <div className='mb-8'>
-                    <h1 className='text-3xl font-bold text-gray-900'>{dict.navigation.inbox}</h1>
+                    <h1 className='text-3xl font-bold text-gray-900'>
+                        {dict.chat?.title || 'Messages'}
+                    </h1>
                     <p className='mt-2 text-gray-600'>
                         {unreadCount > 0
                             ? unreadCount > 1
@@ -186,11 +189,20 @@ export default function OwnerInboxPage({ params }: { params: Promise<{ lang: Loc
                     </div>
                 ) : chats.length === 0 ? (
                     <div className='text-center py-12 bg-white rounded-lg shadow'>
-                        <EnvelopeIcon className='h-16 w-16 text-gray-400 mx-auto mb-4' />
+                        <ChatBubbleLeftIcon className='h-16 w-16 text-gray-400 mx-auto mb-4' />
                         <h3 className='text-xl font-semibold text-gray-900 mb-2'>
-                            {dict.owner.noMessagesYet}
+                            {dict.chat?.noConversations || 'No conversations yet'}
                         </h3>
-                        <p className='text-gray-600'>{dict.owner.noMessagesDescription}</p>
+                        <p className='text-gray-600 mb-4'>
+                            {dict.chat?.startConversation ||
+                                'Start a conversation with a property owner'}
+                        </p>
+                        <Link
+                            href={`/${lang}/buyer/properties`}
+                            className='inline-block bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors'
+                        >
+                            {dict.navigation.properties}
+                        </Link>
                     </div>
                 ) : (
                     <div className='flex gap-4 h-[calc(100vh-280px)]'>
@@ -234,7 +246,7 @@ export default function OwnerInboxPage({ params }: { params: Promise<{ lang: Loc
                                                             <EnvelopeOpenIcon className='h-4 w-4 text-gray-400 mr-2 flex-shrink-0' />
                                                         )}
                                                         <h3 className='font-semibold text-gray-900 text-sm truncate'>
-                                                            {chat.buyer?.name || 'Unknown Buyer'}
+                                                            {chat.owner?.name || 'Property Owner'}
                                                         </h3>
                                                     </div>
                                                     <p className='text-xs text-gray-600 ml-6 truncate'>

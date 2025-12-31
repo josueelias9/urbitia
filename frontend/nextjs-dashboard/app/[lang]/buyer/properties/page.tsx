@@ -6,10 +6,11 @@ import Link from 'next/link'
 import { PropertyPreviewCard } from '@/app/ui/PropertyPreviewCard'
 import { Property } from '@/app/lib/types'
 import { getAllProperties } from '@/app/lib/data'
+import { getChatsByUser } from '@/app/lib/actions'
 import type { Locale } from '@/proxy'
 import enDict from '@/app/dictionaries/en.json'
 import esDict from '@/app/dictionaries/es.json'
-import { FunnelIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline'
+import { FunnelIcon, MagnifyingGlassIcon, ChatBubbleLeftIcon } from '@heroicons/react/24/outline'
 
 export default function BuyerPropertiesPage({ params }: { params: Promise<{ lang: Locale }> }) {
     const resolvedParams = use(params)
@@ -19,6 +20,7 @@ export default function BuyerPropertiesPage({ params }: { params: Promise<{ lang
     const [isLoading, setIsLoading] = useState(true)
     const [dict, setDict] = useState<any>(null)
     const [showFilters, setShowFilters] = useState(false)
+    const [unreadCount, setUnreadCount] = useState(0)
     const router = useRouter()
     const lang = resolvedParams.lang
 
@@ -64,7 +66,27 @@ export default function BuyerPropertiesPage({ params }: { params: Promise<{ lang
             }
         }
 
+        // Fetch chats to get unread count
+        async function fetchUnreadCount() {
+            try {
+                const result = await getChatsByUser(parsedUser.id, 'buyer')
+                if (result.success && result.chats) {
+                    const count = result.chats.reduce((total: number, chat: any) => {
+                        const unread =
+                            chat.messages?.filter(
+                                (m: any) => !m.read && m.senderId !== parsedUser.id
+                            ).length || 0
+                        return total + unread
+                    }, 0)
+                    setUnreadCount(count)
+                }
+            } catch (error) {
+                console.error('Error fetching chats:', error)
+            }
+        }
+
         fetchProperties()
+        fetchUnreadCount()
     }, [router, lang])
 
     // Apply filters
@@ -78,7 +100,7 @@ export default function BuyerPropertiesPage({ params }: { params: Promise<{ lang
                 p =>
                     p.title.toLowerCase().includes(searchLower) ||
                     p.description.toLowerCase().includes(searchLower) ||
-                    p.address.city.toLowerCase().includes(searchLower)
+                    (p.address?.city || '').toLowerCase().includes(searchLower)
             )
         }
 
@@ -103,7 +125,7 @@ export default function BuyerPropertiesPage({ params }: { params: Promise<{ lang
         // City filter
         if (filters.city) {
             result = result.filter(p =>
-                p.address.city.toLowerCase().includes(filters.city.toLowerCase())
+                (p.address?.city || '').toLowerCase().includes(filters.city.toLowerCase())
             )
         }
 
@@ -149,6 +171,18 @@ export default function BuyerPropertiesPage({ params }: { params: Promise<{ lang
                             </Link>
                         </div>
                         <div className='flex items-center space-x-4'>
+                            <Link
+                                href={`/${lang}/buyer/chat`}
+                                className='relative text-urbitia-secondary hover:text-urbitia-primary transition-colors flex items-center'
+                                title={dict.navigation.chat}
+                            >
+                                <ChatBubbleLeftIcon className='h-6 w-6' />
+                                {unreadCount > 0 && (
+                                    <span className='absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full min-w-[20px] text-center'>
+                                        {unreadCount}
+                                    </span>
+                                )}
+                            </Link>
                             <span className='text-urbitia-secondary'>
                                 {dict.common.welcome}, {user.name}
                             </span>
