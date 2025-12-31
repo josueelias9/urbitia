@@ -5,6 +5,7 @@ import { locales } from '@/proxy'
 import LanguageSwitcher from '@/app/ui/LanguageSwitcher'
 import Image from 'next/image'
 import PropertyCarousel from '@/app/ui/PropertyCarousel'
+import UrbitiaLogo from '../ui/urbitia-logo'
 
 export default async function HomePage({ params }: { params: Promise<{ lang: string }> }) {
     const { lang } = await params
@@ -190,6 +191,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                     >
                         {dict.hero.cta}
                     </Link>
+                    <UrbitiaLogo />
                 </div>
             </div>
         </div>

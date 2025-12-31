@@ -1,3 +1,5 @@
+// TODO: is this file used?
+
 import Link from 'next/link'
 import { PropertyPreviewCard } from '@/app/ui/PropertyPreviewCard'
 import { NavigationBar } from '@/app//ui/NavigationBar'
