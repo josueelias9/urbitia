@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id       String   @id @default(uuid())
+  name     String   @db.VarChar(255)
+  email    String   @unique
+  password String
+}
+
+model marketplace_user {
+  id            String         @id @default(uuid())
+  name          String         @db.VarChar(255)
+  email         String         @unique
+  role          String // 'buyer' | 'owner'
+  avatar        String?        @db.VarChar(255)
+  phone         String?        @db.VarChar(32)
+  createdAt     DateTime       @default(now())
+  properties    property[]     @relation("OwnerProperties")
+  chats_buyer   chat[]         @relation("BuyerChats")
+  chats_owner   chat[]         @relation("OwnerChats")
+  sent_messages chat_message[] @relation("SenderMessages")
+}
+
+model property {
+  id          String           @id @default(uuid())
+  title       String           @db.VarChar(255)
+  description String
+  price       Int
+  currency    String // 'USD' | 'EUR' | 'GBP'
+  type        String // 'apartment' | 'house' | 'condo' | 'commercial'
+  status      String // 'available' | 'sold' | 'rented'
+  bedrooms    Int
+  bathrooms   Int
+  area        Int
+  street      String           @db.VarChar(255)
+  city        String           @db.VarChar(255)
+  country     String           @db.VarChar(255)
+  zipCode     String           @db.VarChar(32)
+  lat         Float?
+  lng         Float?
+  images      String[]         @db.VarChar(255)
+  amenities   String[]
+  ownerId     String
+  owner       marketplace_user @relation("OwnerProperties", fields: [ownerId], references: [id])
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  chats       chat[]
+}
+
+model chat {
+  id         String           @id @default(uuid())
+  propertyId String
+  property   property         @relation(fields: [propertyId], references: [id])
+  buyerId    String
+  buyer      marketplace_user @relation("BuyerChats", fields: [buyerId], references: [id])
+  ownerId    String
+  owner      marketplace_user @relation("OwnerChats", fields: [ownerId], references: [id])
+  messages   chat_message[]
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
+}
+
+model chat_message {
+  id        String           @id @default(uuid())
+  chatId    String
+  chat      chat             @relation(fields: [chatId], references: [id])
+  senderId  String
+  sender    marketplace_user @relation("SenderMessages", fields: [senderId], references: [id])
+  content   String
+  timestamp DateTime         @default(now())
+  read      Boolean          @default(false)
+}
