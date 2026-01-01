@@ -12,6 +12,7 @@ import {
 import { getChatsByUser, markMessagesAsRead, getChatById } from '@/app/lib/actions'
 import { Chat } from '@/app/lib/types'
 import ChatInterface from '@/app/ui/ChatInterface'
+import BuyerNavBar from '@/app/ui/buyer/BuyerNavBar'
 
 interface BuyerChatClientProps {
     dict: any
@@ -116,57 +117,13 @@ export default function BuyerChatClient({ dict, lang }: BuyerChatClientProps) {
 
     return (
         <div className='min-h-screen bg-gray-50'>
-            {/* Navigation Bar */}
-            <nav className='bg-white shadow-sm'>
-                <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-                    <div className='flex justify-between h-16'>
-                        <div className='flex items-center space-x-8'>
-                            <Link href={`/${lang}`} className='text-xl font-bold text-blue-600'>
-                                Urbitia
-                            </Link>
-                            <div className='flex space-x-4'>
-                                <Link
-                                    href={`/${lang}/buyer/properties`}
-                                    className='text-gray-600 hover:text-gray-900 flex items-center'
-                                >
-                                    <ArrowLeftIcon className='h-4 w-4 mr-1' />
-                                    {dict.navigation.properties}
-                                </Link>
-                                <Link
-                                    href={`/${lang}/buyer/chat`}
-                                    className='text-blue-600 font-medium flex items-center'
-                                >
-                                    <ChatBubbleLeftIcon className='h-5 w-5 mr-1' />
-                                    {dict.navigation.chat}
-                                    {unreadCount > 0 && (
-                                        <span className='ml-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full'>
-                                            {unreadCount}
-                                        </span>
-                                    )}
-                                </Link>
-                            </div>
-                        </div>
-                        <div className='flex items-center space-x-4'>
-                            {user.avatar && (
-                                <img
-                                    src={user.avatar}
-                                    alt={user.name}
-                                    className='h-8 w-8 rounded-full object-cover'
-                                />
-                            )}
-                            <span className='text-gray-700'>
-                                {dict.common.welcome}, {user.name}
-                            </span>
-                            <button
-                                onClick={handleLogout}
-                                className='text-sm text-gray-600 hover:text-gray-900'
-                            >
-                                {dict.navigation.logout}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+            <BuyerNavBar
+                dict={dict}
+                lang={lang}
+                userName={user.name}
+                onLogout={handleLogout}
+                activePage='chat'
+            />
 
             {/* Main Content */}
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>

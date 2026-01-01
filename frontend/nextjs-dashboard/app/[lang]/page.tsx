@@ -178,7 +178,6 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                     >
                         {dict.hero.cta}
                     </Link>
-                    <UrbitiaLogo />
                 </div>
             </div>
         </div>

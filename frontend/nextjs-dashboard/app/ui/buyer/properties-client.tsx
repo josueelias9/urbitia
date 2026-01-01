@@ -8,6 +8,7 @@ import { Property } from '@/app/lib/types'
 import { getAllProperties } from '@/app/lib/data'
 import { getChatsByUser } from '@/app/lib/actions'
 import { FunnelIcon, MagnifyingGlassIcon, ChatBubbleLeftIcon } from '@heroicons/react/24/outline'
+import BuyerNavBar from '@/app/ui/buyer/BuyerNavBar'
 
 interface BuyerPropertiesClientProps {
     dict: any
@@ -153,45 +154,7 @@ export default function BuyerPropertiesClient({ dict, lang }: BuyerPropertiesCli
 
     return (
         <div className='min-h-screen bg-urbitia-secondary'>
-            {/* Navigation Bar */}
-            <nav className='bg-urbitia-dark shadow-sm'>
-                <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-                    <div className='flex justify-between h-16'>
-                        <div className='flex items-center'>
-                            <Link
-                                href={`/${lang}`}
-                                className='text-xl font-bold text-urbitia-primary'
-                            >
-                                Urbitia
-                            </Link>
-                        </div>
-                        <div className='flex items-center space-x-4'>
-                            <Link
-                                href={`/${lang}/buyer/chat`}
-                                className='relative text-urbitia-secondary hover:text-urbitia-primary transition-colors flex items-center'
-                                title={dict.navigation.chat}
-                            >
-                                <ChatBubbleLeftIcon className='h-6 w-6' />
-                                {unreadCount > 0 && (
-                                    <span className='absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full min-w-[20px] text-center'>
-                                        {unreadCount}
-                                    </span>
-                                )}
-                            </Link>
-                            <span className='text-urbitia-secondary'>
-                                {dict.common.welcome}, {user.name}
-                            </span>
-                            <button
-                                onClick={handleLogout}
-                                className='text-sm text-urbitia-secondary hover:text-urbitia-primary transition-colors'
-                            >
-                                {dict.navigation.logout}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-
+      
             {/* Main Content */}
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
                 <div className='mb-8'>
