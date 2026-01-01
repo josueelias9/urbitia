@@ -55,16 +55,29 @@ export default function ChatInterface({
             {/* Chat Header */}
             <div className='bg-white border-b border-gray-200 p-4'>
                 <div className='flex items-center justify-between'>
-                    <div>
-                        <h2 className='text-lg font-semibold text-gray-900'>
-                            {chat.buyer?.name || 'Unknown Buyer'}
-                        </h2>
-                        <p className='text-sm text-gray-600'>
-                            {dict.chat?.propertyInquiry || 'Property Inquiry'}:{' '}
-                            <span className='font-medium'>
-                                {chat.property?.title || 'Property'}
-                            </span>
-                        </p>
+                    <div className='flex items-center space-x-3'>
+                        {chat.buyer?.avatar ? (
+                            <img
+                                src={chat.buyer.avatar}
+                                alt={chat.buyer.name || 'User'}
+                                className='h-10 w-10 rounded-full object-cover'
+                            />
+                        ) : (
+                            <div className='h-10 w-10 rounded-full bg-blue-500 flex items-center justify-center text-white font-semibold'>
+                                {(chat.buyer?.name || 'U').charAt(0).toUpperCase()}
+                            </div>
+                        )}
+                        <div>
+                            <h2 className='text-lg font-semibold text-gray-900'>
+                                {chat.buyer?.name || 'Unknown Buyer'}
+                            </h2>
+                            <p className='text-sm text-gray-600'>
+                                {dict.chat?.propertyInquiry || 'Property Inquiry'}:{' '}
+                                <span className='font-medium'>
+                                    {chat.property?.title || 'Property'}
+                                </span>
+                            </p>
+                        </div>
                     </div>
                     {chat.property?.id && (
                         <a

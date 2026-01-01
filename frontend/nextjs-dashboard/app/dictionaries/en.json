@@ -9,7 +9,8 @@
         "inbox": "Inbox",
         "login": "Login",
         "logout": "Logout",
-        "legalAdvisory": "Legal Advisory"
+        "legalAdvisory": "Legal Advisory",
+        "register": "Sign Up"
     },
     "common": {
         "welcome": "Welcome",
@@ -130,7 +131,19 @@
         "selectRole": "Select Your Role",
         "buyerRole": "Buyer",
         "ownerRole": "Owner",
-        "continueAs": "Continue as"
+        "continueAs": "Continue as",
+        "register": "Create Account",
+        "registerTitle": "Join Urbitia",
+        "registerSubtitle": "Create your account to start your real estate journey",
+        "fullName": "Full Name",
+        "phone": "Phone Number (Optional)",
+        "createAccount": "Create Account",
+        "alreadyHaveAccount": "Already have an account?",
+        "iAm": "I am a",
+        "buyer": "Buyer",
+        "owner": "Property Owner",
+        "accountCreated": "Account created successfully!",
+        "registering": "Creating account..."
     },
     "carousel": {
         "sectionTitle": "Featured Highlights",

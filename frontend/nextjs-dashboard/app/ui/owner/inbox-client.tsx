@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { EnvelopeIcon, EnvelopeOpenIcon, ChatBubbleLeftIcon } from '@heroicons/react/24/outline'
-import { getChatsByUser, markMessagesAsRead } from '@/app/lib/actions'
+import { getChatsByUser, markMessagesAsRead, getChatById } from '@/app/lib/actions'
 import { Chat } from '@/app/lib/types'
 import ChatInterface from '@/app/ui/ChatInterface'
 
@@ -56,10 +56,17 @@ export default function OwnerInboxClient({ dict, lang }: OwnerInboxClientProps) 
         // Mark messages as read
         if (chat.id && user) {
             await markMessagesAsRead(chat.id, user.id)
+            // Load full chat with all messages
+            const chatResult = await getChatById(chat.id)
+            if (chatResult.success && chatResult.chat) {
+                setSelectedChat(chatResult.chat as Chat)
+            }
         }
-        setSelectedChat(chat)
-        // Refresh chats to update unread status
-        await refreshChats()
+        // Refresh chats list to update unread status
+        const result = await getChatsByUser(user.id, 'owner')
+        if (result.success && result.chats) {
+            setChats(result.chats as Chat[])
+        }
     }
 
     const refreshChats = async () => {
@@ -67,11 +74,11 @@ export default function OwnerInboxClient({ dict, lang }: OwnerInboxClientProps) 
         const result = await getChatsByUser(user.id, 'owner')
         if (result.success && result.chats) {
             setChats(result.chats as Chat[])
-            // Update selected chat if it exists
-            if (selectedChat) {
-                const updatedChat = result.chats.find((c: Chat) => c.id === selectedChat.id)
-                if (updatedChat) {
-                    setSelectedChat(updatedChat as Chat)
+            // Update selected chat with all messages if it exists
+            if (selectedChat && selectedChat.id) {
+                const chatResult = await getChatById(selectedChat.id)
+                if (chatResult.success && chatResult.chat) {
+                    setSelectedChat(chatResult.chat as Chat)
                 }
             }
         }
@@ -132,6 +139,13 @@ export default function OwnerInboxClient({ dict, lang }: OwnerInboxClientProps) 
                             </div>
                         </div>
                         <div className='flex items-center space-x-4'>
+                            {user.avatar && (
+                                <img
+                                    src={user.avatar}
+                                    alt={user.name}
+                                    className='h-8 w-8 rounded-full object-cover'
+                                />
+                            )}
                             <span className='text-gray-700'>
                                 {dict.common.welcome}, {user.name}
                             </span>
@@ -215,25 +229,40 @@ export default function OwnerInboxClient({ dict, lang }: OwnerInboxClientProps) 
                                             onClick={() => handleChatClick(chat)}
                                         >
                                             <div className='flex items-start justify-between'>
-                                                <div className='flex-1'>
-                                                    <div className='flex items-center mb-1'>
-                                                        {hasUnread ? (
-                                                            <EnvelopeIcon className='h-4 w-4 text-blue-600 mr-2 flex-shrink-0' />
-                                                        ) : (
-                                                            <EnvelopeOpenIcon className='h-4 w-4 text-gray-400 mr-2 flex-shrink-0' />
-                                                        )}
-                                                        <h3 className='font-semibold text-gray-900 text-sm truncate'>
-                                                            {chat.buyer?.name || 'Buyer'}
-                                                        </h3>
-                                                    </div>
-                                                    <p className='text-xs text-gray-600 ml-6 truncate'>
-                                                        {chat.property?.title || 'Property'}
-                                                    </p>
-                                                    {lastMessage && (
-                                                        <p className='text-xs text-gray-500 ml-6 truncate mt-1'>
-                                                            {lastMessage.content}
-                                                        </p>
+                                                <div className='flex items-start space-x-3 flex-1'>
+                                                    {/* Avatar */}
+                                                    {chat.buyer?.avatar ? (
+                                                        <img
+                                                            src={chat.buyer.avatar}
+                                                            alt={chat.buyer.name || 'Buyer'}
+                                                            className='h-10 w-10 rounded-full object-cover flex-shrink-0'
+                                                        />
+                                                    ) : (
+                                                        <div className='h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-600 font-semibold flex-shrink-0'>
+                                                            {(chat.buyer?.name || 'B')
+                                                                .charAt(0)
+                                                                .toUpperCase()}
+                                                        </div>
                                                     )}
+
+                                                    <div className='flex-1 min-w-0'>
+                                                        <div className='flex items-center mb-1'>
+                                                            {hasUnread && (
+                                                                <EnvelopeIcon className='h-4 w-4 text-blue-600 mr-2 flex-shrink-0' />
+                                                            )}
+                                                            <h3 className='font-semibold text-gray-900 text-sm truncate'>
+                                                                {chat.buyer?.name || 'Buyer'}
+                                                            </h3>
+                                                        </div>
+                                                        <p className='text-xs text-gray-600 truncate'>
+                                                            {chat.property?.title || 'Property'}
+                                                        </p>
+                                                        {lastMessage && (
+                                                            <p className='text-xs text-gray-500 truncate mt-1'>
+                                                                {lastMessage.content}
+                                                            </p>
+                                                        )}
+                                                    </div>
                                                 </div>
                                                 <div className='ml-2 text-right flex-shrink-0'>
                                                     {lastMessage && (
