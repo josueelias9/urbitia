@@ -12,7 +12,6 @@ import {
 import { getChatsByUser, markMessagesAsRead, getChatById } from '@/app/lib/actions'
 import { Chat } from '@/app/lib/types'
 import ChatInterface from '@/app/ui/ChatInterface'
-import BuyerNavBar from '@/app/ui/buyer/BuyerNavBar'
 
 interface BuyerChatClientProps {
     dict: any
@@ -117,14 +116,6 @@ export default function BuyerChatClient({ dict, lang }: BuyerChatClientProps) {
 
     return (
         <div className='min-h-screen bg-gray-50'>
-            <BuyerNavBar
-                dict={dict}
-                lang={lang}
-                userName={user.name}
-                onLogout={handleLogout}
-                activePage='chat'
-            />
-
             {/* Main Content */}
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
                 <div className='mb-8'>

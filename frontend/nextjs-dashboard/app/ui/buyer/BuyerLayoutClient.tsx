@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
-import BuyerNavBar from '@/app/ui/buyer/BuyerNavBar'
+import ResponsiveNavBar from '@/app/ui/ResponsiveNavBar'
 
 interface BuyerLayoutClientProps {
     children: React.ReactNode
@@ -47,13 +47,27 @@ export default function BuyerLayoutClient({ children, dict, lang }: BuyerLayoutC
         return null
     }
 
+    const navItems = [
+        {
+            href: `/${lang}/buyer/properties`,
+            label: dict.navigation.properties,
+            key: 'properties'
+        },
+        {
+            href: `/${lang}/buyer/chat`,
+            label: dict.navigation.chat,
+            key: 'chat'
+        }
+    ]
+
     return (
         <div className='min-h-screen bg-gray-50'>
-            <BuyerNavBar
+            <ResponsiveNavBar
                 dict={dict}
                 lang={lang}
                 userName={user.name}
                 onLogout={handleLogout}
+                navItems={navItems}
                 activePage={getActivePage()}
             />
             {children}

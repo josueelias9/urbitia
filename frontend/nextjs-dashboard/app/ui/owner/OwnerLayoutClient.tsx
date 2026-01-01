@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
-import OwnerNavBar from '@/app/ui/owner/OwnerNavBar'
+import ResponsiveNavBar from '@/app/ui/ResponsiveNavBar'
 
 interface OwnerLayoutClientProps {
     children: React.ReactNode
@@ -48,13 +48,32 @@ export default function OwnerLayoutClient({ children, dict, lang }: OwnerLayoutC
         return null
     }
 
+    const navItems = [
+        {
+            href: `/${lang}/owner/dashboard`,
+            label: dict.navigation.dashboard,
+            key: 'dashboard'
+        },
+        {
+            href: `/${lang}/owner/properties`,
+            label: dict.owner.myProperties,
+            key: 'properties'
+        },
+        {
+            href: `/${lang}/owner/inbox`,
+            label: dict.navigation.inbox,
+            key: 'inbox'
+        }
+    ]
+
     return (
         <div className='min-h-screen bg-gray-50'>
-            <OwnerNavBar
+            <ResponsiveNavBar
                 dict={dict}
                 lang={lang}
                 userName={user.name}
                 onLogout={handleLogout}
+                navItems={navItems}
                 activePage={getActivePage()}
             />
             {children}

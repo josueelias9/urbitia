@@ -8,7 +8,6 @@ import { Property } from '@/app/lib/types'
 import { getAllProperties } from '@/app/lib/data'
 import { getChatsByUser } from '@/app/lib/actions'
 import { FunnelIcon, MagnifyingGlassIcon, ChatBubbleLeftIcon } from '@heroicons/react/24/outline'
-import BuyerNavBar from '@/app/ui/buyer/BuyerNavBar'
 
 interface BuyerPropertiesClientProps {
     dict: any
@@ -154,7 +153,6 @@ export default function BuyerPropertiesClient({ dict, lang }: BuyerPropertiesCli
 
     return (
         <div className='min-h-screen bg-urbitia-secondary'>
-      
             {/* Main Content */}
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
                 <div className='mb-8'>
