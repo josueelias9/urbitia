@@ -61,7 +61,9 @@ async function main() {
                     'https://images.unsplash.com/photo-1560448075-bb485b067938?w=800'
                 ],
                 amenities: ['Parking', 'Gym', 'Pool', 'Concierge', 'Rooftop Terrace'],
-                ownerId: 'owner-1'
+                ownerId: 'owner-1',
+                legal_status:
+                    'The legal review of the property located at 123 Green Valley Road, Tarapoto, San Martín, Peru confirms that it is duly registered in the Public Registry under the name of the current owner, who holds full and valid ownership rights.'
             },
             {
                 id: 'prop-2',
@@ -87,7 +89,9 @@ async function main() {
                     'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800'
                 ],
                 amenities: ['Garden', 'Garage', 'Fireplace', 'Updated Kitchen', 'Walk-in Closet'],
-                ownerId: 'owner-2'
+                ownerId: 'owner-2',
+                legal_status:
+                    'The legal review of the property located at 123 Green Valley Road, Tarapoto, San Martín, Peru confirms that it is duly registered in the Public Registry under the name of the current owner, who holds full and valid ownership rights.'
             },
             {
                 id: 'prop-3',
@@ -119,7 +123,9 @@ async function main() {
                     'City Views',
                     'Concierge'
                 ],
-                ownerId: 'owner-1'
+                ownerId: 'owner-1',
+                legal_status:
+                    'The legal review of the property located at 123 Green Valley Road, Tarapoto, San Martín, Peru confirms that it is duly registered in the Public Registry under the name of the current owner, who holds full and valid ownership rights.'
             },
             {
                 id: 'prop-4',
@@ -144,7 +150,9 @@ async function main() {
                     'https://images.unsplash.com/photo-1536376072261-38c75010e6c9?w=800'
                 ],
                 amenities: ['Modern Kitchen', 'In-unit Laundry', 'Fitness Center', 'Pet Friendly'],
-                ownerId: 'owner-2'
+                ownerId: 'owner-2',
+                legal_status:
+                    'The legal review of the property located at 123 Green Valley Road, Tarapoto, San Martín, Peru confirms that it is duly registered in the Public Registry under the name of the current owner, who holds full and valid ownership rights.'
             }
         ],
         skipDuplicates: true
