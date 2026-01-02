@@ -68,50 +68,6 @@ export default function OwnerPropertiesClient({ dict, lang }: OwnerPropertiesCli
 
     return (
         <div className='min-h-screen bg-gray-50'>
-            {/* Navigation Bar */}
-            <nav className='bg-white shadow-sm'>
-                <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-                    <div className='flex justify-between h-16'>
-                        <div className='flex items-center space-x-8'>
-                            <Link href={`/${lang}`} className='text-xl font-bold text-blue-600'>
-                                RealEstate
-                            </Link>
-                            <div className='flex space-x-4'>
-                                <Link
-                                    href={`/${lang}/owner/dashboard`}
-                                    className='text-gray-600 hover:text-gray-900'
-                                >
-                                    {dict.navigation.dashboard}
-                                </Link>
-                                <Link
-                                    href={`/${lang}/owner/properties`}
-                                    className='text-blue-600 font-medium'
-                                >
-                                    {dict.owner.myProperties}
-                                </Link>
-                                <Link
-                                    href={`/${lang}/owner/inbox`}
-                                    className='text-gray-600 hover:text-gray-900'
-                                >
-                                    {dict.navigation.inbox}
-                                </Link>
-                            </div>
-                        </div>
-                        <div className='flex items-center space-x-4'>
-                            <span className='text-gray-700'>
-                                {dict.common.welcome}, {user.name}
-                            </span>
-                            <button
-                                onClick={handleLogout}
-                                className='text-sm text-gray-600 hover:text-gray-900'
-                            >
-                                {dict.navigation.logout}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-
             {/* Main Content */}
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
                 <div className='flex justify-between items-center mb-8'>

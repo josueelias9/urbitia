@@ -1,21 +1,21 @@
 import { AuthProvider } from '@/app/lib/auth-context'
 import { getDictionary } from '@/app/[lang]/dictionaries'
-import OwnerLayoutClient from '@/app/ui/owner/OwnerLayoutClient'
+import BuyerLayoutClient from '@/app/ui/buyer/BuyerLayoutClient'
 
-interface OwnerLayoutProps {
+interface BuyerLayoutProps {
     children: React.ReactNode
     params: Promise<{ lang: string }>
 }
 
-export default async function OwnerLayout({ children, params }: OwnerLayoutProps) {
+export default async function BuyerLayout({ children, params }: BuyerLayoutProps) {
     const { lang } = await params
     const dict = await getDictionary(lang as 'en' | 'es')
 
     return (
         <AuthProvider>
-            <OwnerLayoutClient dict={dict} lang={lang}>
+            <BuyerLayoutClient dict={dict} lang={lang}>
                 {children}
-            </OwnerLayoutClient>
+            </BuyerLayoutClient>
         </AuthProvider>
     )
 }

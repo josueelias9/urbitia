@@ -42,7 +42,8 @@ model property {
   lng         Float?
   images      String[]         @db.VarChar(255)
   amenities   String[]
-  
+  legal_status String?        @db.VarChar(255)
+
   owner       marketplace_user @relation("OwnerProperties", fields: [ownerId], references: [id])
   ownerId     String
   chats       chat[]

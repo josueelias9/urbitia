@@ -21,27 +21,21 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
     const carouselItems = [
         {
             id: 1,
-            title: dict.carousel?.slide1Title || 'Premium Properties',
-            description:
-                dict.carousel?.slide1Description ||
-                'Discover exclusive properties in the best locations',
-            image: '/property1.jpg'
+            title: dict.carousel?.slide1Title,
+            description: dict.carousel?.slide1Description,
+            image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&auto=format&fit=crop'
         },
         {
             id: 2,
-            title: dict.carousel?.slide2Title || 'Expert Legal Advisory',
-            description:
-                dict.carousel?.slide2Description ||
-                'Get professional guidance for all your real estate transactions',
-            image: '/property2.jpg'
+            title: dict.carousel?.slide2Title,
+            description: dict.carousel?.slide2Description,
+            image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&auto=format&fit=crop'
         },
         {
             id: 3,
-            title: dict.carousel?.slide3Title || 'Secure Transactions',
-            description:
-                dict.carousel?.slide3Description ||
-                'Safe and transparent process from start to finish',
-            image: '/property3.jpg'
+            title: dict.carousel?.slide3Title,
+            description: dict.carousel?.slide3Description,
+            image: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&auto=format&fit=crop'
         }
     ]
 
@@ -70,7 +64,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                         <p className='text-xl md:text-2xl mb-8 max-w-3xl mx-auto'>
                             {dict.hero.subtitle}
                         </p>
-                        <div className='flex flex-col sm:flex-row gap-4 justify-center'>
+                        <div className='flex flex-col sm:flex-row gap-4 justify-center mb-6'>
                             <Link
                                 href={`/${lang}/login?role=buyer`}
                                 className='bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors'
@@ -87,7 +81,18 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                                 href={`/${lang}/legal-advisory`}
                                 className='bg-yellow-500 border-2 border-yellow-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-yellow-600 hover:border-yellow-600 transition-colors'
                             >
-                                {dict.navigation?.legalAdvisory || 'Legal Advisory'}
+                                {dict.navigation?.legalAdvisory}
+                            </Link>
+                        </div>
+                        <div className='text-center'>
+                            <p className='text-white/90 mb-2'>
+                                {dict.auth?.registerSubtitle || "Don't have an account?"}
+                            </p>
+                            <Link
+                                href={`/${lang}/register`}
+                                className='text-white font-semibold underline hover:text-gray-200 transition-colors'
+                            >
+                                {dict.navigation?.register || 'Sign Up'}
                             </Link>
                         </div>
                     </div>
@@ -140,41 +145,23 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                     <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-8'>
                         <div className='text-center'>
                             <div className='text-5xl mb-4'>🔒</div>
-                            <h3 className='font-semibold mb-2'>
-                                {dict.whyUrbitia?.security || 'Secure Platform'}
-                            </h3>
-                            <p className='text-gray-600 text-sm'>
-                                {dict.whyUrbitia?.securityDesc ||
-                                    'Your data and transactions are protected'}
-                            </p>
+                            <h3 className='font-semibold mb-2'>{dict.whyUrbitia?.security}</h3>
+                            <p className='text-gray-600 text-sm'>{dict.whyUrbitia?.securityDesc}</p>
                         </div>
                         <div className='text-center'>
                             <div className='text-5xl mb-4'>✅</div>
-                            <h3 className='font-semibold mb-2'>
-                                {dict.whyUrbitia?.verified || 'Verified Properties'}
-                            </h3>
-                            <p className='text-gray-600 text-sm'>
-                                {dict.whyUrbitia?.verifiedDesc ||
-                                    'All listings are verified by our team'}
-                            </p>
+                            <h3 className='font-semibold mb-2'>{dict.whyUrbitia?.verified}</h3>
+                            <p className='text-gray-600 text-sm'>{dict.whyUrbitia?.verifiedDesc}</p>
                         </div>
                         <div className='text-center'>
                             <div className='text-5xl mb-4'>⚖️</div>
-                            <h3 className='font-semibold mb-2'>
-                                {dict.whyUrbitia?.legal || 'Legal Support'}
-                            </h3>
-                            <p className='text-gray-600 text-sm'>
-                                {dict.whyUrbitia?.legalDesc || 'Expert legal advisory available'}
-                            </p>
+                            <h3 className='font-semibold mb-2'>{dict.whyUrbitia?.legal}</h3>
+                            <p className='text-gray-600 text-sm'>{dict.whyUrbitia?.legalDesc}</p>
                         </div>
                         <div className='text-center'>
                             <div className='text-5xl mb-4'>⚡</div>
-                            <h3 className='font-semibold mb-2'>
-                                {dict.whyUrbitia?.fast || 'Fast Process'}
-                            </h3>
-                            <p className='text-gray-600 text-sm'>
-                                {dict.whyUrbitia?.fastDesc || 'Quick and efficient transactions'}
-                            </p>
+                            <h3 className='font-semibold mb-2'>{dict.whyUrbitia?.fast}</h3>
+                            <p className='text-gray-600 text-sm'>{dict.whyUrbitia?.fastDesc}</p>
                         </div>
                     </div>
                 </div>
@@ -191,7 +178,6 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                     >
                         {dict.hero.cta}
                     </Link>
-                    <UrbitiaLogo />
                 </div>
             </div>
         </div>

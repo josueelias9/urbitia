@@ -61,15 +61,31 @@ export default function PropertyCarousel({
                             index === currentIndex ? 'opacity-100' : 'opacity-0'
                         }`}
                     >
-                        <div className='relative w-full h-full bg-gradient-to-r from-blue-500 to-purple-600'>
+                        <div className='relative w-full h-full'>
+                            {/* Background Image */}
+                            <Image
+                                src={item.image}
+                                alt={item.title}
+                                fill
+                                className='object-cover'
+                                priority={index === 0}
+                            />
+                            {/* Overlay gradient */}
+                            <div className='absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent' />
+
+                            {/* Content */}
                             <div className='absolute inset-0 flex items-center justify-center text-white p-8'>
                                 <div className='text-center max-w-2xl'>
-                                    <h3 className='text-3xl md:text-4xl font-bold mb-4'>
+                                    <h3 className='text-3xl md:text-4xl font-bold mb-4 drop-shadow-lg'>
                                         {item.title}
                                     </h3>
-                                    <p className='text-lg md:text-xl mb-4'>{item.description}</p>
+                                    <p className='text-lg md:text-xl mb-4 drop-shadow-md'>
+                                        {item.description}
+                                    </p>
                                     {item.price && (
-                                        <p className='text-2xl font-semibold'>{item.price}</p>
+                                        <p className='text-2xl font-semibold drop-shadow-md'>
+                                            {item.price}
+                                        </p>
                                     )}
                                 </div>
                             </div>

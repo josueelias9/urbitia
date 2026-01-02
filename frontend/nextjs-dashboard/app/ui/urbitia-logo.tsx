@@ -1,11 +1,17 @@
-import { GlobeAltIcon } from '@heroicons/react/24/outline'
+import Image from 'next/image'
 import { lusitana } from '@/app/ui/fonts'
 
-export default function AcmeLogo() {
+export default function UrbitiaLogo() {
     return (
         <div className={`${lusitana.className} flex flex-row items-center leading-none text-white`}>
-            <GlobeAltIcon className='h-12 w-12 rotate-[15deg]' />
-            <p className='text-[44px] '>Urbitia</p>
+            <Image
+                src='/urbitia.jpeg'
+                alt='Urbitia Logo'
+                width={48}
+                height={48}
+                className='rounded-lg'
+            />
+            <p className='text-[44px] ml-3'>Urbitia</p>
         </div>
     )
 }
