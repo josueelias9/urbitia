@@ -2,7 +2,7 @@ import { Suspense } from 'react'
 import { getDictionary } from '@/app/[lang]/dictionaries'
 import { notFound } from 'next/navigation'
 import { locales, type Locale } from '@/proxy'
-import OwnerInboxClient from '@/app/ui/owner/inbox-client'
+import ChatListClient from '@/app/ui/ChatListClient'
 
 export default async function OwnerInboxPage({ params }: { params: Promise<{ lang: Locale }> }) {
     const { lang } = await params
@@ -16,7 +16,7 @@ export default async function OwnerInboxPage({ params }: { params: Promise<{ lan
 
     return (
         <Suspense fallback={<div>{dict.common.loading}</div>}>
-            <OwnerInboxClient dict={dict} lang={lang} />
+            <ChatListClient dict={dict} lang={lang} role={'owner'} />
         </Suspense>
     )
 }
