@@ -6,7 +6,8 @@ import { useRouter } from 'next/navigation'
 import {
     EnvelopeIcon,
     ChatBubbleLeftIcon,
-    ChatBubbleLeftRightIcon
+    ChatBubbleLeftRightIcon,
+    ArrowLeftIcon
 } from '@heroicons/react/24/outline'
 import { getChatsByUser, markMessagesAsRead, getChatById } from '@/app/lib/actions'
 import { Chat } from '@/app/lib/types'
@@ -121,7 +122,6 @@ export default function ChatListClient({ dict, lang, role }: ChatListClientProps
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
             <div className='mb-8'>
                 <h1 className='text-3xl font-bold text-gray-900 flex items-center gap-3'>
-                    {/* On small screens show only icon for buyer */}
                     {role === 'buyer' ? (
                         <>
                             <ChatBubbleLeftIcon className='h-7 w-7 sm:hidden text-gray-700' />
@@ -173,7 +173,7 @@ export default function ChatListClient({ dict, lang, role }: ChatListClientProps
                 </div>
             ) : (
                 <div className='flex gap-4 h-[calc(100vh-280px)]'>
-                    <div className='w-1/3 bg-white rounded-lg shadow overflow-hidden flex flex-col'>
+                    <div className='w-full sm:w-1/3 bg-white rounded-lg shadow overflow-hidden flex flex-col'>
                         <div className='bg-blue-600 text-white p-4'>
                             <h2 className='text-lg font-semibold flex items-center'>
                                 <ChatBubbleLeftIcon className='h-5 w-5 mr-2' />
@@ -193,18 +193,11 @@ export default function ChatListClient({ dict, lang, role }: ChatListClientProps
                                 return (
                                     <div
                                         key={chat.id}
-                                        className={`p-4 ${index !== 0 ? 'border-t' : ''} ${
-                                            selectedChat?.id === chat.id
-                                                ? 'bg-blue-100 border-l-4 border-l-blue-600'
-                                                : hasUnread
-                                                  ? 'bg-blue-50'
-                                                  : 'hover:bg-gray-50'
-                                        } transition-colors cursor-pointer`}
+                                        className={`p-4 ${index !== 0 ? 'border-t' : ''} ${selectedChat?.id === chat.id ? 'bg-blue-100 border-l-4 border-l-blue-600' : hasUnread ? 'bg-blue-50' : 'hover:bg-gray-50'} transition-colors cursor-pointer`}
                                         onClick={() => handleChatClick(chat)}
                                     >
                                         <div className='flex items-start justify-between'>
                                             <div className='flex items-start space-x-3 flex-1'>
-                                                {/* Avatar */}
                                                 {(
                                                     role === 'buyer'
                                                         ? chat.owner?.avatar
@@ -212,9 +205,9 @@ export default function ChatListClient({ dict, lang, role }: ChatListClientProps
                                                 ) ? (
                                                     <img
                                                         src={
-                                                            role === 'buyer'
+                                                            (role === 'buyer'
                                                                 ? chat.owner?.avatar
-                                                                : chat.buyer?.avatar
+                                                                : chat.buyer?.avatar) || ''
                                                         }
                                                         alt={
                                                             (role === 'buyer'
@@ -279,7 +272,7 @@ export default function ChatListClient({ dict, lang, role }: ChatListClientProps
                         </div>
                     </div>
 
-                    <div className='flex-1 bg-white rounded-lg shadow overflow-hidden'>
+                    <div className='hidden sm:flex-1 sm:block bg-white rounded-lg shadow overflow-hidden'>
                         {selectedChat ? (
                             <ChatInterface
                                 chat={selectedChat}
@@ -296,6 +289,27 @@ export default function ChatListClient({ dict, lang, role }: ChatListClientProps
                             </div>
                         )}
                     </div>
+
+                    {selectedChat && (
+                        <div className='sm:hidden fixed inset-0 z-50 bg-white'>
+                            <div className='p-4 border-b flex items-center'>
+                                <button className='mr-3 p-2' onClick={() => setSelectedChat(null)}>
+                                    <ArrowLeftIcon className='h-6 w-6 text-gray-700' />
+                                </button>
+                                <h3 className='text-lg font-semibold'>
+                                    {selectedChat.property?.title}
+                                </h3>
+                            </div>
+                            <div className='h-[calc(100vh-64px)] overflow-auto'>
+                                <ChatInterface
+                                    chat={selectedChat}
+                                    currentUserId={currentId as string}
+                                    onMessageSent={refreshChats}
+                                    dict={dict}
+                                />
+                            </div>
+                        </div>
+                    )}
                 </div>
             )}
         </div>

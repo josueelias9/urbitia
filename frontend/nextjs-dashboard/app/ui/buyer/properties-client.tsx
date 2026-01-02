@@ -345,6 +345,7 @@ export default function BuyerPropertiesClient({ dict, lang }: BuyerPropertiesCli
                                 key={property.id}
                                 property={property}
                                 lang={lang}
+                                dict={dict}
                             />
                         ))}
                     </div>
