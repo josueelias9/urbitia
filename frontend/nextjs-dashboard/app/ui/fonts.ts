@@ -1,3 +1,5 @@
+// TODO: check the official example and see if this is applied to all components. If so, replicate it everywhere.
+
 import { Inter, Lusitana } from 'next/font/google'
 
 export const inter = Inter({ subsets: ['latin'] })

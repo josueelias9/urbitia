@@ -6,17 +6,7 @@ import { ArrowRightIcon } from '@heroicons/react/20/solid'
 import { validateLogin } from '@/app/lib/actions'
 
 interface LoginClientProps {
-    dict: {
-        auth: {
-            signIn: string
-            email: string
-            password: string
-            signOut: string
-        }
-        navigation: {
-            login: string
-        }
-    }
+    dict: any
     lang: string
 }
 
@@ -36,16 +26,20 @@ export function LoginClient({ dict, lang }: LoginClientProps) {
 
         if (!email || !password) {
             setError(
-                lang === 'es'
-                    ? 'Por favor ingresa tu correo y contraseña'
-                    : 'Please enter email and password'
+                dict.auth.missingCredentials ||
+                    (lang === 'es'
+                        ? 'Por favor ingresa tu correo y contraseña'
+                        : 'Please enter email and password')
             )
             setIsLoading(false)
             return
         }
 
         if (!role) {
-            setError(lang === 'es' ? 'Rol no especificado' : 'Role not specified')
+            setError(
+                dict.auth.roleNotSpecified ||
+                    (lang === 'es' ? 'Rol no especificado' : 'Role not specified')
+            )
             setIsLoading(false)
             return
         }
@@ -79,21 +73,23 @@ export function LoginClient({ dict, lang }: LoginClientProps) {
             <div>
                 <h2 className='mt-6 text-center text-3xl font-extrabold text-gray-900'>
                     {role === 'buyer'
-                        ? lang === 'es'
-                            ? 'Iniciar sesión como Comprador'
-                            : 'Sign in as a Buyer'
-                        : lang === 'es'
-                          ? 'Iniciar sesión como Propietario'
-                          : 'Sign in as a Property Owner'}
+                        ? dict.auth.signInAsBuyer ||
+                          (lang === 'es' ? 'Iniciar sesión como Comprador' : 'Sign in as a Buyer')
+                        : dict.auth.signInAsOwner ||
+                          (lang === 'es'
+                              ? 'Iniciar sesión como Propietario'
+                              : 'Sign in as a Property Owner')}
                 </h2>
                 <p className='mt-2 text-center text-sm text-gray-600'>
                     {role === 'buyer'
-                        ? lang === 'es'
-                            ? 'Accede a tu cuenta para explorar propiedades'
-                            : 'Access your account to browse properties'
-                        : lang === 'es'
-                          ? 'Accede a tu panel para gestionar listados'
-                          : 'Access your dashboard to manage listings'}
+                        ? dict.auth.buyerIntro ||
+                          (lang === 'es'
+                              ? 'Accede a tu cuenta para explorar propiedades'
+                              : 'Access your account to browse properties')
+                        : dict.auth.ownerIntro ||
+                          (lang === 'es'
+                              ? 'Accede a tu panel para gestionar listados'
+                              : 'Access your dashboard to manage listings')}
                 </p>
             </div>
             <form className='mt-8 space-y-6' onSubmit={handleSubmit}>
@@ -151,9 +147,7 @@ export function LoginClient({ dict, lang }: LoginClientProps) {
                             />
                         </span>
                         {isLoading
-                            ? lang === 'es'
-                                ? 'Cargando...'
-                                : 'Loading...'
+                            ? dict.common.loading || (lang === 'es' ? 'Cargando...' : 'Loading...')
                             : dict.auth.signIn}
                     </button>
                 </div>
