@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { logout } from '@/app/lib/actions'
 import Link from 'next/link'
 import { PlusIcon, PencilIcon, TrashIcon } from '@heroicons/react/24/outline'
 import { Property } from '@/app/lib/types'
@@ -48,9 +49,8 @@ export default function OwnerPropertiesClient({ dict, lang }: OwnerPropertiesCli
         fetchProperties()
     }, [router, lang])
 
-    const handleLogout = () => {
-        localStorage.removeItem('marketplace-user')
-        router.push(`/${lang}`)
+    const handleLogout = async () => {
+        await logout()
     }
 
     const formatPrice = (price: number, currency: string) => {

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import ResponsiveNavBar from '@/app/ui/ResponsiveNavBar'
+import { logout } from '@/app/lib/actions'
 
 interface OwnerLayoutClientProps {
     children: React.ReactNode
@@ -31,9 +32,8 @@ export default function OwnerLayoutClient({ children, dict, lang }: OwnerLayoutC
         setUser(parsedUser)
     }, [router, lang])
 
-    const handleLogout = () => {
-        localStorage.removeItem('marketplace-user')
-        router.push(`/${lang}`)
+    const handleLogout = async () => {
+        await logout()
     }
 
     // Determine active page based on pathname

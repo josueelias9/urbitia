@@ -1,4 +1,3 @@
-import { AuthProvider } from '@/app/lib/auth-context'
 import { getDictionary } from '@/app/[lang]/dictionaries'
 import OwnerLayoutClient from '@/app/ui/owner/OwnerLayoutClient'
 
@@ -12,10 +11,8 @@ export default async function OwnerLayout({ children, params }: OwnerLayoutProps
     const dict = await getDictionary(lang as 'en' | 'es')
 
     return (
-        <AuthProvider>
-            <OwnerLayoutClient dict={dict} lang={lang}>
-                {children}
-            </OwnerLayoutClient>
-        </AuthProvider>
+        <OwnerLayoutClient dict={dict} lang={lang}>
+            {children}
+        </OwnerLayoutClient>
     )
 }

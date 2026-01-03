@@ -1,4 +1,3 @@
-import { AuthProvider } from '@/app/lib/auth-context'
 import { getDictionary } from '@/app/[lang]/dictionaries'
 import BuyerLayoutClient from '@/app/ui/buyer/BuyerLayoutClient'
 
@@ -12,10 +11,8 @@ export default async function BuyerLayout({ children, params }: BuyerLayoutProps
     const dict = await getDictionary(lang as 'en' | 'es')
 
     return (
-        <AuthProvider>
-            <BuyerLayoutClient dict={dict} lang={lang}>
-                {children}
-            </BuyerLayoutClient>
-        </AuthProvider>
+        <BuyerLayoutClient dict={dict} lang={lang}>
+            {children}
+        </BuyerLayoutClient>
     )
 }
