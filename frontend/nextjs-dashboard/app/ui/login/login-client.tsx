@@ -40,6 +40,7 @@ export function LoginClient({ dict, lang }: LoginClientProps) {
                 </p>
             </div>
             <form action={formAction} className='mt-8 space-y-6'>
+                <input type='hidden' name='lang' value={lang} />
                 <div className='rounded-md shadow-sm -space-y-px'>
                     <div>
                         <label htmlFor='email-address' className='sr-only'>

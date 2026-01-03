@@ -12,7 +12,27 @@ if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
 export async function authenticate(prevState: string | undefined, formData: FormData) {
     console.log('Authenticating user with formData:', Object.fromEntries(formData.entries()))
     try {
-        await signIn('credentials', formData)
+        const email = formData.get('email') as string
+        const lang = formData.get('lang') as string || 'es'
+        
+        // Get user to determine role and redirect path
+        const user = await prisma.marketplace_user.findUnique({
+            where: { email }
+        })
+        
+        if (!user) {
+            return 'Invalid credentials.'
+        }
+        
+        // Determine redirect path based on role
+        const redirectPath = user.role === 'buyer' 
+            ? `/${lang}/buyer/properties`
+            : `/${lang}/owner/dashboard`
+        
+        await signIn('credentials', {
+            ...Object.fromEntries(formData),
+            redirectTo: redirectPath
+        })
     } catch (error) {
         if (error instanceof AuthError) {
             switch (error.type) {
