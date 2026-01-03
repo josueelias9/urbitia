@@ -46,6 +46,11 @@ export async function authenticate(
         // No error → clear state
         return undefined
     } catch (error: any) {
+        // Next.js redirect throws NEXT_REDIRECT - let it propagate
+        if (error?.message?.includes('NEXT_REDIRECT')) {
+            throw error
+        }
+
         // Auth.js v5 error handling
         if (error?.type === 'CredentialsSignin') {
             return { error: 'Invalid credentials.' }
