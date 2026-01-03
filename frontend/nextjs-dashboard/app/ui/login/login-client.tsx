@@ -13,7 +13,7 @@ interface LoginClientProps {
 export function LoginClient({ dict, lang }: LoginClientProps) {
     const searchParams = useSearchParams()
     const role = searchParams.get('role') as 'buyer' | 'owner' | null
-    const [errorMessage, formAction, isPending] = useActionState(authenticate, undefined)
+    const [state, formAction, isPending] = useActionState(authenticate, undefined)
 
     return (
         <div className='max-w-md w-full space-y-8'>
@@ -72,9 +72,9 @@ export function LoginClient({ dict, lang }: LoginClientProps) {
                     </div>
                 </div>
 
-                {errorMessage && (
+                {state?.error && (
                     <div className='rounded-md bg-red-50 p-4'>
-                        <div className='text-sm text-red-800'>{errorMessage}</div>
+                        <div className='text-sm text-red-800'>{state.error}</div>
                     </div>
                 )}
 
