@@ -2,7 +2,6 @@
 import { PrismaClient } from '@/generated/prisma'
 import { revalidatePath } from 'next/cache'
 import { signIn, signOut } from '@/auth'
-import { AuthError } from 'next-auth'
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient }
 const prisma = globalForPrisma.prisma || new PrismaClient()
@@ -13,36 +12,30 @@ export async function authenticate(prevState: string | undefined, formData: Form
     console.log('Authenticating user with formData:', Object.fromEntries(formData.entries()))
     try {
         const email = formData.get('email') as string
-        const lang = formData.get('lang') as string || 'es'
-        
+        const lang = (formData.get('lang') as string) || 'es'
+
         // Get user to determine role and redirect path
         const user = await prisma.marketplace_user.findUnique({
             where: { email }
         })
-        
+
         if (!user) {
             return 'Invalid credentials.'
         }
-        
+
         // Determine redirect path based on role
-        const redirectPath = user.role === 'buyer' 
-            ? `/${lang}/buyer/properties`
-            : `/${lang}/owner/dashboard`
-        
+        const redirectPath =
+            user.role === 'buyer' ? `/${lang}/buyer/properties` : `/${lang}/owner/dashboard`
+
         await signIn('credentials', {
             ...Object.fromEntries(formData),
             redirectTo: redirectPath
         })
     } catch (error) {
-        if (error instanceof AuthError) {
-            switch (error.type) {
-                case 'CredentialsSignin':
-                    return 'Invalid credentials.'
-                default:
-                    return 'Something went wrong.'
-            }
+        if (error instanceof Error) {
+            return { error: error.message }
         }
-        throw error
+        return { error: 'An unknown error occurred during authentication.' }
     }
 }
 
