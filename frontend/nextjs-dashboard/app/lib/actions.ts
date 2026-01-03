@@ -7,12 +7,23 @@ const globalForPrisma = global as unknown as { prisma: PrismaClient }
 const prisma = globalForPrisma.prisma || new PrismaClient()
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
 
-// Authenticate user with Next.js auth
-export async function authenticate(prevState: string | undefined, formData: FormData) {
+type AuthState = {
+    error?: string
+}
+
+export async function authenticate(
+    prevState: AuthState | undefined,
+    formData: FormData
+): Promise<AuthState | undefined> {
     console.log('Authenticating user with formData:', Object.fromEntries(formData.entries()))
+
     try {
-        const email = formData.get('email') as string
+        const email = formData.get('email') as string | null
         const lang = (formData.get('lang') as string) || 'es'
+
+        if (!email) {
+            return { error: 'Email is required.' }
+        }
 
         // Get user to determine role and redirect path
         const user = await prisma.marketplace_user.findUnique({
@@ -20,7 +31,7 @@ export async function authenticate(prevState: string | undefined, formData: Form
         })
 
         if (!user) {
-            return 'Invalid credentials.'
+            return { error: 'Invalid credentials.' }
         }
 
         // Determine redirect path based on role
@@ -31,10 +42,19 @@ export async function authenticate(prevState: string | undefined, formData: Form
             ...Object.fromEntries(formData),
             redirectTo: redirectPath
         })
-    } catch (error) {
+
+        // No error → clear state
+        return undefined
+    } catch (error: any) {
+        // Auth.js v5 error handling
+        if (error?.type === 'CredentialsSignin') {
+            return { error: 'Invalid credentials.' }
+        }
+
         if (error instanceof Error) {
             return { error: error.message }
         }
+
         return { error: 'An unknown error occurred during authentication.' }
     }
 }
