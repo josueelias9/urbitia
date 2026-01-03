@@ -8,6 +8,7 @@ import { PrismaClient } from '@/generated/prisma/client'
 const prisma = new PrismaClient()
 
 async function getUser(email: string) {
+    console.log('Fetching user with email:', email)
     try {
         const user = await prisma.marketplace_user.findUnique({
             where: { email }

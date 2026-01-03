@@ -149,6 +149,7 @@ exports.Prisma.PropertyScalarFieldEnum = {
   lng: 'lng',
   images: 'images',
   amenities: 'amenities',
+  legal_status: 'legal_status',
   ownerId: 'ownerId'
 };
 

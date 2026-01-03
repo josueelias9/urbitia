@@ -1,39 +1,21 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { useRouter, usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import ResponsiveNavBar from '@/app/ui/ResponsiveNavBar'
+import { logout } from '@/app/lib/actions'
 
 interface OwnerLayoutClientProps {
     children: React.ReactNode
     dict: any
     lang: string
+    user: any
 }
 
-export default function OwnerLayoutClient({ children, dict, lang }: OwnerLayoutClientProps) {
-    const [user, setUser] = useState<any>(null)
-    const router = useRouter()
+export default function OwnerLayoutClient({ children, dict, lang, user }: OwnerLayoutClientProps) {
     const pathname = usePathname()
 
-    useEffect(() => {
-        const savedUser = localStorage.getItem('marketplace-user')
-        if (!savedUser) {
-            router.push(`/${lang}/login?role=owner`)
-            return
-        }
-
-        const parsedUser = JSON.parse(savedUser)
-        if (parsedUser.role !== 'owner') {
-            router.push(`/${lang}/login?role=owner`)
-            return
-        }
-
-        setUser(parsedUser)
-    }, [router, lang])
-
-    const handleLogout = () => {
-        localStorage.removeItem('marketplace-user')
-        router.push(`/${lang}`)
+    const handleLogout = async () => {
+        await logout()
     }
 
     // Determine active page based on pathname
@@ -42,10 +24,6 @@ export default function OwnerLayoutClient({ children, dict, lang }: OwnerLayoutC
         if (pathname?.includes('/properties')) return 'properties'
         if (pathname?.includes('/inbox')) return 'inbox'
         return undefined
-    }
-
-    if (!user) {
-        return null
     }
 
     const navItems = [

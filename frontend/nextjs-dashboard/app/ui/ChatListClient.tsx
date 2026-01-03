@@ -9,7 +9,7 @@ import {
     ChatBubbleLeftRightIcon,
     ArrowLeftIcon
 } from '@heroicons/react/24/outline'
-import { getChatsByUser, markMessagesAsRead, getChatById } from '@/app/lib/actions'
+import { getChatsByUser, markMessagesAsRead, getChatById, logout } from '@/app/lib/actions'
 import { Chat } from '@/app/lib/types'
 import ChatInterface from '@/app/ui/ChatInterface'
 
@@ -54,9 +54,8 @@ export default function ChatListClient({ dict, lang, role }: ChatListClientProps
         fetchChats()
     }, [router, lang, role])
 
-    const handleLogout = () => {
-        localStorage.removeItem('marketplace-user')
-        router.push(`/${lang}`)
+    const handleLogout = async () => {
+        await logout()
     }
 
     const handleChatClick = async (chat: Chat) => {

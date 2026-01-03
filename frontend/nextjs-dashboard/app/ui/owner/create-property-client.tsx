@@ -1,19 +1,26 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useAuth } from '@/app/lib/auth-context'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeftIcon, PhotoIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import type { User } from '@/app/lib/types'
 
 interface OwnerCreatePropertyClientProps {
     lang: string
 }
 
 export default function OwnerCreatePropertyClient({ lang }: OwnerCreatePropertyClientProps) {
-    const { user } = useAuth()
     const router = useRouter()
+    const [user, setUser] = useState<User | null>(null)
     const [isLoading, setIsLoading] = useState(false)
+
+    useEffect(() => {
+        const savedUser = localStorage.getItem('marketplace-user')
+        if (savedUser) {
+            setUser(JSON.parse(savedUser))
+        }
+    }, [])
 
     const [formData, setFormData] = useState({
         title: '',

@@ -24,24 +24,25 @@ model marketplace_user {
 }
 
 model property {
-  id          String   @id @default(uuid())
-  title       String   @db.VarChar(255)
-  description String
-  price       Int
-  currency    String // 'USD' | 'EUR' | 'GBP'
-  type        String // 'apartment' | 'house' | 'condo' | 'commercial'
-  status      String // 'available' | 'sold' | 'rented'
-  bedrooms    Int
-  bathrooms   Int
-  area        Int
-  street      String   @db.VarChar(255)
-  city        String   @db.VarChar(255)
-  country     String   @db.VarChar(255)
-  zipCode     String   @db.VarChar(32)
-  lat         Float?
-  lng         Float?
-  images      String[] @db.VarChar(255)
-  amenities   String[]
+  id           String   @id @default(uuid())
+  title        String   @db.VarChar(255)
+  description  String
+  price        Int
+  currency     String // 'USD' | 'EUR' | 'GBP'
+  type         String // 'apartment' | 'house' | 'condo' | 'commercial'
+  status       String // 'available' | 'sold' | 'rented'
+  bedrooms     Int
+  bathrooms    Int
+  area         Int
+  street       String   @db.VarChar(255)
+  city         String   @db.VarChar(255)
+  country      String   @db.VarChar(255)
+  zipCode      String   @db.VarChar(32)
+  lat          Float?
+  lng          Float?
+  images       String[] @db.VarChar(255)
+  amenities    String[]
+  legal_status String?  @db.VarChar(255)
 
   owner   marketplace_user @relation("OwnerProperties", fields: [ownerId], references: [id])
   ownerId String

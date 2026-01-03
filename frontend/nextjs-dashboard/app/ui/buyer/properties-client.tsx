@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { logout } from '@/app/lib/actions'
 import Link from 'next/link'
 import { PropertyPreviewCard } from '@/app/ui/PropertyPreviewCard'
 import { Property } from '@/app/lib/types'
@@ -142,9 +143,8 @@ export default function BuyerPropertiesClient({ dict, lang }: BuyerPropertiesCli
         })
     }
 
-    const handleLogout = () => {
-        localStorage.removeItem('marketplace-user')
-        router.push(`/${lang}`)
+    const handleLogout = async () => {
+        await logout()
     }
 
     if (!user) {

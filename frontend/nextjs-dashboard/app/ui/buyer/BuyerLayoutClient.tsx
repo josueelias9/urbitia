@@ -1,39 +1,21 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { useRouter, usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import ResponsiveNavBar from '@/app/ui/ResponsiveNavBar'
+import { logout } from '@/app/lib/actions'
 
 interface BuyerLayoutClientProps {
     children: React.ReactNode
     dict: any
     lang: string
+    user: any
 }
 
-export default function BuyerLayoutClient({ children, dict, lang }: BuyerLayoutClientProps) {
-    const [user, setUser] = useState<any>(null)
-    const router = useRouter()
+export default function BuyerLayoutClient({ children, dict, lang, user }: BuyerLayoutClientProps) {
     const pathname = usePathname()
 
-    useEffect(() => {
-        const savedUser = localStorage.getItem('marketplace-user')
-        if (!savedUser) {
-            router.push(`/${lang}/login?role=buyer`)
-            return
-        }
-
-        const parsedUser = JSON.parse(savedUser)
-        if (parsedUser.role !== 'buyer') {
-            router.push(`/${lang}/login?role=buyer`)
-            return
-        }
-
-        setUser(parsedUser)
-    }, [router, lang])
-
-    const handleLogout = () => {
-        localStorage.removeItem('marketplace-user')
-        router.push(`/${lang}`)
+    const handleLogout = async () => {
+        await logout()
     }
 
     // Determine active page based on pathname
@@ -41,10 +23,6 @@ export default function BuyerLayoutClient({ children, dict, lang }: BuyerLayoutC
         if (pathname?.includes('/properties')) return 'properties'
         if (pathname?.includes('/chat')) return 'chat'
         return undefined
-    }
-
-    if (!user) {
-        return null
     }
 
     const navItems = [

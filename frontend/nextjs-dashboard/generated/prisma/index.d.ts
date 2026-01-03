@@ -2479,6 +2479,7 @@ export namespace Prisma {
     zipCode: string | null
     lat: number | null
     lng: number | null
+    legal_status: string | null
     ownerId: string | null
   }
 
@@ -2499,6 +2500,7 @@ export namespace Prisma {
     zipCode: string | null
     lat: number | null
     lng: number | null
+    legal_status: string | null
     ownerId: string | null
   }
 
@@ -2521,6 +2523,7 @@ export namespace Prisma {
     lng: number
     images: number
     amenities: number
+    legal_status: number
     ownerId: number
     _all: number
   }
@@ -2561,6 +2564,7 @@ export namespace Prisma {
     zipCode?: true
     lat?: true
     lng?: true
+    legal_status?: true
     ownerId?: true
   }
 
@@ -2581,6 +2585,7 @@ export namespace Prisma {
     zipCode?: true
     lat?: true
     lng?: true
+    legal_status?: true
     ownerId?: true
   }
 
@@ -2603,6 +2608,7 @@ export namespace Prisma {
     lng?: true
     images?: true
     amenities?: true
+    legal_status?: true
     ownerId?: true
     _all?: true
   }
@@ -2712,6 +2718,7 @@ export namespace Prisma {
     lng: number | null
     images: string[]
     amenities: string[]
+    legal_status: string | null
     ownerId: string
     _count: PropertyCountAggregateOutputType | null
     _avg: PropertyAvgAggregateOutputType | null
@@ -2753,6 +2760,7 @@ export namespace Prisma {
     lng?: boolean
     images?: boolean
     amenities?: boolean
+    legal_status?: boolean
     ownerId?: boolean
     owner?: boolean | marketplace_userDefaultArgs<ExtArgs>
     chats?: boolean | property$chatsArgs<ExtArgs>
@@ -2778,6 +2786,7 @@ export namespace Prisma {
     lng?: boolean
     images?: boolean
     amenities?: boolean
+    legal_status?: boolean
     ownerId?: boolean
     owner?: boolean | marketplace_userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["property"]>
@@ -2801,6 +2810,7 @@ export namespace Prisma {
     lng?: boolean
     images?: boolean
     amenities?: boolean
+    legal_status?: boolean
     ownerId?: boolean
     owner?: boolean | marketplace_userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["property"]>
@@ -2824,10 +2834,11 @@ export namespace Prisma {
     lng?: boolean
     images?: boolean
     amenities?: boolean
+    legal_status?: boolean
     ownerId?: boolean
   }
 
-  export type propertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "price" | "currency" | "type" | "status" | "bedrooms" | "bathrooms" | "area" | "street" | "city" | "country" | "zipCode" | "lat" | "lng" | "images" | "amenities" | "ownerId", ExtArgs["result"]["property"]>
+  export type propertyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "price" | "currency" | "type" | "status" | "bedrooms" | "bathrooms" | "area" | "street" | "city" | "country" | "zipCode" | "lat" | "lng" | "images" | "amenities" | "legal_status" | "ownerId", ExtArgs["result"]["property"]>
   export type propertyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     owner?: boolean | marketplace_userDefaultArgs<ExtArgs>
     chats?: boolean | property$chatsArgs<ExtArgs>
@@ -2865,6 +2876,7 @@ export namespace Prisma {
       lng: number | null
       images: string[]
       amenities: string[]
+      legal_status: string | null
       ownerId: string
     }, ExtArgs["result"]["property"]>
     composites: {}
@@ -3309,6 +3321,7 @@ export namespace Prisma {
     readonly lng: FieldRef<"property", 'Float'>
     readonly images: FieldRef<"property", 'String[]'>
     readonly amenities: FieldRef<"property", 'String[]'>
+    readonly legal_status: FieldRef<"property", 'String'>
     readonly ownerId: FieldRef<"property", 'String'>
   }
     
@@ -5964,6 +5977,7 @@ export namespace Prisma {
     lng: 'lng',
     images: 'images',
     amenities: 'amenities',
+    legal_status: 'legal_status',
     ownerId: 'ownerId'
   };
 
@@ -6183,6 +6197,7 @@ export namespace Prisma {
     lng?: FloatNullableFilter<"property"> | number | null
     images?: StringNullableListFilter<"property">
     amenities?: StringNullableListFilter<"property">
+    legal_status?: StringNullableFilter<"property"> | string | null
     ownerId?: StringFilter<"property"> | string
     owner?: XOR<Marketplace_userScalarRelationFilter, marketplace_userWhereInput>
     chats?: ChatListRelationFilter
@@ -6207,6 +6222,7 @@ export namespace Prisma {
     lng?: SortOrderInput | SortOrder
     images?: SortOrder
     amenities?: SortOrder
+    legal_status?: SortOrderInput | SortOrder
     ownerId?: SortOrder
     owner?: marketplace_userOrderByWithRelationInput
     chats?: chatOrderByRelationAggregateInput
@@ -6234,6 +6250,7 @@ export namespace Prisma {
     lng?: FloatNullableFilter<"property"> | number | null
     images?: StringNullableListFilter<"property">
     amenities?: StringNullableListFilter<"property">
+    legal_status?: StringNullableFilter<"property"> | string | null
     ownerId?: StringFilter<"property"> | string
     owner?: XOR<Marketplace_userScalarRelationFilter, marketplace_userWhereInput>
     chats?: ChatListRelationFilter
@@ -6258,6 +6275,7 @@ export namespace Prisma {
     lng?: SortOrderInput | SortOrder
     images?: SortOrder
     amenities?: SortOrder
+    legal_status?: SortOrderInput | SortOrder
     ownerId?: SortOrder
     _count?: propertyCountOrderByAggregateInput
     _avg?: propertyAvgOrderByAggregateInput
@@ -6288,6 +6306,7 @@ export namespace Prisma {
     lng?: FloatNullableWithAggregatesFilter<"property"> | number | null
     images?: StringNullableListFilter<"property">
     amenities?: StringNullableListFilter<"property">
+    legal_status?: StringNullableWithAggregatesFilter<"property"> | string | null
     ownerId?: StringWithAggregatesFilter<"property"> | string
   }
 
@@ -6518,6 +6537,7 @@ export namespace Prisma {
     lng?: number | null
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
+    legal_status?: string | null
     owner: marketplace_userCreateNestedOneWithoutPropertiesInput
     chats?: chatCreateNestedManyWithoutPropertyInput
   }
@@ -6541,6 +6561,7 @@ export namespace Prisma {
     lng?: number | null
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
+    legal_status?: string | null
     ownerId: string
     chats?: chatUncheckedCreateNestedManyWithoutPropertyInput
   }
@@ -6564,6 +6585,7 @@ export namespace Prisma {
     lng?: NullableFloatFieldUpdateOperationsInput | number | null
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
+    legal_status?: NullableStringFieldUpdateOperationsInput | string | null
     owner?: marketplace_userUpdateOneRequiredWithoutPropertiesNestedInput
     chats?: chatUpdateManyWithoutPropertyNestedInput
   }
@@ -6587,6 +6609,7 @@ export namespace Prisma {
     lng?: NullableFloatFieldUpdateOperationsInput | number | null
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
+    legal_status?: NullableStringFieldUpdateOperationsInput | string | null
     ownerId?: StringFieldUpdateOperationsInput | string
     chats?: chatUncheckedUpdateManyWithoutPropertyNestedInput
   }
@@ -6610,6 +6633,7 @@ export namespace Prisma {
     lng?: number | null
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
+    legal_status?: string | null
     ownerId: string
   }
 
@@ -6632,6 +6656,7 @@ export namespace Prisma {
     lng?: NullableFloatFieldUpdateOperationsInput | number | null
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
+    legal_status?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type propertyUncheckedUpdateManyInput = {
@@ -6653,6 +6678,7 @@ export namespace Prisma {
     lng?: NullableFloatFieldUpdateOperationsInput | number | null
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
+    legal_status?: NullableStringFieldUpdateOperationsInput | string | null
     ownerId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -6952,6 +6978,7 @@ export namespace Prisma {
     lng?: SortOrder
     images?: SortOrder
     amenities?: SortOrder
+    legal_status?: SortOrder
     ownerId?: SortOrder
   }
 
@@ -6981,6 +7008,7 @@ export namespace Prisma {
     zipCode?: SortOrder
     lat?: SortOrder
     lng?: SortOrder
+    legal_status?: SortOrder
     ownerId?: SortOrder
   }
 
@@ -7001,6 +7029,7 @@ export namespace Prisma {
     zipCode?: SortOrder
     lat?: SortOrder
     lng?: SortOrder
+    legal_status?: SortOrder
     ownerId?: SortOrder
   }
 
@@ -7722,6 +7751,7 @@ export namespace Prisma {
     lng?: number | null
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
+    legal_status?: string | null
     chats?: chatCreateNestedManyWithoutPropertyInput
   }
 
@@ -7744,6 +7774,7 @@ export namespace Prisma {
     lng?: number | null
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
+    legal_status?: string | null
     chats?: chatUncheckedCreateNestedManyWithoutPropertyInput
   }
 
@@ -7869,6 +7900,7 @@ export namespace Prisma {
     lng?: FloatNullableFilter<"property"> | number | null
     images?: StringNullableListFilter<"property">
     amenities?: StringNullableListFilter<"property">
+    legal_status?: StringNullableFilter<"property"> | string | null
     ownerId?: StringFilter<"property"> | string
   }
 
@@ -8069,6 +8101,7 @@ export namespace Prisma {
     lng?: number | null
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
+    legal_status?: string | null
     owner: marketplace_userCreateNestedOneWithoutPropertiesInput
   }
 
@@ -8091,6 +8124,7 @@ export namespace Prisma {
     lng?: number | null
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
+    legal_status?: string | null
     ownerId: string
   }
 
@@ -8217,6 +8251,7 @@ export namespace Prisma {
     lng?: NullableFloatFieldUpdateOperationsInput | number | null
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
+    legal_status?: NullableStringFieldUpdateOperationsInput | string | null
     owner?: marketplace_userUpdateOneRequiredWithoutPropertiesNestedInput
   }
 
@@ -8239,6 +8274,7 @@ export namespace Prisma {
     lng?: NullableFloatFieldUpdateOperationsInput | number | null
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
+    legal_status?: NullableStringFieldUpdateOperationsInput | string | null
     ownerId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -8463,6 +8499,7 @@ export namespace Prisma {
     lng?: number | null
     images?: propertyCreateimagesInput | string[]
     amenities?: propertyCreateamenitiesInput | string[]
+    legal_status?: string | null
   }
 
   export type chatCreateManyBuyerInput = {
@@ -8504,6 +8541,7 @@ export namespace Prisma {
     lng?: NullableFloatFieldUpdateOperationsInput | number | null
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
+    legal_status?: NullableStringFieldUpdateOperationsInput | string | null
     chats?: chatUpdateManyWithoutPropertyNestedInput
   }
 
@@ -8526,6 +8564,7 @@ export namespace Prisma {
     lng?: NullableFloatFieldUpdateOperationsInput | number | null
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
+    legal_status?: NullableStringFieldUpdateOperationsInput | string | null
     chats?: chatUncheckedUpdateManyWithoutPropertyNestedInput
   }
 
@@ -8548,6 +8587,7 @@ export namespace Prisma {
     lng?: NullableFloatFieldUpdateOperationsInput | number | null
     images?: propertyUpdateimagesInput | string[]
     amenities?: propertyUpdateamenitiesInput | string[]
+    legal_status?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type chatUpdateWithoutBuyerInput = {
