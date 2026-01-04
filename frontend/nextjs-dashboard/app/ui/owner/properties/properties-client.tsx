@@ -49,10 +49,6 @@ export default function OwnerPropertiesClient({ dict, lang }: OwnerPropertiesCli
         fetchProperties()
     }, [router, lang])
 
-    const handleLogout = async () => {
-        await logout()
-    }
-
     const formatPrice = (price: number, currency: string) => {
         return new Intl.NumberFormat('en-US', {
             style: 'currency',

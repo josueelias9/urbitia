@@ -5,6 +5,8 @@ import Link from 'next/link'
 import UrbitiaLogo from '@/app/ui/urbitia-logo'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
+import { signOut } from 'next-auth/react'
+
 type NavItem = {
     href: string
     label: string
@@ -15,7 +17,6 @@ interface ResponsiveNavBarProps {
     dict: any
     lang: string
     userName: string
-    onLogout: () => void
     navItems: NavItem[]
     activePage?: string
 }
@@ -24,7 +25,6 @@ export default function ResponsiveNavBar({
     dict,
     lang,
     userName,
-    onLogout,
     navItems,
     activePage
 }: ResponsiveNavBarProps) {
@@ -66,7 +66,7 @@ export default function ResponsiveNavBar({
                             {dict.common.welcome}, {userName}
                         </span>
                         <button
-                            onClick={onLogout}
+                            onClick={() => signOut({ callbackUrl: `/${lang}/legal-advisory` })}
                             className='text-sm text-blue-100 hover:text-white transition-colors'
                         >
                             {dict.navigation.logout}
@@ -115,7 +115,7 @@ export default function ResponsiveNavBar({
                             <button
                                 onClick={() => {
                                     setIsMobileMenuOpen(false)
-                                    onLogout()
+                                    signOut({ callbackUrl: `/${lang}` })
                                 }}
                                 className='w-full text-left px-3 py-2 text-blue-100 hover:bg-blue-600 hover:text-white rounded-md text-base font-medium transition-colors'
                             >

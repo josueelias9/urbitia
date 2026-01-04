@@ -1,7 +1,6 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { signOut } from 'next-auth/react'
 import ResponsiveNavBar from '@/app/ui/ResponsiveNavBar'
 
 interface BuyerLayoutClientProps {
@@ -13,10 +12,6 @@ interface BuyerLayoutClientProps {
 
 export default function BuyerLayoutClient({ children, dict, lang, user }: BuyerLayoutClientProps) {
     const pathname = usePathname()
-
-    const handleLogout = async () => {
-        await signOut({ callbackUrl: `/${lang}` })
-    }
 
     // Determine active page based on pathname
     const getActivePage = (): 'properties' | 'chat' | undefined => {
@@ -44,7 +39,6 @@ export default function BuyerLayoutClient({ children, dict, lang, user }: BuyerL
                 dict={dict}
                 lang={lang}
                 userName={user.name}
-                onLogout={handleLogout}
                 navItems={navItems}
                 activePage={getActivePage()}
             />
