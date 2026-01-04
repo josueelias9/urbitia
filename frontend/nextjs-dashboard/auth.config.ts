@@ -1,32 +1,99 @@
-import type { NextAuthConfig } from 'next-auth'
+import CredentialsProvider from 'next-auth/providers/credentials'
+import bcrypt from 'bcrypt'
+import { z } from 'zod'
+import { PrismaClient } from '@/generated/prisma'
 
-export const authConfig = {
+const prisma = new PrismaClient()
+
+async function getUser(email: string) {
+    try {
+        const user = await prisma.marketplace_user.findUnique({
+            where: { email }
+        })
+        return user
+    } catch (error) {
+        console.error('Failed to fetch user:', error)
+        throw new Error('Failed to fetch user.')
+    }
+}
+
+export const authOptions = {
+    // Configure authentication pages
     pages: {
-        signIn: 'es/login?role=buyer'
+        signIn: '/es/login'
     },
+
+    // Configure authentication providers
     providers: [
-        // added later in auth.ts since it requires bcrypt which is only compatible with Node.js
-        // while this file is also used in non-Node.js environments
+        CredentialsProvider({
+            name: 'Credentials',
+            credentials: {
+                email: { label: 'Email', type: 'email' },
+                password: { label: 'Password', type: 'password' }
+            },
+            async authorize(credentials) {
+                const parsedCredentials = z
+                    .object({ email: z.string().email(), password: z.string().min(6) })
+                    .safeParse(credentials)
+
+                if (!parsedCredentials.success) {
+                    return null
+                }
+
+                const { email, password } = parsedCredentials.data
+                const user = await getUser(email)
+
+                if (!user || !user.password) {
+                    return null
+                }
+
+                const passwordsMatch = await bcrypt.compare(password, user.password)
+
+                if (passwordsMatch) {
+                    // Return user object that will be stored in the session
+                    return {
+                        id: user.id,
+                        email: user.email,
+                        name: user.name,
+                        role: user.role
+                    }
+                }
+
+                return null
+            }
+        })
     ],
+
+    // Configure callbacks
     callbacks: {
-        authorized({ auth, request: { nextUrl } }) {
-            return true
-        },
-        async jwt({ token, user }) {
-            // Add role to token when user logs in
+        // JWT callback - runs when JWT is created or updated
+        async jwt({ token, user }: { token: any; user: any }) {
+            // Add custom properties to the token when user logs in
             if (user) {
-                token.role = (user as any).role
                 token.id = user.id
+                token.role = (user as any).role
+                token.name = user.name
             }
             return token
         },
-        async session({ session, token }) {
-            // Add role and id to session
+
+        // Session callback - runs when session is checked
+        async session({ session, token }: { session: any; token: any }) {
+            // Send properties to the client
             if (session.user) {
-                ;(session.user as any).role = token.role as string
-                ;(session.user as any).id = token.id as string
+                ;(session.user as any).id = token.id
+                ;(session.user as any).role = token.role
+                session.user.name = token.name as string
             }
             return session
         }
-    }
-} satisfies NextAuthConfig
+    },
+
+    // Configure session strategy
+    session: {
+        strategy: 'jwt' as const
+    },
+
+    // Enable debug messages in development
+    debug: process.env.NODE_ENV === 'development'
+}

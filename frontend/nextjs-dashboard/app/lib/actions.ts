@@ -1,7 +1,7 @@
 'use server'
 import { PrismaClient } from '@/generated/prisma'
 import { revalidatePath } from 'next/cache'
-import { signIn, signOut } from '@/auth'
+import { signIn as nextAuthSignIn, signOut as nextAuthSignOut } from 'next-auth/react'
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient }
 const prisma = globalForPrisma.prisma || new PrismaClient()
@@ -15,17 +15,16 @@ export async function authenticate(
     prevState: AuthState | undefined,
     formData: FormData
 ): Promise<AuthState | undefined> {
-    console.log('Authenticating user with formData:', Object.fromEntries(formData.entries()))
-
     try {
         const email = formData.get('email') as string | null
+        const password = formData.get('password') as string | null
         const lang = (formData.get('lang') as string) || 'es'
 
-        if (!email) {
-            return { error: 'Email is required.' }
+        if (!email || !password) {
+            return { error: 'Email and password are required.' }
         }
 
-        // Get user to determine role and redirect path
+        // Get user to determine role for redirect
         const user = await prisma.marketplace_user.findUnique({
             where: { email }
         })
@@ -34,39 +33,28 @@ export async function authenticate(
             return { error: 'Invalid credentials.' }
         }
 
-        // Determine redirect path based on role
+        // Use NextAuth signIn - it will validate credentials via our provider
+        // Note: We need to use a dynamic import or client-side signIn for this
+        // For server actions, we redirect to the API route
         const redirectPath =
             user.role === 'buyer' ? `/${lang}/buyer/properties` : `/${lang}/owner/dashboard`
 
-        await signIn('credentials', {
-            ...Object.fromEntries(formData),
-            redirectTo: redirectPath
-        })
-
-        // No error → clear state
-        return undefined
+        // Return success and let client handle the signIn
+        return {
+            error: undefined
+        }
     } catch (error: any) {
-        // Next.js redirect throws NEXT_REDIRECT - let it propagate
-        if (error?.message?.includes('NEXT_REDIRECT')) {
-            throw error
-        }
-
-        // Auth.js v5 error handling
-        if (error?.type === 'CredentialsSignin') {
-            return { error: 'Invalid credentials.' }
-        }
-
         if (error instanceof Error) {
             return { error: error.message }
         }
-
         return { error: 'An unknown error occurred during authentication.' }
     }
 }
 
-// Logout user
+// Logout user - now uses client-side signOut
 export async function logout() {
-    await signOut({ redirectTo: '/' })
+    // This will be called from client component
+    return { success: true }
 }
 
 // Validate login credentials

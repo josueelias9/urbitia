@@ -1,8 +1,8 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
+import { signOut } from 'next-auth/react'
 import ResponsiveNavBar from '@/app/ui/ResponsiveNavBar'
-import { logout } from '@/app/lib/actions'
 
 interface OwnerLayoutClientProps {
     children: React.ReactNode
@@ -15,7 +15,7 @@ export default function OwnerLayoutClient({ children, dict, lang, user }: OwnerL
     const pathname = usePathname()
 
     const handleLogout = async () => {
-        await logout()
+        await signOut({ callbackUrl: `/${lang}` })
     }
 
     // Determine active page based on pathname

@@ -2,6 +2,7 @@ import '@/app/ui/global.css'
 import { inter } from '@/app/ui/fonts'
 import type { Metadata } from 'next'
 import { locales } from '@/proxy'
+import { Providers } from '@/app/providers'
 
 export const metadata: Metadata = {
     title: {
@@ -27,7 +28,9 @@ export default async function RootLayout({
 
     return (
         <html lang={lang}>
-            <body className={`${inter.className} antialiased`}>{children}</body>
+            <body className={`${inter.className} antialiased`}>
+                <Providers>{children}</Providers>
+            </body>
         </html>
     )
 }

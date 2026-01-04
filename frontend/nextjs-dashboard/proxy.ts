@@ -1,5 +1,3 @@
-import NextAuth from 'next-auth'
-import { authConfig } from '@/auth.config'
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { match } from '@formatjs/intl-localematcher'
@@ -19,8 +17,8 @@ function getLocale(request: NextRequest) {
     return match(languages, locales, defaultLocale)
 }
 
-// i18n routing logic
-function i18nProxy(request: NextRequest) {
+// Combined proxy with i18n routing
+export default async function proxy(request: NextRequest) {
     const { pathname } = request.nextUrl
 
     // Check if there is any supported locale in the pathname
@@ -28,7 +26,9 @@ function i18nProxy(request: NextRequest) {
         locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
     )
 
-    if (pathnameHasLocale) return
+    if (pathnameHasLocale) {
+        return NextResponse.next()
+    }
 
     // Redirect if there is no locale
     const locale = getLocale(request)
@@ -38,19 +38,7 @@ function i18nProxy(request: NextRequest) {
     return NextResponse.redirect(request.nextUrl)
 }
 
-// Auth middleware
-const authMiddleware = NextAuth(authConfig).auth
-
-// Combined proxy
-export default async function proxy(request: NextRequest) {
-    // First check i18n routing
-    const i18nResponse = i18nProxy(request)
-    if (i18nResponse) return i18nResponse
-
-    // Then apply auth middleware
-    return authMiddleware(request as any)
-}
-
 export const config = {
+    // Skip API routes, static files, and NextAuth routes
     matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)']
 }

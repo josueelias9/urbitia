@@ -1,9 +1,9 @@
 'use client'
 
-import { useActionState } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useState } from 'react'
+import { useSearchParams, useRouter } from 'next/navigation'
+import { signIn } from 'next-auth/react'
 import { ArrowRightIcon } from '@heroicons/react/20/solid'
-import { authenticate } from '@/app/lib/actions'
 
 interface LoginClientProps {
     dict: any
@@ -12,8 +12,52 @@ interface LoginClientProps {
 
 export function LoginClient({ dict, lang }: LoginClientProps) {
     const searchParams = useSearchParams()
+    const router = useRouter()
     const role = searchParams.get('role') as 'buyer' | 'owner' | null
-    const [state, formAction, isPending] = useActionState(authenticate, undefined)
+    const [error, setError] = useState<string | null>(null)
+    const [isPending, setIsPending] = useState(false)
+
+    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault()
+        setError(null)
+        setIsPending(true)
+
+        const formData = new FormData(e.currentTarget)
+        const email = formData.get('email') as string
+        const password = formData.get('password') as string
+
+        try {
+            // Use NextAuth signIn
+            const result = await signIn('credentials', {
+                email,
+                password,
+                redirect: false
+            })
+
+            if (result?.error) {
+                setError('Invalid credentials.')
+                setIsPending(false)
+                return
+            }
+
+            // Get user to determine redirect based on role
+            const response = await fetch('/api/auth/session')
+            const session = await response.json()
+
+            if (session?.user) {
+                const userRole = session.user.role
+                const redirectPath =
+                    userRole === 'buyer' ? `/${lang}/buyer/properties` : `/${lang}/owner/dashboard`
+                router.push(redirectPath)
+            } else {
+                setError('Failed to get session.')
+                setIsPending(false)
+            }
+        } catch (err) {
+            setError('An error occurred during sign in.')
+            setIsPending(false)
+        }
+    }
 
     return (
         <div className='max-w-md w-full space-y-8'>
@@ -39,7 +83,7 @@ export function LoginClient({ dict, lang }: LoginClientProps) {
                               : 'Access your dashboard to manage listings')}
                 </p>
             </div>
-            <form action={formAction} className='mt-8 space-y-6'>
+            <form onSubmit={handleSubmit} className='mt-8 space-y-6'>
                 <input type='hidden' name='lang' value={lang} />
                 <div className='rounded-md shadow-sm -space-y-px'>
                     <div>
@@ -72,9 +116,9 @@ export function LoginClient({ dict, lang }: LoginClientProps) {
                     </div>
                 </div>
 
-                {state?.error && (
+                {error && (
                     <div className='rounded-md bg-red-50 p-4'>
-                        <div className='text-sm text-red-800'>{state.error}</div>
+                        <div className='text-sm text-red-800'>{error}</div>
                     </div>
                 )}
 
